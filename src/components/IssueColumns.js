@@ -25,11 +25,11 @@ export const COLUMNS = [
         Footer: 'Status',
         accessor: 'node.state',
         Filter: SelectColumnFilter,
-        filter: 'equals'
+        filter: 'equals',
+        disableSortBy: true
     },
     {
         Header: 'Title',
-        id: 'node.url',
         Footer: 'Title',
         accessor: 'node.title',
         Cell: ({ cell: { value }, row: { original } }) => <a href={original.node.url} target="_blank">{value}</a>
@@ -46,7 +46,5 @@ export const COLUMNS = [
         Footer: 'Author',
         accessor: 'node.author.login',
         disableFilters: true
-        // Filter: SelectColumnFilter,
-        // filter: 'equals',
     }
 ]
