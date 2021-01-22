@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useQuery } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ACIssues from './components/ACIssues';
 
-function App() {
+
+function App() {  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <ACIssues />
+      </div>
+    </Router>
   );
 }
+
+
+// function App() {
+
+//   const { loading, error, data } = useQuery(EXCHANGE_RATE);
+//   console.log(data);
+
+//   if (loading) return <p>Loading...</p>;
+//   if (error) return <p>Error :(</p>;
+
+//   return data.rates.map(({ currency, rate }) => (
+//     <div key={currency}>
+//       <p>
+//         {currency}: {rate}
+//       </p>
+//     </div>
+//   ));
+
+//   return (
+//       <div className="App">
+//         <h2>My First Apollo App</h2>
+//         { loading && <h2>Loading...</h2>}
+//         { error && <h2>Whoops... Something went wrong</h2>}
+//         { data.rates.map((rate, id) => (
+//           <p id={ id }>{ rate.currency }</p>
+//         ))}
+//         {/* <p>{ data.rates }</p> */}
+//       </div>
+//   );
+// }
 
 export default App;
