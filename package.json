@@ -10,6 +10,7 @@
     "bootstrap": "^4.6.0",
     "date-fns": "^2.16.1",
     "date-range-picker": "^0.3.5",
+    "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
     "react": "^17.0.1",
     "react-date-range": "^1.1.3",

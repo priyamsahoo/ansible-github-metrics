@@ -8,9 +8,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/c
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://api.github.com/graphql',
+    uri: `${ process.env.REACT_APP_GITHUB_API_URL }`,
     headers: {
-      Authorization: 'bearer c24b4def169cff349bf68712c25d84bfee94ebb4'
+      Authorization: `bearer ${ process.env.REACT_APP_GITHUB_TOKEN }`
     }
   }),
   cache: new InMemoryCache()
