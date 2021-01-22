@@ -1,5 +1,8 @@
 import { format } from 'date-fns';
+import { nodeName } from 'jquery';
 import { SelectColumnFilter } from './filters';
+
+
 
 export const COLUMNS = [
     {
@@ -25,16 +28,18 @@ export const COLUMNS = [
         filter: 'equals'
     },
     {
+        Header: 'Title',
+        id: 'node.url',
+        Footer: 'Title',
+        accessor: 'node.title',
+        Cell: ({ cell: { value }, row: { original } }) => <a href={original.node.url} target="_blank">{value}</a>
+    },
+    {
         Header: 'Updated At',
         Footer: 'Updated At',
         accessor: 'node.updatedAt',
         Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy') },
         disableFilters: true
-    },
-    {
-        Header: 'Title',
-        Footer: 'Title',
-        accessor: 'node.title'
     },
     {
         Header: 'Author',
