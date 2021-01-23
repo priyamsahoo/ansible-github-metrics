@@ -31,13 +31,12 @@ const Collections = () => {
         </div>
 
         <div>
-          <CollectionInsights repository={ repository }/>
+            <CollectionInsights repository={ repository }/>
         </div>
 
         <div>
             <ACIssues repository={ repository }/>
         </div>
-
         <div>
             <ACPullRequests repository={ repository }/>
         </div>

@@ -5,13 +5,13 @@
   margin: 0;
   font-family: "Quicksand";
   color: #333;
-  background-color: #eee;
+  background-color: #eee);
 }
 .navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 100%;
+  max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #5f3737;
 }
@@ -34,10 +34,6 @@
   margin: 40px auto;
   padding: 20px;
 } */
-
-.collections {
-  padding: 20px;
-}
 
 .ac-issues {
   display: flex;
