@@ -12,12 +12,6 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        {/* <ACIssues />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <ACPullRequests /> */}
         <Collections />
       </div>
     </Router>

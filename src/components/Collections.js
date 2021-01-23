@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ACIssues from "./ACIssues";
 import ACPullRequests from "./ACPullRequests";
+import CollectionInsights from './CollectionInsights';
 
 const Collections = () => {
 
@@ -30,8 +31,13 @@ const Collections = () => {
         </div>
 
         <div>
+          <CollectionInsights repository={ repository }/>
+        </div>
+
+        <div>
             <ACIssues repository={ repository }/>
         </div>
+
         <div>
             <ACPullRequests repository={ repository }/>
         </div>
