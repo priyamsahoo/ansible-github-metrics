@@ -3,19 +3,19 @@ import { PR } from '../queries/queries';
 import PRTable from './PRTable';
 import { useState } from 'react';
 
-const ACPullRequests = () => {
+const ACPullRequests = ({ repository }) => {
 
-  const [repository, setRepository] = useState("cisco.nxos");
+  // const [repository, setRepository] = useState("cisco.nxos");
 
     const { loading, error, data, refetch } = useQuery(PR, {
       variables: {repositoryName: repository}
     });
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="ac-pull-requests">
 
-          <div>
+          {/* <div>
             <label>Repositories: </label>
             <select
               value={repository}
@@ -33,7 +33,7 @@ const ACPullRequests = () => {
               <option value="community.yang">community.yang</option>
               <option value="ansible.utils">ansible.utils</option>
             </select>
-          </div>
+          </div> */}
 
             { error && <div>{ error }</div>}
             { loading && <div>Loading...</div>}

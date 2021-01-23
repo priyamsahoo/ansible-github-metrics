@@ -3,18 +3,18 @@ import { ISSUES } from '../queries/queries';
 import IssueTable from './IssueTable';
 import { useState } from 'react';
 
-const ACIssues = () => {
+const ACIssues = ({ repository }) => {
 
-  const [repository, setRepository] = useState("cisco.nxos");
+  // const [repository, setRepository] = useState("cisco.nxos");
 
     const { loading, error, data, refetch } = useQuery(ISSUES, {
       variables: {repositoryName: repository}
     });
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="ac-issues">
-
+{/* 
           <div>
             <label>Repositories: </label>
             <select
@@ -33,7 +33,7 @@ const ACIssues = () => {
               <option value="community.yang">community.yang</option>
               <option value="ansible.utils">ansible.utils</option>
             </select>
-          </div>
+          </div> */}
 
             { error && <div>{ error }</div>}
             { loading && <div>Loading...</div>}

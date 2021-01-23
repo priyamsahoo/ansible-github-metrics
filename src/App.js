@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ACIssues from './components/ACIssues';
 import ACPullRequests from './components/ACPullRequests';
+import Collections from './components/Collections';
 
 
 function App() {  
@@ -11,12 +12,13 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <ACIssues />
+        {/* <ACIssues />
         <br></br>
         <br></br>
         <br></br>
         <br></br>
-        <ACPullRequests />
+        <ACPullRequests /> */}
+        <Collections />
       </div>
     </Router>
   );
