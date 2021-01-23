@@ -30,7 +30,7 @@ const ISSUES = gql`
     query ($repositoryName: String!){
         repository(name: $repositoryName, owner: "ansible-collections") {
             name,
-            issues(first: 100) {
+            issues(last: 100) {
             edges {
                 node {
                 author {
@@ -49,5 +49,35 @@ const ISSUES = gql`
     }
 `;
 
+const PR = gql`
+    query ($repositoryName: String!){
+        repository(name: $repositoryName, owner: "ansible-collections") {
+        name
+        pullRequests(last: 100) {
+            edges {
+            node {
+                author {
+                login
+                }
+                createdAt
+                merged
+                mergeable
+                milestone {
+                description
+                creator {
+                    login
+                }
+                }
+                updatedAt
+                url
+                state
+                title
+            }
+            }
+        }
+    }
+  }
+`;
 
-export { ISSUES };
+
+export { ISSUES, PR };

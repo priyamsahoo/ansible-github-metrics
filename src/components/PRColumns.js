@@ -45,5 +45,18 @@ export const COLUMNS = [
         Footer: 'Author',
         accessor: 'node.author.login',
         disableFilters: true
+    },
+    {
+        Header: 'Mergeable',
+        Footer: 'Mergeable',
+        accessor: 'node.mergeable',
+        disableFilters: true
+    },
+    {
+        Header: 'Milestone',
+        Footer: 'Milestone',
+        accessor: 'node.milestone',
+        Cell: ({ value }) => { return JSON.stringify(value) },
+        disableFilters: true
     }
 ]

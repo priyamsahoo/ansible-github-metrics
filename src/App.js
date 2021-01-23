@@ -1,8 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ACIssues from './components/ACIssues';
+import ACPullRequests from './components/ACPullRequests';
 
 
 function App() {  
@@ -12,6 +12,11 @@ function App() {
       <div className="App">
         <Navbar />
         <ACIssues />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <ACPullRequests />
       </div>
     </Router>
   );

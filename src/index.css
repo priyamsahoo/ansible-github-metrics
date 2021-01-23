@@ -75,3 +75,38 @@
 .issue-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
+
+/* pr table style */
+.pr-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.pr-table a {
+  text-decoration: none;
+  color: #009879;
+}
+.pr-table thead th {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.pr-table th,
+.pr-table td {
+    padding: 12px 32px;
+}
+.pr-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.pr-table tbody tr:hover {
+  border-bottom: 1px solid #009879;
+}
+.pr-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.pr-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

@@ -2,18 +2,18 @@ import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Table } from 'reactstrap';
 import { useTable, useFilters, useSortBy, usePagination } from 'react-table';
-import { COLUMNS } from './IssueColumns';
+import { COLUMNS } from './PRColumns';
 import { Filter, DefaultColumnFilter } from './filters';
 import { Button } from "bootstrap";
 
 
-const IssueTable = ({ name, issues, count }) => {
+const PRTable = ({ name, pr, count }) => {
 
     // const columns = useMemo(() => COLUMNS, []);
-    // const data = useMemo(() => issues, []);
+    // const data = useMemo(() => pr, []);
 
     const columns = COLUMNS;
-    const data = issues;
+    const data = pr;
 
     const tableInstance = useTable({
         columns,
@@ -49,11 +49,11 @@ const IssueTable = ({ name, issues, count }) => {
     };
 
     return (
-        <div className="issue-list">
+        <div className="pr-list">
             <h2>Repository: { name }</h2>
-            <h2>Issues: { count }</h2>
+            <h2>Pull Requests: { count }</h2>
 
-            <Table bordered hover className="issue-table" { ...getTableProps() }>
+            <Table bordered hover className="pr-table" { ...getTableProps() }>
                 <thead>
                     {
                         headerGroups.map((headerGroup) => (
@@ -138,4 +138,4 @@ const IssueTable = ({ name, issues, count }) => {
     )
 }
  
-export default IssueTable;
+export default PRTable;
