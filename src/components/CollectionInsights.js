@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/client';
-import { NUMBER_OF_OPEN_ISSUES } from '../queries/queries';
+import { COLLECTION_INSIGHTS } from '../queries/queries';
 
 const CollectionInsights = ({ repository }) => {
 
-    const { loading, error, data } = useQuery(NUMBER_OF_OPEN_ISSUES, {
+    const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {
         variables: {repositoryName: repository}
     });
 
@@ -18,7 +18,16 @@ const CollectionInsights = ({ repository }) => {
 
             { error && <div>{ error }</div>}
             { loading && <div>Loading...</div>}
-            { data &&  <h3>Open Issues: { data.repository.issues.totalCount }</h3> } 
+            { data &&  
+                <div>
+                    <p>Open Issues: { data.repository.openIssues.totalCount }</p>
+                    <p>Closed Issues: { data.repository.closedIssues.totalCount }</p>
+                    <br></br>
+                    <p>Open PRs: { data.repository.openPRs.totalCount }</p>
+                    <p>Closed PRs: { data.repository.closedPRs.totalCount }</p>
+                    <p>Merged PRs: { data.repository.mergedPRs.totalCount }</p>
+                </div>
+            } 
 
         </div>
     );

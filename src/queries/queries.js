@@ -79,11 +79,22 @@ const PR = gql`
   }
 `;
 
-const NUMBER_OF_OPEN_ISSUES = gql`
-    {
-        repository(name: "cisco.nxos", owner: "ansible-collections") {
-        name
-        issues(filterBy: {states: OPEN}) {
+const COLLECTION_INSIGHTS = gql`
+    query ($repositoryName: String!){
+        repository(name: $repositoryName, owner: "ansible-collections") {
+        openIssues: issues(filterBy: {states: [OPEN]}) {
+            totalCount
+        }
+        closedIssues: issues(filterBy: {states: [CLOSED]}) {
+            totalCount
+        }    
+        openPRs: pullRequests(states: OPEN) {
+            totalCount
+        }
+        closedPRs: pullRequests(states: CLOSED) {
+            totalCount
+        }
+        mergedPRs: pullRequests(states: MERGED) {
             totalCount
         }
         }
@@ -91,4 +102,4 @@ const NUMBER_OF_OPEN_ISSUES = gql`
 `;
 
 
-export { ISSUES, PR, NUMBER_OF_OPEN_ISSUES };
+export { ISSUES, PR, COLLECTION_INSIGHTS };
