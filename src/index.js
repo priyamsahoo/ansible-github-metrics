@@ -11,9 +11,9 @@ import {
 
 const client = new ApolloClient({
     link: new HttpLink({
-        uri: 'https://api.github.com/graphql',
+        uri: `${process.env.REACT_APP_GITHUB_API_URL}`,
         headers: {
-            Authorization: `bearer 2d7e0c081fa5d44743afde3aefd46d8ac5187bab`,
+            Authorization: `bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
         },
     }),
     cache: new InMemoryCache(),
