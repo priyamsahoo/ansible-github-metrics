@@ -1,14 +1,15 @@
-import { format } from 'date-fns';
+import moment from 'moment';
 import { CustomInput } from 'reactstrap';
 import { DateFilter, SelectColumnFilter } from './filters';
+import { CenteredHeader } from './CenteredHeader';
 
 export const COLUMNS = [
     {
-        Header: 'Created At',
+        Header: CenteredHeader('Created At'),
         Footer: 'Created At',
         accessor: 'node.createdAt',
         Cell: ({ value }) => {
-            return format(new Date(value), 'dd/MM/yyyy');
+            return moment(new Date(value)).format('D/MM/yyyy');
         },
         disableSortBy: true,
         Filter: DateFilter,
@@ -25,7 +26,7 @@ export const COLUMNS = [
     //     filter: 'equals'
     // },
     {
-        Header: 'Status',
+        Header: CenteredHeader('Status'),
         Footer: 'Status',
         accessor: 'node.state',
         Filter: SelectColumnFilter,
@@ -33,7 +34,7 @@ export const COLUMNS = [
         disableSortBy: true,
     },
     {
-        Header: 'Title',
+        Header: CenteredHeader('Title'),
         Footer: 'Title',
         accessor: 'node.title',
         Cell: ({ cell: { value }, row: { original } }) => (
@@ -43,16 +44,16 @@ export const COLUMNS = [
         ),
     },
     {
-        Header: 'Updated At',
+        Header: CenteredHeader('Updated At'),
         Footer: 'Updated At',
         accessor: 'node.updatedAt',
         Cell: ({ value }) => {
-            return format(new Date(value), 'dd/MM/yyyy');
+            return moment(new Date(value)).format('D/MM/yyyy');
         },
         disableFilters: true,
     },
     {
-        Header: 'Author',
+        Header: CenteredHeader('Author'),
         Footer: 'Author',
         accessor: 'node.author.login',
         disableFilters: true,

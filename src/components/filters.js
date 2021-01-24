@@ -18,13 +18,22 @@ export const DefaultColumnFilter = ({
     },
 }) => {
     return (
-        <Input
-            value={filterValue || ''}
-            onChange={(e) => {
-                setFilter(e.target.value || undefined);
-            }}
-            placeholder={`search (${length}) ...`}
-        />
+        <div
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                textAlign: 'center',
+            }}>
+            <Input
+                value={filterValue || ''}
+                onChange={(e) => {
+                    setFilter(e.target.value || undefined);
+                }}
+                placeholder={`search (${length}) ...`}
+            />
+        </div>
     );
 };
 

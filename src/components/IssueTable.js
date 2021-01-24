@@ -1,30 +1,30 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import { useTable, useFilters, useSortBy, usePagination } from 'react-table';
 import { COLUMNS } from './IssueColumns';
 import { Filter, DefaultColumnFilter } from './filters';
-import { Button } from "bootstrap";
-
+import { Button } from 'bootstrap';
 
 const IssueTable = ({ name, issues, count }) => {
-
     // const columns = useMemo(() => COLUMNS, []);
     // const data = useMemo(() => issues, []);
 
     const columns = COLUMNS;
     const data = issues;
 
-    const tableInstance = useTable({
-        columns,
-        data,
-        defaultColumn: { Filter: DefaultColumnFilter },
+    const tableInstance = useTable(
+        {
+            columns,
+            data,
+            defaultColumn: { Filter: DefaultColumnFilter },
         },
         useFilters,
         useSortBy,
-        usePagination);
+        usePagination
+    );
 
-    const { 
+    const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
@@ -39,7 +39,7 @@ const IssueTable = ({ name, issues, count }) => {
         pageCount,
         setPageSize,
         state,
-        prepareRow
+        prepareRow,
     } = tableInstance;
 
     const { pageIndex, pageSize } = state;
@@ -49,93 +49,100 @@ const IssueTable = ({ name, issues, count }) => {
     };
 
     return (
-        <div className="issue-list">
-            <h2>Repository: { name }</h2>
-            <h2>Issues: { count }</h2>
+        <div className='issue-list'>
+            <h2>Repository: {name}</h2>
+            <h2>Issues: {count}</h2>
 
-            <Table bordered hover className="issue-table" { ...getTableProps() }>
+            <Table
+                bordered
+                hover
+                className='issue-table'
+                {...getTableProps()}
+                width={500}>
                 <thead>
-                    {
-                        headerGroups.map((headerGroup) => (
-                            <tr { ...headerGroup.getHeaderGroupProps() }>
-                                {
-                                    headerGroup.headers.map((column) => (
-                                        <th { ...column.getHeaderProps(column.getSortByToggleProps()) }>
-                                            {
-                                                column.render('Header')
-                                            }
-                                            <span>
-                                                { generateSortingIndicator(column) }
-                                            </span>
-                                            <Filter column={column} />
-                                        </th>
-                                    ))
-                                }
-                            </tr>
-                        ))
-                    }
+                    {headerGroups.map((headerGroup) => (
+                        <tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column) => (
+                                <th
+                                    {...column.getHeaderProps(
+                                        column.getSortByToggleProps()
+                                    )}>
+                                    {column.render('Header')}
+                                    {/* <span
+                                        >
+                                        {generateSortingIndicator(column)}
+                                    </span> */}
+                                    <Filter column={column} />
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
                 </thead>
-                <tbody { ...getTableBodyProps() }>
-                    {
-                        page.map((row) => {
-                            prepareRow(row)
-                            return (
-                                <tr { ...row.getRowProps() }>
-                                    {
-                                        row.cells.map((cell) => {
-                                            return (
-                                                <td { ...cell.getCellProps() }>
-                                                    {
-                                                        cell.render('Cell')
-                                                    }
-                                                </td>
-                                            )
-                                        })
-                                    }
-                                </tr>
-                            )
-                        })
-                    }
+                <tbody {...getTableBodyProps()}>
+                    {page.map((row) => {
+                        prepareRow(row);
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {row.cells.map((cell) => {
+                                    return (
+                                        <td {...cell.getCellProps()}>
+                                            {cell.render('Cell')}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
             <div>
                 <span>
-                    Page{ ' ' }
+                    Page{' '}
                     <strong>
-                        { pageIndex + 1 } of { pageOptions.length }
-                    </strong>
-                    { ' ' }
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
                 </span>
                 <span>
-                    | Go to page: { ' ' }
-                    <input type="number" defaultValue={ pageIndex + 1 }
-                        onChange={ (e) => {
-                            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-                            gotoPage(pageNumber)
-                        } }
-                        style={ { width: '50px' } }>
-                    </input>
+                    | Go to page:{' '}
+                    <input
+                        type='number'
+                        defaultValue={pageIndex + 1}
+                        onChange={(e) => {
+                            const pageNumber = e.target.value
+                                ? Number(e.target.value) - 1
+                                : 0;
+                            gotoPage(pageNumber);
+                        }}
+                        style={{ width: '50px' }}></input>
                 </span>
-                <select value={ pageSize } onChange={ (e) => setPageSize(Number(e.target.value)) }>
-                    {
-                        [10, 25, 50].map((pageSize) => (
-                            <option key={ pageSize } value={ pageSize }>
-                                Show { pageSize }
-                            </option>
-                        ))
-                    }
+                <select
+                    value={pageSize}
+                    onChange={(e) => setPageSize(Number(e.target.value))}>
+                    {[10, 25, 50].map((pageSize) => (
+                        <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                        </option>
+                    ))}
                 </select>
-                <button onClick={ () => gotoPage(0) } disabled={ !canPreviousPage }>
-                    { '<<' }
+                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                    {'<<'}
                 </button>
-                <button onClick={ () => previousPage() } disabled={ !canPreviousPage }>Previous</button>
-                <button onClick={ () => nextPage() } disabled={ !canNextPage }>Next</button>
-                <button onClick={ () => gotoPage(pageCount - 1) } disabled={ !canNextPage }>
-                    { '>>' }
+                <button
+                    onClick={() => previousPage()}
+                    disabled={!canPreviousPage}>
+                    Previous
+                </button>
+                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    Next
+                </button>
+                <button
+                    onClick={() => gotoPage(pageCount - 1)}
+                    disabled={!canNextPage}>
+                    {'>>'}
                 </button>
             </div>
         </div>
-    )
-}
- 
+    );
+};
+
 export default IssueTable;

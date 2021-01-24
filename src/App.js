@@ -6,6 +6,9 @@ import ACPullRequests from './components/ACPullRequests';
 import Collections from './components/Collections';
 import { Container } from 'reactstrap';
 
+// table resize
+// links click -> open pages in background
+
 function App() {
     return (
         <Router>
