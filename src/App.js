@@ -1,29 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ACIssues from './components/ACIssues';
 import ACPullRequests from './components/ACPullRequests';
 import Collections from './components/Collections';
+import { Container } from 'reactstrap';
 
-
-function App() {  
-
-  return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        {/* <ACIssues />
+function App() {
+    return (
+        <Router>
+            <div className='App'>
+                <Navbar />
+                {/* <ACIssues />
         <br></br>
         <br></br>
         <br></br>
         <br></br>
         <ACPullRequests /> */}
-        <Collections />
-      </div>
-    </Router>
-  );
+                <Container>
+                    <Collections />
+                </Container>
+            </div>
+        </Router>
+    );
 }
-
 
 // function App() {
 

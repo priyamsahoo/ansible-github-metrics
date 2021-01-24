@@ -1,15 +1,20 @@
 import { format } from 'date-fns';
-import { SelectColumnFilter } from './filters';
-
-
+import { CustomInput } from 'reactstrap';
+import { DateFilter, SelectColumnFilter } from './filters';
 
 export const COLUMNS = [
     {
         Header: 'Created At',
         Footer: 'Created At',
         accessor: 'node.createdAt',
-        Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy') },
-        disableFilters: true
+        Cell: ({ value }) => {
+            return format(new Date(value), 'dd/MM/yyyy');
+        },
+        disableSortBy: true,
+        Filter: DateFilter,
+        filter: (rows, columnId, filterValues) => {
+            return filterValues;
+        },
     },
     // {
     //     id: 'node.closed',
@@ -25,25 +30,31 @@ export const COLUMNS = [
         accessor: 'node.state',
         Filter: SelectColumnFilter,
         filter: 'equals',
-        disableSortBy: true
+        disableSortBy: true,
     },
     {
         Header: 'Title',
         Footer: 'Title',
         accessor: 'node.title',
-        Cell: ({ cell: { value }, row: { original } }) => <a href={original.node.url} target="_blank">{value}</a>
+        Cell: ({ cell: { value }, row: { original } }) => (
+            <a href={original.node.url} target='_blank'>
+                {value}
+            </a>
+        ),
     },
     {
         Header: 'Updated At',
         Footer: 'Updated At',
         accessor: 'node.updatedAt',
-        Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy') },
-        disableFilters: true
+        Cell: ({ value }) => {
+            return format(new Date(value), 'dd/MM/yyyy');
+        },
+        disableFilters: true,
     },
     {
         Header: 'Author',
         Footer: 'Author',
         accessor: 'node.author.login',
-        disableFilters: true
-    }
-]
+        disableFilters: true,
+    },
+];
