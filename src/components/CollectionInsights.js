@@ -12,7 +12,7 @@ const CollectionInsights = ({ repository }) => {
 
   return (
     <div className="collection-insights">
-      <h1>Collection Insights of {repository}</h1>
+      <h2>Collection Insights of {repository}</h2>
       {/* <h3>Open Issues: { openIssues }</h3> */}
 
       {error && <div>{error}</div>}

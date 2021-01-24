@@ -11,17 +11,16 @@ const ACIssues = ({ repository }) => {
   });
   // console.log(data);
 
+  const name = data ? data.repository.name : null;
+  const count = data ? data.repository.issues.edges.length : 0;
+
   return (
     <div className="ac-issues">
+      <h2>Repository: {name}</h2>
+      <h3>Total Issues: {count >= 100 ? "100+" : count}</h3>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
-      {data && (
-        <IssueTable
-          name={data.repository.name}
-          issues={data.repository.issues.edges}
-          count={data.repository.issues.edges.length}
-        />
-      )}
+      {data && <IssueTable issues={data.repository.issues.edges} />}
     </div>
   );
 };

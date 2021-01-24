@@ -1,36 +1,10 @@
 import { gql } from "@apollo/client";
 
-const MY_ISSUES = gql`
-  {
-    repositoryOwner(login: "BroadwayFriends") {
-      repository(name: "FriendlyNeighborAndroid") {
-        name
-        issues(last: 100) {
-          totalCount
-          edges {
-            node {
-              id
-              createdAt
-              title
-              url
-              createdAt
-              author {
-                login
-              }
-              closed
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const ISSUES = gql`
   query($repositoryName: String!) {
     repository(name: $repositoryName, owner: "ansible-collections") {
       name
-      issues(last: 100) {
+      issues(last: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
         edges {
           node {
             author {

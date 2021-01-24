@@ -107,9 +107,9 @@ export const DateFilter = (props) => {
     >
       <option value="1W">Past week</option>
       <option value="1M" selected>
-        1 month
+        Past month
       </option>
-      <option value="3M">3 months</option>
+      <option value="3M">Past 3 months</option>
       <option value="L3M">&lt; 3 months</option>
     </Input>
   );

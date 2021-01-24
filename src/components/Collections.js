@@ -8,7 +8,7 @@ const Collections = () => {
 
   return (
     <div className="collections">
-      <div>
+      <div className="repository-dropdown">
         <label>Repositories: </label>
         <select
           value={repository}

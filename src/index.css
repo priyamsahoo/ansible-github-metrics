@@ -7,46 +7,71 @@
   color: #333;
   background-color: #eee;
 }
+
+/* navbar styles */
 .navbar {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
-  border-bottom: 1px solid #5f3737;
+  background-color: #009879;
 }
 .navbar h1 {
-  color: #f1356d;
+  color: #eee;
+  background: transparent;
+  font-size: 2em;
 }
 .navbar .links {
   margin-left: auto;
+  background: transparent;
+  color: #009879;
 }
 .navbar a {
-  margin-left: 16px;
   text-decoration: none;
+  font-size: 1.2em;
   padding: 6px;
+  background-color: transparent;
+  color: #eee;
 }
 .navbar a:hover {
   color: #f1356d;
 }
-/* .content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-} */
 
+/* Collection styles */
+.collections {
+  padding: 10px;
+}
+
+.repository-dropdown {
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+  font-size: 1.5em;
+}
+
+.repository-dropdown select {
+  font-size: 0.8em;
+}
+
+/* collection insight component style */
+.collection-insights {
+  border: #009879 dotted;
+  padding: 6px;
+  margin: 10px 0px;
+}
+
+/* ac issues component styles */
 .ac-issues {
-  display: flex;
-  justify-content: center;
-  display: inline-block;
+  border: #009879 dotted;
+  padding: 6px;
+  margin: 10px 0px;
 }
 
 /* issue table style */
 .issue-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 6px 0;
   font-size: 0.9em;
-  font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -56,7 +81,7 @@
 }
 .issue-table thead th {
   background-color: #009879;
-  color: #ffffff;
+  color: #eee;
   text-align: left;
 }
 .issue-table th,
@@ -68,6 +93,8 @@
 }
 .issue-table tbody tr:hover {
   border-bottom: 1px solid #009879;
+  border-left: 1px solid #009879;
+  border-right: 1px solid #009879;
 }
 .issue-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
@@ -76,12 +103,18 @@
   border-bottom: 2px solid #009879;
 }
 
+/* ac pull request component styles */
+.ac-pull-requests {
+  border: #009879 dotted;
+  padding: 6px;
+  margin: 10px 0px;
+}
+
 /* pr table style */
 .pr-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 6px 0;
   font-size: 0.9em;
-  font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -103,6 +136,8 @@
 }
 .pr-table tbody tr:hover {
   border-bottom: 1px solid #009879;
+  border-left: 1px solid #009879;
+  border-right: 1px solid #009879;
 }
 .pr-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;

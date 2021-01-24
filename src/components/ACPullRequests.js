@@ -11,17 +11,16 @@ const ACPullRequests = ({ repository }) => {
   });
   // console.log(data);
 
+  const name = data ? data.repository.name : null;
+  const count = data ? data.repository.pullRequests.edges.length : 0;
+
   return (
     <div className="ac-pull-requests">
+      <h2>Repository: {name}</h2>
+      <h3>Total PRs: {count >= 100 ? "100+" : count}</h3>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
-      {data && (
-        <PRTable
-          name={data.repository.name}
-          pr={data.repository.pullRequests.edges}
-          count={data.repository.pullRequests.edges.length}
-        />
-      )}
+      {data && <PRTable pr={data.repository.pullRequests.edges} />}
     </div>
   );
 };
