@@ -1,0 +1,9 @@
+.cell {
+    color: #009879;
+}
+
+.cell:hover {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
