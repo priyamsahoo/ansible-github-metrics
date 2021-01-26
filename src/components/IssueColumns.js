@@ -45,6 +45,7 @@ export const COLUMNS = [
         {value}
       </a>
     ),
+    disableSortBy: true,
     minWidth: 250,
   },
   {
