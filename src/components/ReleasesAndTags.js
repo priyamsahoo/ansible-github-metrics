@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { RELEASES_AND_TAGS } from "../queries/queries";
 import moment from "moment";
 
-const Releases = ({ repository }) => {
+const ReleasesAndTags = ({ repository }) => {
   const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
     variables: { repositoryName: repository },
   });
@@ -63,4 +63,4 @@ const Releases = ({ repository }) => {
   );
 };
 
-export default Releases;
+export default ReleasesAndTags;

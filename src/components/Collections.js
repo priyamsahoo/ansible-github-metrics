@@ -2,7 +2,7 @@ import { useState } from "react";
 import ACIssues from "./ACIssues";
 import ACPullRequests from "./ACPullRequests";
 import CollectionInsights from "./CollectionInsights";
-import Releases from "./Releases";
+import ReleasesAndTags from "./ReleasesAndTags";
 
 const Collections = () => {
   const [repository, setRepository] = useState("cisco.nxos");
@@ -41,7 +41,7 @@ const Collections = () => {
         <ACPullRequests repository={repository} />
       </div>
       <div>
-        <Releases repository={repository} />
+        <ReleasesAndTags repository={repository} />
       </div>
     </div>
   );
