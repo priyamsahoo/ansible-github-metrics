@@ -10,15 +10,14 @@ const ReleasesAndTags = ({ repository }) => {
   console.log(data);
 
   return (
-    <div className="releases">
+    <div className="releases-and-tags">
       <h2>Releases and Tags: {repository}</h2>
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {data && (
         <div className="information">
           <div className="release-info">
-            <p>Total Releases: {data.release.releases.totalCount}</p>
-            <br></br>
+            <h4>Total Releases: {data.release.releases.totalCount}</h4>
             <h4>Latest Release Information: </h4>
             {!data.release.latestRelease && <p>-</p>}
             {data.release.latestRelease && (
@@ -35,10 +34,9 @@ const ReleasesAndTags = ({ repository }) => {
               </div>
             )}
           </div>
-
+          <br></br>
           <div className="tags-info">
-            <p>Total Tags: {data.tags.refs.totalCount}</p>
-            <br></br>
+            <h4>Total Tags: {data.tags.refs.totalCount}</h4>
             <h4>Latest Tag Information: </h4>
             {!data.tags.refs.edges && <p>-</p>}
             {data.tags.refs.edges && (

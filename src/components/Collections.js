@@ -31,17 +31,23 @@ const Collections = () => {
           <option value="ansible.utils">ansible.utils</option>
         </select>
       </div>
-      <div>
-        <CollectionInsights repository={repository} />
-      </div>
-      <div>
-        <ACIssues repository={repository} />
-      </div>
-      <div>
-        <ACPullRequests repository={repository} />
-      </div>
-      <div>
-        <ReleasesAndTags repository={repository} />
+      <div className="collection-contents">
+        <div className="insights-and-release-info">
+          <div>
+            <CollectionInsights repository={repository} />
+          </div>
+          <div>
+            <ReleasesAndTags repository={repository} />
+          </div>
+        </div>
+        <div className="tables">
+          <div>
+            <ACIssues repository={repository} />
+          </div>
+          <div>
+            <ACPullRequests repository={repository} />
+          </div>
+        </div>
       </div>
     </div>
   );

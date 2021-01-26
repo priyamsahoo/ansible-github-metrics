@@ -52,14 +52,30 @@
 .repository-dropdown select {
   font-size: 0.8em;
 }
-
+.collection-contents {
+  display: flex;
+  flex-direction: row;
+}
+.insights-and-release-info {
+  width: 30%;
+  margin: 10px;
+}
 /* collection insight component style */
 .collection-insights {
   border: #009879 dotted;
   padding: 6px;
   margin: 10px 0px;
 }
-
+.releases-and-tags {
+  border: #009879 dotted;
+  padding: 6px;
+  margin: 10px 0px;
+}
+.tables {
+  /* width: 70%; */
+  flex-grow: 1;
+  margin: 10px;
+}
 /* ac issues component styles */
 .ac-issues {
   border: #009879 dotted;
@@ -72,7 +88,7 @@
   border-collapse: collapse;
   margin: 6px 0;
   font-size: 0.9em;
-  min-width: 400px;
+  min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .issue-table a {
@@ -115,7 +131,7 @@
   border-collapse: collapse;
   margin: 6px 0;
   font-size: 0.9em;
-  min-width: 400px;
+  min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .pr-table a {
@@ -152,14 +168,10 @@
   padding: 6px;
   margin: 10px 0px;
 } */
-.releases {
-  border: #009879 dotted;
-  padding: 6px;
-  margin: 10px 0px;
-}
-.information,
+
+/* .information,
 .release-info,
 .tags-info {
   width: 50%;
   display: inline-block;
-}
+} */
