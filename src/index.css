@@ -17,6 +17,9 @@
   margin: 0 auto;
   background-color: #009879;
 }
+.navbar > img {
+  background: transparent;
+}
 .navbar h1 {
   color: #eee;
   background: transparent;
