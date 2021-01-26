@@ -75,4 +75,22 @@ const COLLECTION_INSIGHTS = gql`
   }
 `;
 
-export { ISSUES, PR, COLLECTION_INSIGHTS };
+const RELEASES = gql`
+  query($repositoryName: String!) {
+    repository(name: $repositoryName, owner: "ansible-collections") {
+      releases {
+        totalCount
+      }
+      latestRelease {
+        name
+        tagName
+        publishedAt
+        author {
+          name
+        }
+      }
+    }
+  }
+`;
+
+export { ISSUES, PR, COLLECTION_INSIGHTS, RELEASES };
