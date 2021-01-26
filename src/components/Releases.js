@@ -1,8 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { RELEASES } from "../queries/queries";
+import { RELEASES_AND_TAGS } from "../queries/queries";
+import moment from "moment";
 
 const Releases = ({ repository }) => {
-  const { loading, error, data } = useQuery(RELEASES, {
+  const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
     variables: { repositoryName: repository },
   });
 
@@ -10,22 +11,52 @@ const Releases = ({ repository }) => {
 
   return (
     <div className="releases">
-      <h2>Releases: {repository}</h2>
+      <h2>Releases and Tags: {repository}</h2>
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {data && (
-        <div className="release-info">
-          <p>Total Releases: {data.repository.releases.totalCount}</p>
-          <br></br>
-          <h4>Latest Release Information: </h4>
-          {!data.repository.latestRelease && <p>-</p>}
-          {data.repository.latestRelease && (
-            <div>
-              <p>Name: {data.repository.latestRelease.name}</p>
-              <p>Tag name: {data.repository.latestRelease.tagName}</p>
-              <p>Author: {data.repository.latestRelease.author.name}</p>
-            </div>
-          )}
+        <div className="information">
+          <div className="release-info">
+            <p>Total Releases: {data.release.releases.totalCount}</p>
+            <br></br>
+            <h4>Latest Release Information: </h4>
+            {!data.release.latestRelease && <p>-</p>}
+            {data.release.latestRelease && (
+              <div>
+                <p>Name: {data.release.latestRelease.name}</p>
+                <p>Tag name: {data.release.latestRelease.tagName}</p>
+                <p>
+                  Published on:{" "}
+                  {moment(
+                    new Date(data.release.latestRelease.publishedAt)
+                  ).format("ll")}
+                </p>
+                <p>Author: {data.release.latestRelease.author.name}</p>
+              </div>
+            )}
+          </div>
+
+          <div className="tags-info">
+            <p>Total Tags: {data.tags.refs.totalCount}</p>
+            <br></br>
+            <h4>Latest Tag Information: </h4>
+            {!data.tags.refs.edges && <p>-</p>}
+            {data.tags.refs.edges && (
+              <div>
+                <p>Name: {data.tags.refs.edges[0].node.target.name}</p>
+                <p>
+                  Tag message: {data.tags.refs.edges[0].node.target.message}
+                </p>
+                <p>
+                  Published on:{" "}
+                  {moment(
+                    new Date(data.tags.refs.edges[0].node.target.tagger.date)
+                  ).format("ll")}
+                </p>
+                <p>Author: {data.tags.refs.edges[0].node.target.tagger.name}</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

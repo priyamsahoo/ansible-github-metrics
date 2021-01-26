@@ -75,9 +75,9 @@ const COLLECTION_INSIGHTS = gql`
   }
 `;
 
-const RELEASES = gql`
+const RELEASES_AND_TAGS = gql`
   query($repositoryName: String!) {
-    repository(name: $repositoryName, owner: "ansible-collections") {
+    release: repository(name: $repositoryName, owner: "ansible-collections") {
       releases {
         totalCount
       }
@@ -90,7 +90,26 @@ const RELEASES = gql`
         }
       }
     }
+    tags: repository(name: $repositoryName, owner: "ansible-collections") {
+      refs(refPrefix: "refs/tags/", last: 1) {
+        totalCount
+        edges {
+          node {
+            target {
+              ... on Tag {
+                name
+                message
+                tagger {
+                  name
+                  date
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `;
 
-export { ISSUES, PR, COLLECTION_INSIGHTS, RELEASES };
+export { ISSUES, PR, COLLECTION_INSIGHTS, RELEASES_AND_TAGS };

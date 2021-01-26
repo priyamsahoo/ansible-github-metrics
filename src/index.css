@@ -147,8 +147,19 @@
 }
 
 /* releases component style */
+/* .releases {
+  border: #009879 dotted;
+  padding: 6px;
+  margin: 10px 0px;
+} */
 .releases {
   border: #009879 dotted;
   padding: 6px;
   margin: 10px 0px;
+}
+.information,
+.release-info,
+.tags-info {
+  width: 50%;
+  display: inline-block;
 }
