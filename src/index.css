@@ -46,6 +46,15 @@
   padding: 10px;
 }
 
+.collection-contents {
+  display: flex;
+  flex-direction: row;
+}
+
+.insights-and-release-info {
+  width: 20%;
+  margin: 10px;
+}
 .repository-dropdown {
   padding: 6px 0px;
   border: #009879 dotted;
@@ -57,14 +66,6 @@
 
 .repository-dropdown select {
   font-size: 0.8em;
-}
-.collection-contents {
-  display: flex;
-  flex-direction: row;
-}
-.insights-and-release-info {
-  width: 20%;
-  margin: 10px;
 }
 /* collection insight component style */
 .collection-insights {
@@ -168,16 +169,33 @@
   border-bottom: 2px solid #009879;
 }
 
-/* releases component style */
-/* .releases {
-  border: #009879 dotted;
-  padding: 6px;
-  margin: 10px 0px;
-} */
+/* developer component styles */
+.developers {
+  padding: 10px;
+}
 
-/* .information,
-.release-info,
-.tags-info {
-  width: 50%;
-  display: inline-block;
-} */
+.developers-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.dev-list {
+  border: #009879 dotted;
+  width: 20%;
+  margin: 10px;
+}
+.dev-details {
+  border: #009879 dotted;
+  flex-grow: 1;
+  margin: 10px;
+}
+
+.developer-list {
+  padding: 6px;
+  /* margin: 10px 0px; */
+}
+
+.developer-details {
+  padding: 6px;
+  /* margin: 10px 0px; */
+}
