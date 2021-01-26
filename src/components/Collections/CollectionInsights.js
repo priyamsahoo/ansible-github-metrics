@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { COLLECTION_INSIGHTS } from "../queries/queries";
+import { COLLECTION_INSIGHTS } from "../../queries/queries";
 
 const CollectionInsights = ({ repository }) => {
   const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {

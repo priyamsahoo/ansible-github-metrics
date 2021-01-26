@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { RELEASES_AND_TAGS } from "../queries/queries";
+import { RELEASES_AND_TAGS } from "../../queries/queries";
 import moment from "moment";
 
 const ReleasesAndTags = ({ repository }) => {

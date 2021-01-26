@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { PR } from "../queries/queries";
+import { PR } from "../../queries/queries";
 import PRTable from "./PRTable";
 import { useState } from "react";
 
