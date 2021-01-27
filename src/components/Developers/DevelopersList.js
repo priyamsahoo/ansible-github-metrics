@@ -49,13 +49,11 @@ const DeveloperList = ({ developerCallback }) => {
         value={searchName}
         onChange={(e) => handleSearch(e)}
       />
-      <ul>
-        {searchResults.map((item) => (
-          <li value={item} onClick={(e) => developerCallback(item)}>
-            {item}
-          </li>
-        ))}
-      </ul>
+      {searchResults.map((item) => (
+        <p value={item} onClick={(e) => developerCallback(item)}>
+          {item}
+        </p>
+      ))}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { DEVELOPER_DETAILS } from "../../queries/developer_queries";
 const OverallInfo = ({ selectedDeveloper }) => {
   const { loading, error, data } = useQuery(DEVELOPER_DETAILS, {
     variables: { userName: selectedDeveloper },
+    fetchPolicy: "cache-and-network",
   });
 
   const displayDetails = () => {

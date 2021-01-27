@@ -12,13 +12,12 @@ const CollectionInsights = ({ repository }) => {
 
   return (
     <div className="collection-insights">
-      <h2>Collection Insights of {repository}</h2>
-      {/* <h3>Open Issues: { openIssues }</h3> */}
-
+      <h2>Collection Insights: {repository}</h2>
+      <br></br>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && (
-        <div>
+        <div className="information">
           <p>Open Issues: {data.repository.openIssues.totalCount}</p>
           <p>Closed Issues: {data.repository.closedIssues.totalCount}</p>
           <br></br>

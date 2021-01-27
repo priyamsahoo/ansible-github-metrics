@@ -19,13 +19,11 @@ const Developers = () => {
       <div className="developers-content">
         <div className="dev-list">
           <DeveloperList developerCallback={developerCallback} />
-          {/* {data && (
-            <DeveloperList
-              developers={data.organization.membersWithRole.nodes}
-            />
-          )} */}
         </div>
         <div className="dev-details">
+          {!selectedDeveloper && (
+            <p> &lt;-- Click on a developer for more details</p>
+          )}
           {selectedDeveloper && (
             <DeveloperDetails selectedDeveloper={selectedDeveloper} />
           )}

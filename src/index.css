@@ -7,6 +7,19 @@
   color: #333;
   background-color: #eee;
 }
+h1,
+h2,
+h3,
+h4,
+p,
+label,
+div {
+  background: transparent;
+}
+
+p {
+  background-color: transparent;
+}
 
 /* navbar styles */
 .navbar {
@@ -56,16 +69,20 @@
   margin: 10px;
 }
 .repository-dropdown {
-  padding: 6px 0px;
+  padding: 6px 0px 10px 0px;
   border: #009879 dotted;
   text-align: center;
-  margin: 10px 0px 20px 0px;
+  margin: 10px 0px 50px 0px;
   font-size: 1.5em;
   margin-bottom: 50px;
+}
+.repository-dropdown label {
+  font-weight: bold;
 }
 
 .repository-dropdown select {
   font-size: 0.8em;
+  font-weight: bold;
 }
 /* collection insight component style */
 .collection-insights {
@@ -78,6 +95,7 @@
   padding: 6px;
   margin: 10px 0px;
 }
+
 .tables {
   /* width: 70%; */
   flex-grow: 1;
@@ -188,10 +206,31 @@
   border: #009879 dotted;
   flex-grow: 1;
   margin: 10px;
+  text-align: center;
 }
 
 .developer-list {
   padding: 6px;
+  /* margin: 10px 0px; */
+}
+
+.developer-list h2 {
+  padding-bottom: 6px;
+  /* margin: 10px 0px; */
+}
+.developer-list input {
+  margin: 6px 0px;
+  width: auto;
+  /* margin: 10px 0px; */
+}
+.developer-list p {
+  margin: 6px 0px;
+  width: auto;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
   /* margin: 10px 0px; */
 }
 

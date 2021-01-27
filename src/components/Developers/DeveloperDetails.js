@@ -5,7 +5,6 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
 
   return (
     <div className="developer-details">
-      <h2>Developer Details:</h2>
       {/* <p>{selectedDeveloper}</p> */}
       {/* {data && (
         <OverallInfo
@@ -14,6 +13,7 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
           }
         />
       )} */}
+
       <OverallInfo selectedDeveloper={selectedDeveloper} />
     </div>
   );
