@@ -1,7 +1,7 @@
 import { event } from "jquery";
 import { useState, useEffect } from "react";
 
-const DeveloperList = () => {
+const DeveloperList = ({ developerCallback }) => {
   const [searchName, setSearchName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -36,6 +36,10 @@ const DeveloperList = () => {
     setSearchResults(results);
   }, [searchName]);
 
+  // const handleClick = (item) => {
+  //   console.log(item);
+  // };
+
   return (
     <div className="developer-list">
       <h2>Developers:</h2>
@@ -47,7 +51,9 @@ const DeveloperList = () => {
       />
       <ul>
         {searchResults.map((item) => (
-          <li>{item}</li>
+          <li value={item} onClick={(e) => developerCallback(item)}>
+            {item}
+          </li>
         ))}
       </ul>
     </div>

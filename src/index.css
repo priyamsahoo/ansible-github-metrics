@@ -199,3 +199,15 @@
   padding: 6px;
   /* margin: 10px 0px; */
 }
+.overall-info {
+  padding: 6px;
+  margin: 10px 0px;
+  border: #009879 dotted;
+  text-align: center;
+}
+.profile-info img {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  border: #009879 solid 1px;
+}
