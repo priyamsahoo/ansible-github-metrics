@@ -207,7 +207,43 @@
 }
 .profile-info img {
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border: #009879 solid 1px;
+  background-position: "center";
+  background-size: auto 80px;
+}
+.profile-info a {
+  text-decoration: none;
+  color: #009879;
+}
+.collection-contributions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.total-contributions {
+  border: #009879 dotted;
+  margin: 6px;
+  padding: 6px;
+  background: #009879;
+}
+.collection-contributions h2 {
+  background: transparent;
+}
+.collection-contributions h1 {
+  background: transparent;
+  font-size: 3em;
+  color: #009879;
+}
+.total-contributions h2 {
+  color: #eee;
+}
+.total-contributions h1 {
+  color: #eee;
+}
+.contribution-splits {
+  border: #009879 dotted;
+  margin: 6px;
+  padding: 6px;
 }

@@ -27,7 +27,7 @@ const PR = gql`
   query($repositoryName: String!) {
     repository(name: $repositoryName, owner: "ansible-collections") {
       name
-      pullRequests(last: 100) {
+      pullRequests(last: 100, orderBy: { field: CREATED_AT, direction: ASC }) {
         edges {
           node {
             author {
