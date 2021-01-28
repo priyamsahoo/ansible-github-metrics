@@ -1,4 +1,4 @@
-const RepositoryWiseDetails = ({ issueData }) => {
+const RepositoryWiseDetails = ({ issueData, prData }) => {
   console.log(issueData);
 
   const displayDetails = () => {
@@ -14,6 +14,8 @@ const RepositoryWiseDetails = ({ issueData }) => {
             Issues closed:{" "}
             {issueData.CISCO_NXOS_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.CISCO_NXOS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.CISCO_NXOS_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 2. cisco.ios */}
@@ -25,6 +27,8 @@ const RepositoryWiseDetails = ({ issueData }) => {
           <p>
             Issues closed: {issueData.CISCO_IOS_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.CISCO_IOS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.CISCO_IOS_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 3. cisco.iosxr */}
@@ -37,6 +41,8 @@ const RepositoryWiseDetails = ({ issueData }) => {
             Issues closed:{" "}
             {issueData.CISCO_IOSXR_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.CISCO_IOSXR_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.CISCO_IOSXR_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 4. arista.eos */}
@@ -49,6 +55,8 @@ const RepositoryWiseDetails = ({ issueData }) => {
             Issues closed:{" "}
             {issueData.ARISTA_EOS_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.ARISTA_EOS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.ARISTA_EOS_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 5. vyos.vyos */}
