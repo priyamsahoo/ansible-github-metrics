@@ -233,6 +233,9 @@ p {
   cursor: pointer;
   /* margin: 10px 0px; */
 }
+.developer-list p:hover {
+  color: #009879;
+}
 
 .developer-details {
   padding: 6px;
@@ -285,4 +288,16 @@ p {
   border: #009879 dotted;
   margin: 6px;
   padding: 6px;
+}
+.splitup-info {
+  padding: 6px;
+  margin: 10px 0px;
+  border: #009879 dotted;
+  text-align: center;
+}
+.repository-wise-details {
+  padding: 6px;
+  margin: 10px 0px;
+  border: #009879 dotted;
+  text-align: center;
 }
