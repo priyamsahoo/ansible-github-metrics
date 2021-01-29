@@ -64,6 +64,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
           <h2>{issueData.VYOS_OPEN_ISSUES.name}</h2>
           <p>Issues opened: {issueData.VYOS_OPEN_ISSUES.issues.totalCount}</p>
           <p>Issues closed: {issueData.VYOS_CLOSED_ISSUES.issues.totalCount}</p>
+          <p>Open PRs: {prData.VYOS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.VYOS_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 6. junipernetworks.junos */}
@@ -73,6 +75,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
           <p>
             Issues closed: {issueData.JUNOS_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.JUNOS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.JUNOS_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 7. cisco.asa */}
@@ -84,6 +88,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
           <p>
             Issues closed: {issueData.CISCO_ASA_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.CISCO_ASA_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.CISCO_ASA_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 8. ansible.netcommon */}
@@ -97,6 +103,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
             Issues closed:{" "}
             {issueData.ANSIBLE_NETCOMMON_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.ANSIBLE_NETCOMMON_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.ANSIBLE_NETCOMMON_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 9. frr.frr */}
@@ -104,6 +112,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
           <h2>{issueData.FRR_OPEN_ISSUES.name}</h2>
           <p>Issues opened: {issueData.FRR_OPEN_ISSUES.issues.totalCount}</p>
           <p>Issues closed: {issueData.FRR_CLOSED_ISSUES.issues.totalCount}</p>
+          <p>Open PRs: {prData.FRR_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.FRR_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 10. openvswitch.openvswitch */}
@@ -116,6 +126,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
             Issues closed:{" "}
             {issueData.OPENVSWITCH_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.OPENVSWITCH_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.OPENVSWITCH_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 11. community.yang */}
@@ -129,6 +141,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
             Issues closed:{" "}
             {issueData.COMMUNITY_YANG_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.COMMUNITY_YANG_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.COMMUNITY_YANG_MERGED_PR.issueCount}</p>
         </div>
 
         {/* 12. ansible.utils */}
@@ -142,6 +156,8 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
             Issues closed:{" "}
             {issueData.ANSIBLE_UTILS_CLOSED_ISSUES.issues.totalCount}
           </p>
+          <p>Open PRs: {prData.ANSIBLE_UTILS_OPEN_PR.issueCount}</p>
+          <p>Merged PRs: {prData.ANSIBLE_UTILS_MERGED_PR.issueCount}</p>
         </div>
       </div>
     );
