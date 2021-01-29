@@ -69,6 +69,26 @@ p {
   width: 20%;
   margin: 10px;
 }
+.information-inner {
+  display: flex;
+  /* background: #009879; */
+  flex-direction: row;
+}
+.information-numericals {
+  margin: 6px;
+  width: 40%;
+}
+.information-percentage {
+  margin: 6px;
+  width: 50%;
+  height: 50%;
+  border: #009879 dotted;
+  text-align: center;
+}
+.information-percentage h3 {
+  font-size: 2.5em;
+}
+
 .repository-dropdown {
   padding: 6px 0px 10px 0px;
   border: #009879 dotted;
