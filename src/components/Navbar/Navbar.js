@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <img src={logo} width="50" height="50"></img>
-      <h1>nsible Github Metrics</h1>
+      <h1>nsible Networks Collection Metrics</h1>
       <div className="links">
         <Link to="/">Collections</Link>
         <Link to="/developers">Developers</Link>

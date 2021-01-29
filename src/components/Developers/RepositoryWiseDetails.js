@@ -3,9 +3,9 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
 
   const displayDetails = () => {
     return (
-      <div className="details-inner">
+      <div className="repository-wise-details-inner">
         {/* 1. cisco.nxos */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.CISCO_NXOS_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.CISCO_NXOS_OPEN_ISSUES.issues.totalCount}
@@ -19,7 +19,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 2. cisco.ios */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.CISCO_IOS_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.CISCO_IOS_OPEN_ISSUES.issues.totalCount}
@@ -32,7 +32,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 3. cisco.iosxr */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.CISCO_IOSXR_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.CISCO_IOSXR_OPEN_ISSUES.issues.totalCount}
@@ -46,7 +46,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 4. arista.eos */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.ARISTA_EOS_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.ARISTA_EOS_OPEN_ISSUES.issues.totalCount}
@@ -60,7 +60,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 5. vyos.vyos */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.VYOS_OPEN_ISSUES.name}</h2>
           <p>Issues opened: {issueData.VYOS_OPEN_ISSUES.issues.totalCount}</p>
           <p>Issues closed: {issueData.VYOS_CLOSED_ISSUES.issues.totalCount}</p>
@@ -69,7 +69,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 6. junipernetworks.junos */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.JUNOS_OPEN_ISSUES.name}</h2>
           <p>Issues opened: {issueData.JUNOS_OPEN_ISSUES.issues.totalCount}</p>
           <p>
@@ -80,7 +80,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 7. cisco.asa */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.CISCO_ASA_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.CISCO_ASA_OPEN_ISSUES.issues.totalCount}
@@ -93,7 +93,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 8. ansible.netcommon */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.ANSIBLE_NETCOMMON_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened:{" "}
@@ -108,7 +108,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 9. frr.frr */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.FRR_OPEN_ISSUES.name}</h2>
           <p>Issues opened: {issueData.FRR_OPEN_ISSUES.issues.totalCount}</p>
           <p>Issues closed: {issueData.FRR_CLOSED_ISSUES.issues.totalCount}</p>
@@ -117,7 +117,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 10. openvswitch.openvswitch */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.OPENVSWITCH_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened: {issueData.OPENVSWITCH_OPEN_ISSUES.issues.totalCount}
@@ -131,7 +131,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 11. community.yang */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.COMMUNITY_YANG_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened:{" "}
@@ -146,7 +146,7 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
         </div>
 
         {/* 12. ansible.utils */}
-        <div className="repository-wise-issue-data">
+        <div className="repository-wise-issue-pr-data">
           <h2>{issueData.ANSIBLE_UTILS_OPEN_ISSUES.name}</h2>
           <p>
             Issues opened:{" "}
@@ -165,7 +165,6 @@ const RepositoryWiseDetails = ({ issueData, prData }) => {
 
   return (
     <div className="repository-wise-details">
-      <h3>Details</h3>
       <div className="details">{displayDetails()}</div>
     </div>
   );
