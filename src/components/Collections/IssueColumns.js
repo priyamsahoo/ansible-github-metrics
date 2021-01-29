@@ -6,7 +6,8 @@ import { CenteredHeader } from "./CenteredHeader";
 
 export const COLUMNS = [
   {
-    Header: <CenteredHeader name="Created At" />,
+    // Header: <CenteredHeader name="Created At" />,
+    Header: "Created At",
     Footer: "Created At",
     accessor: "node.createdAt",
     Cell: ({ value }) => {
@@ -28,7 +29,8 @@ export const COLUMNS = [
   //     filter: 'equals'
   // },
   {
-    Header: <CenteredHeader name="Status" />,
+    // Header: <CenteredHeader name="Status" />,
+    Header: "Status",
     Footer: "Status",
     accessor: "node.state",
     Filter: SelectColumnFilter,
@@ -37,7 +39,9 @@ export const COLUMNS = [
     maxWidth: 100,
   },
   {
-    Header: <CenteredHeader name="Title" />,
+    // Header: <CenteredHeader name="Title" />,
+    Header: "Title",
+    // Header: { row.length },
     Footer: "Title",
     accessor: "node.title",
     Cell: ({ cell: { value }, row: { original } }) => (
@@ -49,7 +53,8 @@ export const COLUMNS = [
     minWidth: 250,
   },
   {
-    Header: <CenteredHeader name="Updated At" />,
+    // Header: <CenteredHeader name="Updated At" />,
+    Header: "Updated At",
     Footer: "Updated At",
     accessor: "node.updatedAt",
     Cell: ({ value }) => {
@@ -59,7 +64,8 @@ export const COLUMNS = [
     maxWidth: 100,
   },
   {
-    Header: <CenteredHeader name="Author" />,
+    // Header: <CenteredHeader name="Author" />,
+    Header: "Author",
     Footer: "Author",
     accessor: "node.author.login",
     disableFilters: true,

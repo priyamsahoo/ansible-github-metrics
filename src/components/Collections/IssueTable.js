@@ -44,8 +44,12 @@ const IssueTable = ({ issues }) => {
 
   const { pageIndex, pageSize } = state;
 
+  //
+  //
+
   return (
     <div className="issue-list">
+      <h3>Issues: {rows.length}</h3>
       <Table
         bordered
         hover

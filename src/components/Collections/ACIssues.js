@@ -16,8 +16,8 @@ const ACIssues = ({ repository }) => {
 
   return (
     <div className="ac-issues">
-      <h2>Repository: {name}</h2>
-      <h3>Total Issues: {count >= 100 ? "100+" : count}</h3>
+      <h2>Issue Table: {name}</h2>
+      {/* <h3>Total Issues: {count >= 100 ? "100+" : count}</h3> */}
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && <IssueTable issues={data.repository.issues.edges} />}

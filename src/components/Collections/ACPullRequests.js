@@ -16,8 +16,8 @@ const ACPullRequests = ({ repository }) => {
 
   return (
     <div className="ac-pull-requests">
-      <h2>Repository: {name}</h2>
-      <h3>Total PRs: {count >= 100 ? "100+" : count}</h3>
+      <h2>PR Table: {name}</h2>
+      {/* <h3>Total PRs: {count >= 100 ? "100+" : count}</h3> */}
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && <PRTable pr={data.repository.pullRequests.edges} />}

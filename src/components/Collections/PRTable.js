@@ -46,6 +46,7 @@ const PRTable = ({ pr }) => {
 
   return (
     <div className="pr-list">
+      <h3>PRs: {rows.length}</h3>
       <Table
         bordered
         hover
