@@ -1,4 +1,5 @@
 import OverallInfo from "./OverallInfo";
+import SpiltupInfo from "./SplitupInfo";
 
 const DeveloperDetails = ({ selectedDeveloper }) => {
   // console.log(data);
@@ -15,6 +16,7 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
       )} */}
 
       <OverallInfo selectedDeveloper={selectedDeveloper} />
+      <SpiltupInfo selectedDeveloper={selectedDeveloper} />
     </div>
   );
 };
