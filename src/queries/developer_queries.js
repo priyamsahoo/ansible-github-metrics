@@ -21,19 +21,34 @@ const DEVELOPER_DETAILS = gql`
       email
       avatarUrl
       url
-      ansibleCollections: contributionsCollection(
-        organizationID: "MDEyOk9yZ2FuaXphdGlvbjQ0NTg2MjUy"
-      ) {
-        contributionCalendar {
-          totalContributions
-        }
-        totalCommitContributions
-        totalIssueContributions
-        totalPullRequestContributions
-        totalPullRequestReviewContributions
-      }
     }
   }
 `;
 
-export { DEVELOPER_LIST, DEVELOPER_DETAILS };
+const DEVELOPER_CONTRIBUTIONS = gql`
+  query(
+    $queryStringIssueOpen: String!
+    $queryStringIssueClosed: String!
+    $queryStringPROpen: String!
+    $queryStringPRMerged: String!
+    $queryStringTotal: String!
+  ) {
+    OPEN_ISSUES: search(query: $queryStringIssueOpen, type: ISSUE) {
+      issueCount
+    }
+    CLOSED_ISSUES: search(query: $queryStringIssueClosed, type: ISSUE) {
+      issueCount
+    }
+    OPEN_PR: search(query: $queryStringPROpen, type: ISSUE) {
+      issueCount
+    }
+    MERGED_PR: search(query: $queryStringPRMerged, type: ISSUE) {
+      issueCount
+    }
+    TOTAL_CONTRIBUTION: search(query: $queryStringTotal, type: ISSUE) {
+      issueCount
+    }
+  }
+`;
+
+export { DEVELOPER_LIST, DEVELOPER_DETAILS, DEVELOPER_CONTRIBUTIONS };
