@@ -82,7 +82,7 @@ const OverallInfo = ({ selectedDeveloper }) => {
           <label>Period: </label>
           <Input
             type="select"
-            defaultValue="Overall"
+            defaultValue={dateQueryString}
             onChange={(e) => {
               setDateQueryString(e.target.value);
             }}
