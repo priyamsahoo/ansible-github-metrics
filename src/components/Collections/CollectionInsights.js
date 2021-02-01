@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/queries";
+import { DateRangePicker } from "rsuite";
 
 const CollectionInsights = ({ repository }) => {
   const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {

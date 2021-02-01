@@ -12,7 +12,7 @@ const ReleasesAndTags = ({ repository }) => {
   return (
     <div className="releases-and-tags">
       <h2>Releases and Tags: {repository}</h2>
-      <br></br>
+      <br />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {data && (
