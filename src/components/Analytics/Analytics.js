@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { TEST } from "../../queries/analytics_queries";
 import { groupByMonth } from "./groupByMonth";
+import { useState } from "react";
+import ChartTest from "./ChartTest";
 
 const Analytics = () => {
   //   const MONTHS = () => {
@@ -15,17 +17,20 @@ const Analytics = () => {
   //   };
   //   console.log(MONTHS());
 
-  const { loading, error, data } = useQuery(TEST);
+  const { loading, error, data } = useQuery(TEST, {
+    fetchPolicy: "cache-and-network",
+  });
 
+  let d = {};
   if (data) {
-    const monthWiseData = groupByMonth(data.repository.issues.nodes);
-    console.log(monthWiseData);
+    d = groupByMonth(data.repository.issues.nodes);
   }
-
   return (
     <div className="analytics">
       <h2>Analytics</h2>
-      {/* <p>{MONTHS().join(", ")}</p> */}
+      <p>{JSON.stringify(d)}</p>
+      <br></br>
+      {d && <ChartTest d={d} />}
     </div>
   );
 };

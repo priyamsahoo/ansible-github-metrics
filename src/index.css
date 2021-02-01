@@ -351,3 +351,8 @@ p {
   color: #eee;
   padding: 6px;
 }
+
+.chart {
+  width: 700px;
+  height: 700px;
+}

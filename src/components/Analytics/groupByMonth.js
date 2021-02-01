@@ -45,6 +45,6 @@ export const groupByMonth = (data) => {
       Count: value,
     };
   });
-
+  console.log(result);
   return result;
 };
