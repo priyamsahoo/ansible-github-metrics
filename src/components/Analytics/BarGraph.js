@@ -1,9 +1,9 @@
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
-const LineGraph = ({ dataGroupedByMonth: data, label }) => {
+const BarGraph = ({ dataGroupedByMonth: data, label }) => {
   console.log(data);
   const dataToPlot = {
-    labels: data.map((item) => item.Month),
+    // labels: data.map((item) => item.Month),
     datasets: [
       {
         label: label,
@@ -24,7 +24,8 @@ const LineGraph = ({ dataGroupedByMonth: data, label }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: data.map((item) => item.Count),
+        // data: data.map((item) => item.Count),
+        data: data,
       },
     ],
   };
@@ -32,10 +33,10 @@ const LineGraph = ({ dataGroupedByMonth: data, label }) => {
   return (
     <div className="chart-test">
       <div className="chart">
-        <Line data={dataToPlot} />
+        <Bar data={dataToPlot} />
       </div>
     </div>
   );
 };
 
-export default LineGraph;
+export default BarGraph;

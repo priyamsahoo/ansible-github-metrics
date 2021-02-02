@@ -1,7 +1,9 @@
 import { useQuery } from "@apollo/client";
 import { ISSUES_AND_PR } from "../../queries/analytics_queries";
 import { groupByMonth } from "./groupByMonth";
-import LineGraph from "./ChartTest";
+import LineGraph from "./LineGraph";
+import lodash from "lodash";
+import BarGraph from "./BarGraph";
 
 const RepositoryAnalytics = ({ selectedRepository }) => {
   const {
@@ -21,6 +23,12 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
     );
   }
 
+  // if (issuesGroupedByMonth && prGroupedByMonth) {
+  //   const mergedData = [...issuesGroupedByMonth, ...prGroupedByMonth];
+  //   var h = lodash.groupBy(mergedData, "Month");
+  //   console.log(h);
+  // }
+
   return (
     <div>
       <h2>{selectedRepository} Analytics</h2>
@@ -34,6 +42,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
             label="Pull Requests"
           />
         )}
+        {/* {h && <BarGraph dataGroupedByMonth={h} label="Pull Requests" />} */}
       </div>
     </div>
   );
