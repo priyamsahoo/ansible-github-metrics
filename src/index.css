@@ -417,3 +417,15 @@ p {
   padding: 6px;
   /* margin: 10px 0px; */
 }
+.overall-graphs {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.chart-test {
+  border: #009879 dotted;
+  margin: 6px;
+  width: 700px;
+  height: 400px;
+}

@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const TEST = gql`
+const ISSUES_AND_PR = gql`
   query MyQuery($repository: String!) {
     repository(name: $repository, owner: "ansible-collections") {
       issues(last: 100) {
@@ -10,8 +10,14 @@ const TEST = gql`
           state
         }
       }
+      pullRequests(last: 100) {
+        totalCount
+        nodes {
+          createdAt
+        }
+      }
     }
   }
 `;
 
-export { TEST };
+export { ISSUES_AND_PR };

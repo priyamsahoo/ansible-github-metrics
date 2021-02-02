@@ -1,23 +1,40 @@
 import { useQuery } from "@apollo/client";
-import { TEST } from "../../queries/analytics_queries";
+import { ISSUES_AND_PR } from "../../queries/analytics_queries";
 import { groupByMonth } from "./groupByMonth";
-import ChartTest from "./ChartTest";
+import LineGraph from "./ChartTest";
 
 const RepositoryAnalytics = ({ selectedRepository }) => {
-  const { loading, error, data } = useQuery(TEST, {
+  const {
+    loading: allDataLoading,
+    error: allDataError,
+    data: allDataData,
+  } = useQuery(ISSUES_AND_PR, {
     variables: { repository: selectedRepository },
   });
 
-  if (data) {
-    var dataGroupedByMonth = groupByMonth(data.repository.issues.nodes);
+  if (allDataData) {
+    var issuesGroupedByMonth = groupByMonth(
+      allDataData.repository.issues.nodes
+    );
+    var prGroupedByMonth = groupByMonth(
+      allDataData.repository.pullRequests.nodes
+    );
   }
 
   return (
     <div>
       <h2>{selectedRepository} Analytics</h2>
-      {dataGroupedByMonth && (
-        <ChartTest dataGroupedByMonth={dataGroupedByMonth} />
-      )}
+      <div className="overall-graphs">
+        {issuesGroupedByMonth && (
+          <LineGraph dataGroupedByMonth={issuesGroupedByMonth} label="Issues" />
+        )}
+        {prGroupedByMonth && (
+          <LineGraph
+            dataGroupedByMonth={prGroupedByMonth}
+            label="Pull Requests"
+          />
+        )}
+      </div>
     </div>
   );
 };
