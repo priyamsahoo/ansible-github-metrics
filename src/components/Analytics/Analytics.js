@@ -3,8 +3,14 @@ import { TEST } from "../../queries/analytics_queries";
 import { groupByMonth } from "./groupByMonth";
 import { useState } from "react";
 import ChartTest from "./ChartTest";
+import RepositoryList from "./RepositoryList";
+import RepositoryAnalytics from "./RepositoryAnalytics";
 
 const Analytics = () => {
+  const [selectedRepository, setSelectedRepository] = useState("");
+  const repositoryCallback = (selectedRepository) => {
+    setSelectedRepository(selectedRepository);
+  };
   //   const MONTHS = () => {
   //     const months = [];
   //     const dateStart = moment().subtract(1, "month");
@@ -17,22 +23,14 @@ const Analytics = () => {
   //   };
   //   console.log(MONTHS());
 
-  const { loading, error, data } = useQuery(TEST, {
-    // fetchPolicy: "cache-and-network",
-  });
-
-  // let dataGroupedByMonth = {};
-  if (data) {
-    var dataGroupedByMonth = groupByMonth(data.repository.issues.nodes);
-  }
   return (
     <div className="analytics">
-      <h2>Analytics</h2>
-      <p>{JSON.stringify(dataGroupedByMonth)}</p>
-      <br></br>
-      {dataGroupedByMonth && (
-        <ChartTest dataGroupedByMonth={dataGroupedByMonth} />
-      )}
+      <div className="repo-list">
+        <RepositoryList repositoryCallback={repositoryCallback} />
+      </div>
+      <div className="repo-analytics">
+        <RepositoryAnalytics selectedRepository={selectedRepository} />
+      </div>
     </div>
   );
 };

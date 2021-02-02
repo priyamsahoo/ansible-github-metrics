@@ -356,3 +356,64 @@ p {
   width: 700px;
   height: 700px;
 }
+
+/* Styling for Analytics Component */
+.analytics {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* .developers-content {
+  
+} */
+
+.repo-list {
+  border: #009879 dotted;
+  width: 20%;
+  margin: 10px;
+}
+.repo-analytics {
+  border: #009879 dotted;
+  /* flex-grow: 1; */
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+
+.repo-list {
+  padding: 6px;
+  /* margin: 10px 0px; */
+  /* width: 80%; */
+}
+
+.repo-list h2 {
+  padding-bottom: 6px;
+  /* background-color: #F5BB00; */
+  /* padding-right: 250px; */
+  /* margin: 10px 0px; */
+}
+.repo-list input {
+  margin: 6px 0px;
+  width: auto;
+  /* margin: 10px 0px; */
+}
+.repo-list p {
+  margin: 6px 0px;
+  width: auto;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+  /* margin: 10px 0px; */
+}
+.repo-list p:hover {
+  color: #009879;
+  transform: scale(1.02);
+}
+
+.repo-analytics {
+  padding: 6px;
+  /* margin: 10px 0px; */
+}
