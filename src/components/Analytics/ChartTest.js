@@ -1,7 +1,6 @@
-// import { ResponsiveLine } from "@nivo/line";
 import { Bar, Line } from "react-chartjs-2";
 
-const ChartTest = ({ d: data }) => {
+const ChartTest = ({ dataGroupedByMonth: data }) => {
   //   console.log(d);
 
   //   let data = [
@@ -32,6 +31,7 @@ const ChartTest = ({ d: data }) => {
   //   ],
   // };
 
+  console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [

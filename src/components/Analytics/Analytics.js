@@ -18,19 +18,21 @@ const Analytics = () => {
   //   console.log(MONTHS());
 
   const { loading, error, data } = useQuery(TEST, {
-    fetchPolicy: "cache-and-network",
+    // fetchPolicy: "cache-and-network",
   });
 
-  let d = {};
+  // let dataGroupedByMonth = {};
   if (data) {
-    d = groupByMonth(data.repository.issues.nodes);
+    var dataGroupedByMonth = groupByMonth(data.repository.issues.nodes);
   }
   return (
     <div className="analytics">
       <h2>Analytics</h2>
-      <p>{JSON.stringify(d)}</p>
+      <p>{JSON.stringify(dataGroupedByMonth)}</p>
       <br></br>
-      {d && <ChartTest d={d} />}
+      {dataGroupedByMonth && (
+        <ChartTest dataGroupedByMonth={dataGroupedByMonth} />
+      )}
     </div>
   );
 };
