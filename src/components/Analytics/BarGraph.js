@@ -1,6 +1,6 @@
 import { Bar } from "react-chartjs-2";
 
-const BarGraph = ({ dataGroupedByMonth: data, label1, label2 }) => {
+const BarGraph = ({ dataGroupedByMonth: data, label1, label2, heading }) => {
   console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
@@ -57,6 +57,7 @@ const BarGraph = ({ dataGroupedByMonth: data, label1, label2 }) => {
   return (
     <div className="chart-test">
       <div className="chart">
+        <h4>{heading}</h4>
         <Bar data={dataToPlot} />
       </div>
     </div>

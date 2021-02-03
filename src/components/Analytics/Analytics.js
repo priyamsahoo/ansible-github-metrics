@@ -11,17 +11,6 @@ const Analytics = () => {
   const repositoryCallback = (selectedRepository) => {
     setSelectedRepository(selectedRepository);
   };
-  //   const MONTHS = () => {
-  //     const months = [];
-  //     const dateStart = moment().subtract(1, "month");
-  //     const dateEnd = moment().subtract(12, "months");
-  //     while (dateEnd.diff(dateStart, "months") <= 0) {
-  //       months.push(dateStart.format("MMMM"));
-  //       dateStart.subtract(1, "months");
-  //     }
-  //     return months;
-  //   };
-  //   console.log(MONTHS());
 
   return (
     <div className="analytics">

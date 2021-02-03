@@ -1,6 +1,6 @@
 import { Line } from "react-chartjs-2";
 
-const LineGraph = ({ dataGroupedByMonth: data, label }) => {
+const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
   console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
@@ -32,6 +32,7 @@ const LineGraph = ({ dataGroupedByMonth: data, label }) => {
   return (
     <div className="chart-test">
       <div className="chart">
+        <h4>{heading}</h4>
         <Line data={dataToPlot} />
       </div>
     </div>

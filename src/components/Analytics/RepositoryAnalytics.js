@@ -109,12 +109,14 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
             <LineGraph
               dataGroupedByMonth={issuesGroupedByMonth}
               label="Issues"
+              heading="Issues Trend"
             />
           )}
           {prsGroupedByMonth && (
             <LineGraph
               dataGroupedByMonth={prsGroupedByMonth}
               label="Pull Requests"
+              heading="Pull Requests Trend"
             />
           )}
           {mergedIssueData && (
@@ -122,6 +124,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               dataGroupedByMonth={mergedIssueData}
               label1="Open Issue"
               label2="Closed Issue"
+              heading="Issue Categories"
             />
           )}
           {mergedPRData && (
@@ -129,9 +132,9 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               dataGroupedByMonth={mergedPRData}
               label1="Open PR"
               label2="Merged PR"
+              heading="Pull Requests Categories"
             />
           )}
-          {/* {h && <BarGraph dataGroupedByMonth={h} label="Pull Requests" />} */}
         </div>
       )}
     </div>
@@ -139,18 +142,3 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
 };
 
 export default RepositoryAnalytics;
-
-// [
-//   {
-//     jan: {
-//       open: 3,
-//       closed: 4,
-//     },
-//   },
-//   {
-//     feb: {
-//       open: 3,
-//       closed: 4,
-//     },
-//   },
-// ];
