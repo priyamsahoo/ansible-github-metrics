@@ -132,7 +132,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               dataGroupedByMonth={mergedPRData}
               label1="Open PR"
               label2="Merged PR"
-              heading="Pull Requests Categories"
+              heading="Pull Request Categories"
             />
           )}
         </div>

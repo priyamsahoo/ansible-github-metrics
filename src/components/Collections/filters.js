@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Input, CustomInput } from "reactstrap";
+import { CustomInput } from "reactstrap";
 import * as moment from "moment";
 import { DateRangePicker } from "rsuite";
+import { Input, Select } from "antd";
 
 export const Filter = ({ column }) => {
   return (
@@ -23,8 +24,9 @@ export const DefaultColumnFilter = ({
       value={filterValue || ""}
       onChange={(e) => {
         setFilter(e.target.value || undefined);
+        // console.log(e.target.value);
       }}
-      placeholder={`search (${length}) ...`}
+      placeholder={`search (${length})`}
     />
   );
 };
@@ -40,22 +42,26 @@ export const SelectColumnFilter = ({
     return [...options.values()];
   }, [id, preFilteredRows]);
 
+  const { Option } = Select;
+
   return (
-    <CustomInput
+    <Select
+      style={{ width: 100 }}
       id="custom-select"
       type="select"
-      value={filterValue}
+      defaultValue="All"
+      // value={filterValue}
       onChange={(e) => {
-        setFilter(e.target.value || undefined);
+        setFilter(e || undefined);
       }}
     >
-      <option value="">All</option>
+      <Option value="">All</Option>Option
       {options.map((option) => (
-        <option key={option} value={option}>
+        <Option key={option} value={option}>
           {option}
-        </option>
+        </Option>
       ))}
-    </CustomInput>
+    </Select>
   );
 };
 
@@ -89,7 +95,7 @@ export const DateFilter = (props) => {
   } = props;
 
   const valueRef = useRef([
-    moment().subtract(13, "days").startOf("day").toDate(),
+    moment().subtract(30, "days").startOf("day").toDate(),
     moment().endOf("day").toDate(),
   ]);
 
@@ -114,6 +120,10 @@ export const DateFilter = (props) => {
   return (
     <DateRangePicker
       appearance="default"
+      defaultValue={[
+        moment().subtract(30, "days").startOf("day").toDate(),
+        moment().endOf("day").toDate(),
+      ]}
       onChange={(value) => setFilter(filterByDate(value))}
       ranges={RANGES}
     />

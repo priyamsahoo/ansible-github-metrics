@@ -1,5 +1,7 @@
 import { event } from "jquery";
 import { useState, useEffect } from "react";
+// import { Input } from "rsuite";
+import { Input } from "antd";
 
 const DeveloperList = ({ developerCallback }) => {
   const [searchName, setSearchName] = useState("");
@@ -26,7 +28,7 @@ const DeveloperList = ({ developerCallback }) => {
   ];
 
   const handleSearch = (e) => {
-    setSearchName(e.target.value);
+    setSearchName(e);
   };
 
   useEffect(() => {
@@ -43,11 +45,11 @@ const DeveloperList = ({ developerCallback }) => {
   return (
     <div className="developer-list">
       <h2>Developers:</h2>
-      <input
-        type="text"
+      <Input
+        // type="text"
         placeholder={`Search (${people.length})`}
         value={searchName}
-        onChange={(e) => handleSearch(e)}
+        onChange={(e) => handleSearch(e.target.value)}
       />
       {searchResults.map((item) => (
         <p value={item} onClick={(e) => developerCallback(item)}>

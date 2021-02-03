@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+// import { Input } from "rsuite";
+import { Input } from "antd";
 
 const RepositoryList = ({ repositoryCallback }) => {
   const [searchRepository, setSearchRepository] = useState("");
@@ -23,7 +25,8 @@ const RepositoryList = ({ repositoryCallback }) => {
   ];
 
   const handleSearch = (e) => {
-    setSearchRepository(e.target.value);
+    // console.log(e);
+    setSearchRepository(e);
   };
   console.log(searchRepository);
   useEffect(() => {
@@ -36,11 +39,17 @@ const RepositoryList = ({ repositoryCallback }) => {
   return (
     <div className="repository-list">
       <h2>Repositories:</h2>
-      <input
+      {/* <input
         type="text"
         placeholder={`Search (${repositories.length})`}
         value={searchRepository}
         onChange={(e) => handleSearch(e)}
+      /> */}
+      <Input
+        placeholder={`Search (${repositories.length})`}
+        // type="text"
+        value={searchRepository}
+        onChange={(e) => handleSearch(e.target.value)}
       />
       {searchResults.map((item) => (
         <p value={item} onClick={(e) => repositoryCallback(item)}>

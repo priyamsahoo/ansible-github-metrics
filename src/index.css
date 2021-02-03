@@ -1,3 +1,4 @@
+@import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 /* base styles */
@@ -18,6 +19,7 @@ div {
 }
 
 p {
+  font-size: large;
   background-color: transparent;
 }
 
@@ -89,7 +91,7 @@ p {
   font-size: 2.5em;
 }
 
-.repository-dropdown {
+/* .repository-dropdown {
   padding: 6px 0px 10px 0px;
   border: #009879 dotted;
   text-align: center;
@@ -104,7 +106,7 @@ p {
 .repository-dropdown select {
   font-size: 0.8em;
   font-weight: bold;
-}
+} */
 /* collection insight component style */
 .collection-insights {
   border: #009879 dotted;
@@ -425,7 +427,10 @@ p {
 }
 .chart-test {
   border: #009879 dotted;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
   margin: 6px;
-  width: 700px;
+  width: 720px;
   height: 400px;
 }

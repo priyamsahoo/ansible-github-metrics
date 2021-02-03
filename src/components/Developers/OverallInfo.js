@@ -7,6 +7,7 @@ import {
 import * as moment from "moment";
 import { Input } from "reactstrap";
 import { useState } from "react";
+import { Select } from "antd";
 
 const OverallInfo = ({ selectedDeveloper }) => {
   let repository_list = [
@@ -68,6 +69,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
 
   // console.log(dateQueryString);
 
+  const { Option } = Select;
+
   const displayDetails = () => {
     return (
       <div>
@@ -80,17 +83,19 @@ const OverallInfo = ({ selectedDeveloper }) => {
           </h1>
           <p>{infoData.user.login}</p>
           <label>Period: </label>
-          <Input
-            type="select"
+          <Select
+            // type="select"
+            style={{ width: 120 }}
             defaultValue={dateQueryString}
             onChange={(e) => {
-              setDateQueryString(e.target.value);
+              // console.log(e);
+              setDateQueryString(e);
             }}
           >
-            <option value={`<=${moment().format("YYYY-MM-DD").toString()}`}>
+            <Option value={`<=${moment().format("YYYY-MM-DD").toString()}`}>
               Overall
-            </option>
-            <option
+            </Option>
+            <Option
               value={
                 moment().subtract(7, "days").format("YYYY-MM-DD").toString() +
                 ".." +
@@ -98,8 +103,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
               }
             >
               Last week
-            </option>
-            <option
+            </Option>
+            <Option
               value={
                 moment().subtract(1, "month").format("YYYY-MM-DD").toString() +
                 ".." +
@@ -107,8 +112,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
               }
             >
               Last month
-            </option>
-            <option
+            </Option>
+            <Option
               value={
                 moment().subtract(7, "month").format("YYYY-MM-DD").toString() +
                 ".." +
@@ -116,8 +121,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
               }
             >
               Last 6 months
-            </option>
-            <option
+            </Option>
+            <Option
               value={
                 moment().subtract(1, "year").format("YYYY-MM-DD").toString() +
                 ".." +
@@ -125,8 +130,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
               }
             >
               Last year
-            </option>
-          </Input>
+            </Option>
+          </Select>
         </div>
         <div className="collection-contributions">
           <div className="total-contributions">
