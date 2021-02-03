@@ -35,17 +35,22 @@ p {
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   max-width: 100%;
   margin: 0 auto;
   background-color: #009879;
 }
 .navbar img {
   background: transparent;
+  /* background-color: aqua; */
 }
 .navbar h1 {
   color: #eee;
+  /* background-color: aqua; */
   background: transparent;
-  font-size: 2em;
+  /* font-size: 2em; */
+  font-size: x-large;
 }
 .navbar .links {
   margin-left: auto;
@@ -131,15 +136,15 @@ p {
 /* ac issues component styles */
 .ac-issues {
   border: #009879 dotted;
-  padding: 6px;
+  padding: 12px;
   margin: 10px 0px;
 }
 
 /* issue table style */
 .issue-table {
   border-collapse: collapse;
-  margin: 6px 0;
-  font-size: 0.9em;
+  margin: 10px 0;
+  /* font-size: 1em; */
   min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -148,13 +153,14 @@ p {
   color: #009879;
 }
 .issue-table thead th {
-  background-color: #009879;
+  background-color: #5b5b5b;
   color: #eee;
   text-align: left;
+  font-size: 1.2em;
 }
 .issue-table th,
 .issue-table td {
-  padding: 12px 32px;
+  padding: 10px 14px;
 }
 .issue-table tbody tr {
   border-bottom: 1px solid #dddddd;
@@ -168,21 +174,21 @@ p {
   background-color: #f3f3f3;
 }
 .issue-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #5b5b5b;
 }
 
 /* ac pull request component styles */
 .ac-pull-requests {
   border: #009879 dotted;
-  padding: 6px;
+  padding: 12px;
   margin: 10px 0px;
 }
 
 /* pr table style */
 .pr-table {
   border-collapse: collapse;
-  margin: 6px 0;
-  font-size: 0.9em;
+  margin: 10px 0;
+  /* font-size: 0.9em; */
   min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -191,13 +197,14 @@ p {
   color: #009879;
 }
 .pr-table thead th {
-  background-color: #009879;
+  background-color: #5b5b5b;
   color: #ffffff;
   text-align: left;
+  font-size: 1.2em;
 }
 .pr-table th,
 .pr-table td {
-  padding: 12px 32px;
+  padding: 10px 14px;
 }
 .pr-table tbody tr {
   border-bottom: 1px solid #dddddd;
@@ -211,7 +218,7 @@ p {
   background-color: #f3f3f3;
 }
 .pr-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #5b5b5b;
 }
 
 /* developer component styles */
@@ -301,6 +308,8 @@ p {
   /* border: #009879 dotted; */
   margin: 6px;
   padding: 6px;
+  width: 200px;
+  height: 140px;
   background: #009879;
 }
 .collection-contributions h2 {
@@ -320,6 +329,7 @@ p {
 .contribution-splits {
   /* border: #009879 dotted; */
   width: 200px;
+  height: 140px;
   background-color: rgb(207, 228, 215);
   margin: 6px;
   padding: 6px;

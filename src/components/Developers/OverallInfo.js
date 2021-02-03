@@ -135,22 +135,34 @@ const OverallInfo = ({ selectedDeveloper }) => {
           </Select>
         </div>
         <div className="collection-contributions">
-          <Card className="total-contributions" title="Total contribution">
+          <Card
+            className="total-contributions"
+            title="Total contribution"
+            size="small"
+          >
             <h1>{contributionData.TOTAL_CONTRIBUTION.issueCount}</h1>
           </Card>
-          <Card className="contribution-splits" title="Issues opened">
+          <Card
+            className="contribution-splits"
+            title="Issues opened"
+            size="small"
+          >
             {/* <h2>Issues opened: </h2> */}
             <h1>{contributionData.OPEN_ISSUES.issueCount}</h1>
           </Card>
-          <Card className="contribution-splits" title="Issues closed">
+          <Card
+            className="contribution-splits"
+            title="Issues closed"
+            size="small"
+          >
             {/* <h2>Issues closed:</h2> */}
             <h1>{contributionData.CLOSED_ISSUES.issueCount}</h1>
           </Card>
-          <Card className="contribution-splits" title="PRs Opened">
+          <Card className="contribution-splits" title="PRs Opened" size="small">
             {/* <h2>Open pull requests:</h2> */}
             <h1>{contributionData.OPEN_PR.issueCount}</h1>
           </Card>
-          <Card className="contribution-splits" title="PRs merged">
+          <Card className="contribution-splits" title="PRs merged" size="small">
             {/* <h2>Merged pull requests:</h2> */}
             <h1>{contributionData.MERGED_PR.issueCount}</h1>
           </Card>

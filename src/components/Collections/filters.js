@@ -96,7 +96,7 @@ export const DateFilter = (props) => {
   } = props;
 
   const defValue = [
-    moment().subtract(30, "days").startOf("day"),
+    moment().subtract(13, "days").startOf("day"),
     moment().endOf("day"),
   ];
 
@@ -130,6 +130,7 @@ export const DateFilter = (props) => {
     //   ranges={RANGES}
     // />
     <RangePicker
+      format="ll"
       ranges={{
         Today: [moment(), moment()],
         "This Month": [moment().startOf("month"), moment().endOf("month")],
@@ -143,11 +144,11 @@ export const DateFilter = (props) => {
         ],
       }}
       defaultValue={[
-        moment().subtract(30, "days").startOf("day"),
+        moment().subtract(13, "days").startOf("day"),
         moment().endOf("day"),
       ]}
       defaultPickerValue={[
-        moment().subtract(30, "days").startOf("day"),
+        moment().subtract(13, "days").startOf("day"),
         moment().endOf("day"),
       ]}
       onChange={(value) => setFilter(filterByDate(value))}
