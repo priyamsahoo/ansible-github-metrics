@@ -95,18 +95,18 @@ export const DateFilter = (props) => {
     column: { setFilter, preFilteredRows },
   } = props;
 
-  const valueRef = useRef([
+  const defValue = [
     moment().subtract(30, "days").startOf("day"),
     moment().endOf("day"),
-  ]);
+  ];
 
   useEffect(() => {
-    setFilter(filterByDate(valueRef.current));
+    setFilter(filterByDate(defValue));
   }, []);
 
   const filterByDate = (value) => {
-    if (!value.length) {
-      value = valueRef.current;
+    if (!value) {
+      value = defValue;
     }
     const [startDate, endDate] = value;
 
