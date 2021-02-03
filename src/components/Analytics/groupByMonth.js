@@ -1,7 +1,7 @@
-import _, { map, reduce } from "underscore";
+import _ from "lodash";
 
 export const groupByMonth = (data) => {
-  var monthNames = [
+  const monthNames = [
     "Jan",
     "Feb",
     "Mar",
@@ -16,16 +16,16 @@ export const groupByMonth = (data) => {
     "Dec",
   ];
 
-  var map_result = _.map(data, function (item) {
-    var d = new Date(item.createdAt);
-    var month = monthNames[d.getMonth()] + " " + d.getFullYear();
+  const map_result = _.map(data, function (item) {
+    const d = new Date(item.createdAt);
+    const month = monthNames[d.getMonth()] + " " + d.getFullYear();
     return {
       Month: month,
       Count: 1,
     };
   });
 
-  var result_temp = _.reduce(
+  const result_temp = _.reduce(
     map_result,
     function (memo, item) {
       if (memo[item.Month] === undefined) {
@@ -39,12 +39,11 @@ export const groupByMonth = (data) => {
   );
 
   //then wrap the result to the format you expected.
-  var result = _.map(result_temp, function (value, key) {
+  const result = _.map(result_temp, function (value, key) {
     return {
       Month: key,
       Count: value,
     };
   });
-  console.log(result);
   return result;
 };
