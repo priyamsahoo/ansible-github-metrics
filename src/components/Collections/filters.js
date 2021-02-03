@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { CustomInput } from "reactstrap";
 import * as moment from "moment";
 import { DateRangePicker } from "rsuite";
-import { Input, Select } from "antd";
+import { Input, Select, DatePicker } from "antd";
+// import { DatePicker, Space } from "antd";
 
 export const Filter = ({ column }) => {
   return (
@@ -95,8 +96,8 @@ export const DateFilter = (props) => {
   } = props;
 
   const valueRef = useRef([
-    moment().subtract(30, "days").startOf("day").toDate(),
-    moment().endOf("day").toDate(),
+    moment().subtract(30, "days").startOf("day"),
+    moment().endOf("day"),
   ]);
 
   useEffect(() => {
@@ -111,21 +112,46 @@ export const DateFilter = (props) => {
 
     return preFilteredRows.filter((row) => {
       return (
-        moment(row.values["node.createdAt"]).isAfter(startDate) &&
-        moment(row.values["node.createdAt"]).isBefore(endDate)
+        moment(row.values["node.createdAt"]).isAfter(startDate._d) &&
+        moment(row.values["node.createdAt"]).isBefore(endDate._d)
       );
     });
   };
-
+  const { RangePicker } = DatePicker;
   return (
-    <DateRangePicker
-      appearance="default"
+    // <DateRangePicker
+    //   appearance="default"
+    //   defaultValue={[
+    //     moment().subtract(30, "days").startOf("day").toDate(),
+    //     moment().endOf("day").toDate(),
+    //   ]}
+    //   // onChange={(value) => setFilter(filterByDate(value))}
+    //   onChange={(value) => console.log(value)}
+    //   ranges={RANGES}
+    // />
+    <RangePicker
+      ranges={{
+        Today: [moment(), moment()],
+        "This Month": [moment().startOf("month"), moment().endOf("month")],
+        "Past Month": [
+          moment().subtract(29, "days").startOf("day"),
+          moment().endOf("day"),
+        ],
+        "Past Week": [
+          moment().subtract(6, "days").startOf("day"),
+          moment().endOf("day"),
+        ],
+      }}
       defaultValue={[
-        moment().subtract(30, "days").startOf("day").toDate(),
-        moment().endOf("day").toDate(),
+        moment().subtract(30, "days").startOf("day"),
+        moment().endOf("day"),
+      ]}
+      defaultPickerValue={[
+        moment().subtract(30, "days").startOf("day"),
+        moment().endOf("day"),
       ]}
       onChange={(value) => setFilter(filterByDate(value))}
-      ranges={RANGES}
+      // onChange={(value) => console.log(value[0]._d, value[1]._d)}
     />
   );
 };

@@ -8,7 +8,7 @@ import {
   ApolloProvider,
   HttpLink,
 } from "@apollo/client";
-import "rsuite/dist/styles/rsuite-default.css";
+// import "rsuite/dist/styles/rsuite-default.css";
 
 const client = new ApolloClient({
   link: new HttpLink({
