@@ -5,6 +5,7 @@ import { useState } from "react";
 // import ChartTest from "./ChartTest";
 import RepositoryList from "./RepositoryList";
 import RepositoryAnalytics from "./RepositoryAnalytics";
+import { Card } from "antd";
 
 const Analytics = () => {
   const [selectedRepository, setSelectedRepository] = useState("");
@@ -14,9 +15,9 @@ const Analytics = () => {
 
   return (
     <div className="analytics">
-      <div className="repo-list">
+      <Card className="repo-list">
         <RepositoryList repositoryCallback={repositoryCallback} />
-      </div>
+      </Card>
       <div className="repo-analytics">
         <RepositoryAnalytics selectedRepository={selectedRepository} />
       </div>

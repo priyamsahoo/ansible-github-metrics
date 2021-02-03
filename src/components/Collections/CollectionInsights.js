@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/queries";
-import { DateRangePicker } from "rsuite";
+import { Statistic, Card } from "antd";
+import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 
 const CollectionInsights = ({ repository }) => {
   const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {
@@ -20,7 +21,7 @@ const CollectionInsights = ({ repository }) => {
             <p>Closed Issues: {data.repository.closedIssues.totalCount}</p>
           </div>
           <div className="information-percentage">
-            <h3>
+            {/* <h3>
               {(
                 (data.repository.closedIssues.totalCount /
                   (data.repository.openIssues.totalCount +
@@ -28,8 +29,23 @@ const CollectionInsights = ({ repository }) => {
                 100
               ).toFixed(2)}
               %
-            </h3>
-            <h4>Closed issues</h4>
+            </h3> */}
+            {/* <h4>Closed issues</h4> */}
+            <Card>
+              <Statistic
+                title="Closed Issues"
+                value={
+                  (data.repository.closedIssues.totalCount /
+                    (data.repository.openIssues.totalCount +
+                      data.repository.closedIssues.totalCount)) *
+                  100
+                }
+                precision={2}
+                valueStyle={{ color: "#3f8600" }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
           </div>
         </div>
         <br></br>
@@ -40,7 +56,7 @@ const CollectionInsights = ({ repository }) => {
             <p>Merged PRs: {data.repository.mergedPRs.totalCount}</p>
           </div>
           <div className="information-percentage">
-            <h3>
+            {/* <h3>
               {(
                 (data.repository.mergedPRs.totalCount /
                   (data.repository.openPRs.totalCount +
@@ -49,7 +65,22 @@ const CollectionInsights = ({ repository }) => {
               ).toFixed(2)}
               %
             </h3>
-            <h4>Merged PRs</h4>
+            <h4>Merged PRs</h4> */}
+            <Card>
+              <Statistic
+                title="Merged PRs"
+                value={
+                  (data.repository.mergedPRs.totalCount /
+                    (data.repository.openPRs.totalCount +
+                      data.repository.mergedPRs.totalCount)) *
+                  100
+                }
+                precision={2}
+                valueStyle={{ color: "#3f8600" }}
+                prefix={<ArrowUpOutlined />}
+                suffix="%"
+              />
+            </Card>
           </div>
         </div>
       </div>
@@ -57,13 +88,13 @@ const CollectionInsights = ({ repository }) => {
   };
 
   return (
-    <div className="collection-insights">
+    <Card className="collection-insights">
       <h2>Collection Insights: {repository}</h2>
       <br></br>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && displayDetails()}
-    </div>
+    </Card>
   );
 };
 

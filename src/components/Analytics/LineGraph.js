@@ -1,3 +1,4 @@
+import { Card } from "antd";
 import { Line } from "react-chartjs-2";
 
 const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
@@ -33,12 +34,9 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
   };
 
   return (
-    <div className="chart-test">
-      <div className="chart">
-        <h4>{heading}</h4>
-        <Line data={dataToPlot} />
-      </div>
-    </div>
+    <Card className="chart" title={heading}>
+      <Line data={dataToPlot} />
+    </Card>
   );
 };
 

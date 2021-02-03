@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { Card } from "antd";
 import { useState } from "react";
 import { DEVELOPER_LIST } from "../../queries/developer_queries";
 import DeveloperDetails from "./DeveloperDetails";
@@ -17,9 +18,9 @@ const Developers = () => {
   return (
     <div className="developers">
       <div className="developers-content">
-        <div className="dev-list">
+        <Card className="dev-list">
           <DeveloperList developerCallback={developerCallback} />
-        </div>
+        </Card>
         <div className="dev-details">
           {!selectedDeveloper && (
             <p> &lt;-- Click on a developer for more details</p>

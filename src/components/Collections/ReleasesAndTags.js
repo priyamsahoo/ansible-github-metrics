@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { RELEASES_AND_TAGS } from "../../queries/queries";
 import moment from "moment";
+// import { Card } from "reactstrap";
+import { Card } from "antd";
 
 const ReleasesAndTags = ({ repository }) => {
   const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
@@ -10,7 +12,7 @@ const ReleasesAndTags = ({ repository }) => {
   console.log(data);
 
   return (
-    <div className="releases-and-tags">
+    <Card className="releases-and-tags">
       <h2>Releases and Tags: {repository}</h2>
       <br />
       {error && <p>{error}</p>}
@@ -58,7 +60,7 @@ const ReleasesAndTags = ({ repository }) => {
           </div>
         </div>
       )}
-    </div>
+    </Card>
   );
 };
 

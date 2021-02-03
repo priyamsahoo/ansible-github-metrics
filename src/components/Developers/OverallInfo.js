@@ -5,7 +5,8 @@ import {
   DEVELOPER_CONTRIBUTIONS,
 } from "../../queries/developer_queries";
 import * as moment from "moment";
-import { Input } from "reactstrap";
+// import { Card, Input } from "reactstrap";
+import { Card } from "antd";
 import { useState } from "react";
 import { Select } from "antd";
 
@@ -134,26 +135,25 @@ const OverallInfo = ({ selectedDeveloper }) => {
           </Select>
         </div>
         <div className="collection-contributions">
-          <div className="total-contributions">
-            <h2>Total contributions:</h2>
+          <Card className="total-contributions" title="Total contribution">
             <h1>{contributionData.TOTAL_CONTRIBUTION.issueCount}</h1>
-          </div>
-          <div className="contribution-splits">
-            <h2>Issues opened: </h2>
+          </Card>
+          <Card className="contribution-splits" title="Issues opened">
+            {/* <h2>Issues opened: </h2> */}
             <h1>{contributionData.OPEN_ISSUES.issueCount}</h1>
-          </div>
-          <div className="contribution-splits">
-            <h2>Issues closed:</h2>
+          </Card>
+          <Card className="contribution-splits" title="Issues closed">
+            {/* <h2>Issues closed:</h2> */}
             <h1>{contributionData.CLOSED_ISSUES.issueCount}</h1>
-          </div>
-          <div className="contribution-splits">
-            <h2>Open pull requests:</h2>
+          </Card>
+          <Card className="contribution-splits" title="PRs Opened">
+            {/* <h2>Open pull requests:</h2> */}
             <h1>{contributionData.OPEN_PR.issueCount}</h1>
-          </div>
-          <div className="contribution-splits">
-            <h2>Merged pull requests:</h2>
+          </Card>
+          <Card className="contribution-splits" title="PRs merged">
+            {/* <h2>Merged pull requests:</h2> */}
             <h1>{contributionData.MERGED_PR.issueCount}</h1>
-          </div>
+          </Card>
         </div>
         <div className="contributionInfo"></div>
       </div>

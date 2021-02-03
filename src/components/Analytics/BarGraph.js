@@ -1,3 +1,4 @@
+import { Card } from "antd";
 import { Bar } from "react-chartjs-2";
 
 const BarGraph = ({ dataGroupedByMonth: data, label1, label2, heading }) => {
@@ -57,12 +58,9 @@ const BarGraph = ({ dataGroupedByMonth: data, label1, label2, heading }) => {
   };
 
   return (
-    <div className="chart-test">
-      <div className="chart">
-        <h4>{heading}</h4>
-        <Bar data={dataToPlot} />
-      </div>
-    </div>
+    <Card className="chart" title={heading}>
+      <Bar data={dataToPlot} />
+    </Card>
   );
 };
 
