@@ -287,6 +287,11 @@ p {
   /* border: #009879 dotted; */
   text-align: center;
 }
+.profile-info {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
 .profile-info img {
   border-radius: 50%;
   width: 200px;
@@ -299,6 +304,7 @@ p {
   text-decoration: none;
   color: #009879;
 }
+
 .collection-contributions {
   display: flex;
   flex-direction: row;

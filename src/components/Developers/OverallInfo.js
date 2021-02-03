@@ -6,9 +6,8 @@ import {
 } from "../../queries/developer_queries";
 import * as moment from "moment";
 // import { Card, Input } from "reactstrap";
-import { Card } from "antd";
 import { useState } from "react";
-import { Select } from "antd";
+import { Card, Select } from "antd";
 
 const OverallInfo = ({ selectedDeveloper }) => {
   let repository_list = [
@@ -83,56 +82,65 @@ const OverallInfo = ({ selectedDeveloper }) => {
             </a>
           </h1>
           <p>{infoData.user.login}</p>
-          <label>Period: </label>
-          <Select
-            // type="select"
-            style={{ width: 120 }}
-            defaultValue={dateQueryString}
-            onChange={(e) => {
-              // console.log(e);
-              setDateQueryString(e);
-            }}
-          >
-            <Option value={`<=${moment().format("YYYY-MM-DD").toString()}`}>
-              Overall
-            </Option>
-            <Option
-              value={
-                moment().subtract(7, "days").format("YYYY-MM-DD").toString() +
-                ".." +
-                moment().format("YYYY-MM-DD").toString()
-              }
+
+          <Card className="period-dropdown">
+            <label>Period: </label>
+            <Select
+              // type="select"
+              style={{ width: 120 }}
+              defaultValue={dateQueryString}
+              onChange={(e) => {
+                // console.log(e);
+                setDateQueryString(e);
+              }}
             >
-              Last week
-            </Option>
-            <Option
-              value={
-                moment().subtract(1, "month").format("YYYY-MM-DD").toString() +
-                ".." +
-                moment().format("YYYY-MM-DD").toString()
-              }
-            >
-              Last month
-            </Option>
-            <Option
-              value={
-                moment().subtract(7, "month").format("YYYY-MM-DD").toString() +
-                ".." +
-                moment().format("YYYY-MM-DD").toString()
-              }
-            >
-              Last 6 months
-            </Option>
-            <Option
-              value={
-                moment().subtract(1, "year").format("YYYY-MM-DD").toString() +
-                ".." +
-                moment().format("YYYY-MM-DD").toString()
-              }
-            >
-              Last year
-            </Option>
-          </Select>
+              <Option value={`<=${moment().format("YYYY-MM-DD").toString()}`}>
+                Overall
+              </Option>
+              <Option
+                value={
+                  moment().subtract(7, "days").format("YYYY-MM-DD").toString() +
+                  ".." +
+                  moment().format("YYYY-MM-DD").toString()
+                }
+              >
+                Last week
+              </Option>
+              <Option
+                value={
+                  moment()
+                    .subtract(1, "month")
+                    .format("YYYY-MM-DD")
+                    .toString() +
+                  ".." +
+                  moment().format("YYYY-MM-DD").toString()
+                }
+              >
+                Last month
+              </Option>
+              <Option
+                value={
+                  moment()
+                    .subtract(7, "month")
+                    .format("YYYY-MM-DD")
+                    .toString() +
+                  ".." +
+                  moment().format("YYYY-MM-DD").toString()
+                }
+              >
+                Last 6 months
+              </Option>
+              <Option
+                value={
+                  moment().subtract(1, "year").format("YYYY-MM-DD").toString() +
+                  ".." +
+                  moment().format("YYYY-MM-DD").toString()
+                }
+              >
+                Last year
+              </Option>
+            </Select>
+          </Card>
         </div>
         <div className="collection-contributions">
           <Card
