@@ -10,6 +10,8 @@ import LineGraph from "./LineGraph";
 import { assembleData } from "../../utils/assemble-data";
 import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
+import { Doughnut } from "react-chartjs-2";
+import DoughnutGraph from "./DoughnutGraph";
 
 const instance = (
   <div id="loaderInverseWrapper" style={{ height: 200 }}>
@@ -20,8 +22,14 @@ const instance = (
 const RepositoryAnalytics = ({ selectedRepository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
   const [mergedPRData, setMergedPRData] = useState(null);
+
   const [issuesGroupedByMonth, setIssuesGroupedByMonth] = useState(null);
   const [prsGroupedByMonth, setPRSGroupedByMonth] = useState(null);
+
+  const [totalOpenIssueCount, setTotalOpenIssueCount] = useState(null);
+  const [totalCloseIssueCount, setTotalCloseIssueCount] = useState(null);
+  const [totalOpenPRCount, setTotalOpenPRCount] = useState(null);
+  const [totalMergePRCount, setTotalMergePRCount] = useState(null);
 
   const {
     loading: allDataLoading,
@@ -93,6 +101,14 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
         setPRSGroupedByMonth(prGroupedByMonth);
         setMergedIssueData(resultForIssues);
         setMergedPRData(resultForPRS);
+
+        setTotalOpenIssueCount(splitupDataData.OPEN_ISSUES.issues.totalCount);
+        setTotalCloseIssueCount(
+          splitupDataData.CLOSED_ISSUES.issues.totalCount
+        );
+        setTotalOpenPRCount(splitupDataData.OPEN_PR.pullRequests.totalCount);
+        setTotalMergePRCount(splitupDataData.MERGED_PR.pullRequests.totalCount);
+        // console.log("TOTAL COUNT", splitupDataData);
       }
     }
   }, [splitupDataLoading, allDataLoading, allDataData, splitupDataData]);
@@ -133,6 +149,24 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               label1="Open PR"
               label2="Merged PR"
               heading="Pull Request Categories"
+            />
+          )}
+          {totalOpenIssueCount && totalCloseIssueCount && (
+            <DoughnutGraph
+              heading="Issue Chart"
+              label1="Open Issues"
+              data1={totalOpenIssueCount}
+              label2="Close Issues"
+              data2={totalCloseIssueCount}
+            />
+          )}
+          {totalOpenPRCount && totalMergePRCount && (
+            <DoughnutGraph
+              heading="Pull Request Chart"
+              label1="Open PRs"
+              data1={totalOpenPRCount}
+              label2="Merge PRs"
+              data2={totalMergePRCount}
             />
           )}
         </div>
