@@ -455,3 +455,14 @@ p {
   width: 720px;
   height: 420px;
 }
+.chart-doughnut {
+  /* border: #009879 dotted; */
+  background-color: #eee;
+  padding: 6px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  margin: 6px;
+  width: 720px;
+  height: 420px;
+}

@@ -56,4 +56,25 @@ const ISSUES_AND_PR_SPLITUP = gql`
   }
 `;
 
-export { ISSUES_AND_PR, ISSUES_AND_PR_SPLITUP };
+const ISSUES_AND_PR_AVERAGE = gql`
+  query MyQuery($repository: String!) {
+    ISSUE_AVG: repository(name: $repository, owner: "ansible-collections") {
+      issues(states: CLOSED, last: 100) {
+        nodes {
+          createdAt
+          closedAt
+        }
+      }
+    }
+    PR_AVG: repository(name: $repository, owner: "ansible-collections") {
+      pullRequests(states: MERGED, last: 100) {
+        nodes {
+          createdAt
+          mergedAt
+        }
+      }
+    }
+  }
+`;
+
+export { ISSUES_AND_PR, ISSUES_AND_PR_SPLITUP, ISSUES_AND_PR_AVERAGE };

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import {
   ISSUES_AND_PR,
+  ISSUES_AND_PR_AVERAGE,
   ISSUES_AND_PR_SPLITUP,
 } from "../../queries/analytics_queries";
 import { groupByMonth } from "./groupByMonth";
@@ -12,6 +13,8 @@ import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
 import { Doughnut } from "react-chartjs-2";
 import DoughnutGraph from "./DoughnutGraph";
+import { calculateAverageDays } from "./calculateAverageDays";
+import { Card } from "antd";
 
 const instance = (
   <div id="loaderInverseWrapper" style={{ height: 200 }}>
@@ -31,6 +34,9 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
   const [totalOpenPRCount, setTotalOpenPRCount] = useState(null);
   const [totalMergePRCount, setTotalMergePRCount] = useState(null);
 
+  const [averageDaysIssueClosed, setAverageDaysIssueClosed] = useState(null);
+  const [averageDaysPRMerged, setAverageDaysPRMerged] = useState(null);
+
   const {
     loading: allDataLoading,
     error: allDataError,
@@ -47,11 +53,21 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
     variables: { repository: selectedRepository },
   });
 
+  const {
+    loading: averageDataLoading,
+    erorr: averageDataError,
+    data: averageDataData,
+  } = useQuery(ISSUES_AND_PR_AVERAGE, {
+    variables: { repository: selectedRepository },
+  });
+
   useEffect(() => {
     let openIssuesGroupedByMonth,
       closedIssuesGroupedByMonth,
       openPRGroupedByMonth,
       mergedPRGroupedByMonth,
+      averageIssueCloseDate,
+      averagePRMergeDate,
       issuesGroupedByMonth,
       prGroupedByMonth;
 
@@ -61,6 +77,21 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
         allDataData.repository.pullRequests.nodes
       );
     }
+
+    if (averageDataData) {
+      console.log(averageDataData);
+      averageIssueCloseDate = calculateAverageDays(
+        averageDataData.ISSUE_AVG.issues.nodes
+      );
+      averagePRMergeDate = calculateAverageDays(
+        averageDataData.PR_AVG.pullRequests.nodes
+      );
+      setAverageDaysIssueClosed(averageIssueCloseDate);
+      setAverageDaysPRMerged(averagePRMergeDate);
+      // console.log("ISSUE AVG: ", averageIssueCloseDate);
+      // console.log("PR AVG: ", averagePRMergeDate);
+    }
+
     if (splitupDataData) {
       openIssuesGroupedByMonth = groupByMonth(
         splitupDataData.OPEN_ISSUES.issues.nodes
@@ -111,7 +142,14 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
         // console.log("TOTAL COUNT", splitupDataData);
       }
     }
-  }, [splitupDataLoading, allDataLoading, allDataData, splitupDataData]);
+  }, [
+    splitupDataLoading,
+    allDataLoading,
+    averageDataLoading,
+    allDataData,
+    splitupDataData,
+    averageDataData,
+  ]);
 
   return (
     <div>
@@ -169,6 +207,18 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               data2={totalMergePRCount}
             />
           )}
+          <div>
+            {averageDaysIssueClosed && (
+              <Card title="Average days to close an issue">
+                <h2>{averageDaysIssueClosed}</h2>
+              </Card>
+            )}
+            {averageDaysPRMerged && (
+              <Card title="Average days to merge a PR">
+                <h2>{averageDaysPRMerged}</h2>
+              </Card>
+            )}
+          </div>
         </div>
       )}
     </div>
