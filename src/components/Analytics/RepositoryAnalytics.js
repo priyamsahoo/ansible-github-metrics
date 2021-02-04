@@ -207,14 +207,20 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
               data2={totalMergePRCount}
             />
           )}
-          <div>
+          <div className="average-informations">
             {averageDaysIssueClosed && (
-              <Card title="Average days to close an issue">
+              <Card
+                className="issue-close-average"
+                title="Average days to close an issue"
+              >
                 <h2>{averageDaysIssueClosed}</h2>
               </Card>
             )}
             {averageDaysPRMerged && (
-              <Card title="Average days to merge a PR">
+              <Card
+                className="pr-merge-average"
+                title="Average days to merge a PR"
+              >
                 <h2>{averageDaysPRMerged}</h2>
               </Card>
             )}

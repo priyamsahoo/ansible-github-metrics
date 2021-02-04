@@ -463,6 +463,23 @@ p {
   text-align: center;
   justify-items: center;
   margin: 6px;
-  width: 720px;
-  height: 420px;
+  width: 570px;
+  height: 460px;
+}
+.average-informations {
+  /* margin: 6px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.issue-close-average,
+.pr-merge-average {
+  background-color: #eee;
+  padding: 6px;
+  margin: 6px;
+  height: 50%;
+}
+.issue-close-average h2,
+.pr-merge-average h2 {
+  font-size: 3.5em;
 }
