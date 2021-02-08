@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/ansible-logo.png";
 import { Avatar } from "antd";
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <img src={logo} width="50" height="50"></img>
+      <img src={logo} width="60" height="60"></img>
       {/* <Avatar icon={logo} size={50}></Avatar> */}
-      <h1>nsible Networks Collection Metrics</h1>
+      <h1 style={{ fontWeight: "bold" }}> Networks Collection Metrics</h1>
       <div className="links">
         <Link to="/">Collections</Link>
         <Link to="/developers">Developers</Link>
