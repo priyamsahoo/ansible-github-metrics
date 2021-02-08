@@ -172,6 +172,41 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
             heading="Issues Trend"
           />
         )}
+        <div className="doughnut-graphs">
+          {totalOpenIssueCount && totalCloseIssueCount && (
+            <DoughnutGraph
+              heading="Issue Chart"
+              label1="Open Issues"
+              data1={totalOpenIssueCount}
+              label2="Close Issues"
+              data2={totalCloseIssueCount}
+            />
+          )}
+          {totalOpenPRCount && totalMergePRCount && (
+            <DoughnutGraph
+              heading="Pull Request Chart"
+              label1="Open PRs"
+              data1={totalOpenPRCount}
+              label2="Merge PRs"
+              data2={totalMergePRCount}
+            />
+          )}
+        </div>
+        <div className="average-informations">
+          {averageDaysIssueClosed && (
+            <div className="issue-close-average">
+              <h3>Avg. days to close an issue</h3>
+              <h2>{averageDaysIssueClosed}</h2>
+            </div>
+          )}
+          {averageDaysPRMerged && (
+            <div className="pr-merge-average">
+              <h3>Avg. days to merge a PR</h3>
+              <h2>{averageDaysPRMerged}</h2>
+            </div>
+          )}
+        </div>
+
         {mergedIssueData && (
           <BarGraph
             dataGroupedByMonth={mergedIssueData}
@@ -188,42 +223,6 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
             heading="Pull Request Categories"
           />
         )}
-        {totalOpenIssueCount && totalCloseIssueCount && (
-          <DoughnutGraph
-            heading="Issue Chart"
-            label1="Open Issues"
-            data1={totalOpenIssueCount}
-            label2="Close Issues"
-            data2={totalCloseIssueCount}
-          />
-        )}
-        {totalOpenPRCount && totalMergePRCount && (
-          <DoughnutGraph
-            heading="Pull Request Chart"
-            label1="Open PRs"
-            data1={totalOpenPRCount}
-            label2="Merge PRs"
-            data2={totalMergePRCount}
-          />
-        )}
-        <div className="average-informations">
-          {averageDaysIssueClosed && (
-            <Card
-              className="issue-close-average"
-              title="Average days to close an issue"
-            >
-              <h2>{averageDaysIssueClosed}</h2>
-            </Card>
-          )}
-          {averageDaysPRMerged && (
-            <Card
-              className="pr-merge-average"
-              title="Average days to merge a PR"
-            >
-              <h2>{averageDaysPRMerged}</h2>
-            </Card>
-          )}
-        </div>
       </div>
     </div>
   );

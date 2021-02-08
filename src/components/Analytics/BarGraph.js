@@ -65,9 +65,10 @@ const BarGraph = ({
   };
 
   return (
-    <Card className="chart" title={heading}>
+    <div className="chart-bar">
+      <h3>{heading}</h3>
       <Bar data={dataToPlot} />
-    </Card>
+    </div>
   );
 };
 

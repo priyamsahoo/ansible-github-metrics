@@ -36,9 +36,10 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
   };
 
   return (
-    <Card className="chart-doughnut" title={heading}>
+    <div className="chart-doughnut">
+      <h3>{heading}</h3>
       <Doughnut data={dataToPlot} options={option} />
-    </Card>
+    </div>
   );
 };
 

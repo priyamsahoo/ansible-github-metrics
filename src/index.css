@@ -439,38 +439,29 @@ p {
   /* margin: 10px 0px; */
 }
 .overall-graphs {
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.chart {
+.chart-line {
   /* border: #009879 dotted; */
-  background-color: #eee;
+  /* background-color: #eee; */
   padding: 6px;
   justify-content: center;
   text-align: center;
   justify-items: center;
   margin: 6px;
-  width: 720px;
-  height: 420px;
-}
-.chart-doughnut {
-  /* border: #009879 dotted; */
-  background-color: #eee;
-  padding: 6px;
-  justify-content: center;
-  text-align: center;
-  justify-items: center;
-  margin: 6px;
-  width: 570px;
-  height: 460px;
+  width: 49%;
+  /* height: 440px; */
 }
 .average-informations {
   /* margin: 6px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* height: 460px; */
+  width: 24%;
 }
 .issue-close-average,
 .pr-merge-average {
@@ -481,5 +472,37 @@ p {
 }
 .issue-close-average h2,
 .pr-merge-average h2 {
-  font-size: 3.5em;
+  font-size: 5.5em;
+}
+.chart-bar {
+  /* border: #009879 dotted; */
+  background-color: #eee;
+  padding: 6px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  margin: 6px;
+  width: 49%;
+  /* height: 440px; */
+}
+.doughnut-graphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 26%;
+  /* height: 460px; */
+}
+.chart-doughnut {
+  /* border: #009879 dotted; */
+  background-color: #eee;
+  padding: 6px;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  margin: 6px;
+  /* width: 570px;
+  height: 460px; */
+  /* width: 50%; */
+  height: 50%;
 }

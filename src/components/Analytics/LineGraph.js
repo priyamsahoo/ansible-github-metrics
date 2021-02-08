@@ -44,7 +44,7 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
         {
           scaleLabel: {
             display: true,
-            labelString: "% of issues open",
+            labelString: "% of closed issues",
           },
         },
       ],
@@ -63,9 +63,10 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
   console.log("Plotting data: ", dataToPlot.datasets[0].data);
 
   return (
-    <Card className="chart" title={heading}>
-      <Line data={dataToPlot} options={option} />
-    </Card>
+    <div className="chart-line">
+      <h3>{heading}</h3>
+      <Line data={dataToPlot} />
+    </div>
   );
 };
 
