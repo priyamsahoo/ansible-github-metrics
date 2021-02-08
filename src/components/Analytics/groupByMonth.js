@@ -1,6 +1,7 @@
 import _ from "lodash";
 
-export const groupByMonth = (data) => {
+export const groupByMonth = (data, totalCount) => {
+  // console.log("Total count: ", totalCount);
   const monthNames = [
     "Jan",
     "Feb",

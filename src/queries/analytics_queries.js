@@ -1,23 +1,23 @@
 import { gql } from "@apollo/client";
 
-const ISSUES_AND_PR = gql`
-  query MyQuery($repository: String!) {
-    repository(name: $repository, owner: "ansible-collections") {
-      issues(last: 100) {
-        totalCount
-        nodes {
-          createdAt
-        }
-      }
-      pullRequests(last: 100) {
-        totalCount
-        nodes {
-          createdAt
-        }
-      }
-    }
-  }
-`;
+// const ISSUES_AND_PR = gql`
+//   query MyQuery($repository: String!) {
+//     repository(name: $repository, owner: "ansible-collections") {
+//       issues(last: 100, states: OPEN) {
+//         totalCount
+//         nodes {
+//           createdAt
+//         }
+//       }
+//       pullRequests(last: 100) {
+//         totalCount
+//         nodes {
+//           createdAt
+//         }
+//       }
+//     }
+//   }
+// `;
 
 const ISSUES_AND_PR_SPLITUP = gql`
   query MyQuery($repository: String!) {
@@ -77,4 +77,4 @@ const ISSUES_AND_PR_AVERAGE = gql`
   }
 `;
 
-export { ISSUES_AND_PR, ISSUES_AND_PR_SPLITUP, ISSUES_AND_PR_AVERAGE };
+export { ISSUES_AND_PR_SPLITUP, ISSUES_AND_PR_AVERAGE };

@@ -11,7 +11,6 @@ import LineGraph from "./LineGraph";
 import { assembleData } from "../../utils/assemble-data";
 import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
-import { Doughnut } from "react-chartjs-2";
 import DoughnutGraph from "./DoughnutGraph";
 import { calculateAverageDays } from "./calculateAverageDays";
 import { Card } from "antd";
@@ -37,13 +36,13 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
   const [averageDaysIssueClosed, setAverageDaysIssueClosed] = useState(null);
   const [averageDaysPRMerged, setAverageDaysPRMerged] = useState(null);
 
-  const {
-    loading: allDataLoading,
-    error: allDataError,
-    data: allDataData,
-  } = useQuery(ISSUES_AND_PR, {
-    variables: { repository: selectedRepository },
-  });
+  // const {
+  //   loading: allDataLoading,
+  //   error: allDataError,
+  //   data: allDataData,
+  // } = useQuery(ISSUES_AND_PR, {
+  //   variables: { repository: selectedRepository },
+  // });
 
   const {
     loading: splitupDataLoading,
@@ -71,15 +70,19 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
       issuesGroupedByMonth,
       prGroupedByMonth;
 
-    if (allDataData) {
-      issuesGroupedByMonth = groupByMonth(allDataData.repository.issues.nodes);
-      prGroupedByMonth = groupByMonth(
-        allDataData.repository.pullRequests.nodes
-      );
-    }
+    // if (allDataData) {
+    //   issuesGroupedByMonth = groupByMonth(
+    //     allDataData.repository.issues.nodes,
+    //     allDataData.repository.issues.totalCount
+    //   );
+    //   prGroupedByMonth = groupByMonth(
+    //     allDataData.repository.pullRequests.nodes,
+    //     allDataData.repository.pullRequests.totalCount
+    //   );
+    // }
 
     if (averageDataData) {
-      console.log(averageDataData);
+      // console.log(averageDataData);
       averageIssueCloseDate = calculateAverageDays(
         averageDataData.ISSUE_AVG.issues.nodes
       );
@@ -144,9 +147,9 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
     }
   }, [
     splitupDataLoading,
-    allDataLoading,
+    // allDataLoading,
     averageDataLoading,
-    allDataData,
+    // allDataData,
     splitupDataData,
     averageDataData,
   ]);
@@ -154,79 +157,74 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
   return (
     <div>
       <h2>{selectedRepository} Analytics</h2>
-      {allDataLoading !== splitupDataLoading ? (
-        <Loader size="lg" />
-      ) : (
-        // <div> Loading...</div>
-        <div className="overall-graphs">
-          {issuesGroupedByMonth && (
+      <div className="overall-graphs">
+        {/* {issuesGroupedByMonth && (
             <LineGraph
               dataGroupedByMonth={issuesGroupedByMonth}
               label="Issues"
               heading="Issues Trend"
             />
+          )} */}
+        {mergedIssueData && (
+          <LineGraph
+            dataGroupedByMonth={mergedIssueData}
+            label="Issues closed %"
+            heading="Issues Trend"
+          />
+        )}
+        {mergedIssueData && (
+          <BarGraph
+            dataGroupedByMonth={mergedIssueData}
+            label1="Open Issue"
+            label2="Closed Issue"
+            heading="Issue Categories"
+          />
+        )}
+        {mergedPRData && (
+          <BarGraph
+            dataGroupedByMonth={mergedPRData}
+            label1="Open PR"
+            label2="Merged PR"
+            heading="Pull Request Categories"
+          />
+        )}
+        {totalOpenIssueCount && totalCloseIssueCount && (
+          <DoughnutGraph
+            heading="Issue Chart"
+            label1="Open Issues"
+            data1={totalOpenIssueCount}
+            label2="Close Issues"
+            data2={totalCloseIssueCount}
+          />
+        )}
+        {totalOpenPRCount && totalMergePRCount && (
+          <DoughnutGraph
+            heading="Pull Request Chart"
+            label1="Open PRs"
+            data1={totalOpenPRCount}
+            label2="Merge PRs"
+            data2={totalMergePRCount}
+          />
+        )}
+        <div className="average-informations">
+          {averageDaysIssueClosed && (
+            <Card
+              className="issue-close-average"
+              title="Average days to close an issue"
+            >
+              <h2>{averageDaysIssueClosed}</h2>
+            </Card>
           )}
-          {prsGroupedByMonth && (
-            <LineGraph
-              dataGroupedByMonth={prsGroupedByMonth}
-              label="Pull Requests"
-              heading="Pull Requests Trend"
-            />
+          {averageDaysPRMerged && (
+            <Card
+              className="pr-merge-average"
+              title="Average days to merge a PR"
+            >
+              <h2>{averageDaysPRMerged}</h2>
+            </Card>
           )}
-          {mergedIssueData && (
-            <BarGraph
-              dataGroupedByMonth={mergedIssueData}
-              label1="Open Issue"
-              label2="Closed Issue"
-              heading="Issue Categories"
-            />
-          )}
-          {mergedPRData && (
-            <BarGraph
-              dataGroupedByMonth={mergedPRData}
-              label1="Open PR"
-              label2="Merged PR"
-              heading="Pull Request Categories"
-            />
-          )}
-          {totalOpenIssueCount && totalCloseIssueCount && (
-            <DoughnutGraph
-              heading="Issue Chart"
-              label1="Open Issues"
-              data1={totalOpenIssueCount}
-              label2="Close Issues"
-              data2={totalCloseIssueCount}
-            />
-          )}
-          {totalOpenPRCount && totalMergePRCount && (
-            <DoughnutGraph
-              heading="Pull Request Chart"
-              label1="Open PRs"
-              data1={totalOpenPRCount}
-              label2="Merge PRs"
-              data2={totalMergePRCount}
-            />
-          )}
-          <div className="average-informations">
-            {averageDaysIssueClosed && (
-              <Card
-                className="issue-close-average"
-                title="Average days to close an issue"
-              >
-                <h2>{averageDaysIssueClosed}</h2>
-              </Card>
-            )}
-            {averageDaysPRMerged && (
-              <Card
-                className="pr-merge-average"
-                title="Average days to merge a PR"
-              >
-                <h2>{averageDaysPRMerged}</h2>
-              </Card>
-            )}
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
