@@ -42,7 +42,7 @@ const ReleasesAndTags = ({ owner, repository }) => {
             <h4>Total Tags: {data.tags.refs.totalCount}</h4>
             <h4>Latest Tag Information: </h4>
             {!data.tags.refs.edges && <p>-</p>}
-            {data.tags.refs.edges && (
+            {data.tags.refs.edges && data.tags.refs.totalCount && (
               <div>
                 <p>Name: {data.tags.refs.edges[0].node.target.name}</p>
                 <p>
