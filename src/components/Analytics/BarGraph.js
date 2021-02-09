@@ -9,7 +9,7 @@ const BarGraph = ({
   heading,
 }) => {
   // console.log(totalOpen);
-  // console.log(data);
+  console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [

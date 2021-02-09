@@ -109,6 +109,9 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
         splitupDataData.MERGED_PR.pullRequests.nodes
       );
 
+      console.log(openIssuesGroupedByMonth);
+      console.log(closedIssuesGroupedByMonth);
+
       if (!splitupDataLoading) {
         const resultForIssues =
           openIssuesGroupedByMonth.length > closedIssuesGroupedByMonth.length
