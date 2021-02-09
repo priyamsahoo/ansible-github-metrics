@@ -1,7 +1,7 @@
-import "./cell.css";
-import { DateFilter, SelectColumnFilter } from "./filters";
+// import "./cell.css";
+import { DateFilter, SelectColumnFilter } from "../../utils/filters";
 import moment from "moment";
-import { CenteredHeader } from "./CenteredHeader";
+// import { CenteredHeader } from "./CenteredHeader";
 
 export const COLUMNS = [
   {

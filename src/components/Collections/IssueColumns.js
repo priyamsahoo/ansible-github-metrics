@@ -1,8 +1,8 @@
 import { format } from "date-fns";
 import { CustomInput } from "reactstrap";
-import { DateFilter, SelectColumnFilter } from "./filters";
+import { DateFilter, SelectColumnFilter } from "../../utils/filters";
 import moment from "moment";
-import { CenteredHeader } from "./CenteredHeader";
+// import { CenteredHeader } from "./CenteredHeader";
 
 export const COLUMNS = [
   {

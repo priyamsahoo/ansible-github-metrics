@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { COLUMNS } from "./PRColumns";
-import { Filter, DefaultColumnFilter } from "./filters";
+import { Filter, DefaultColumnFilter } from "../../utils/filters";
 import { Button } from "bootstrap";
 
 const PRTable = ({ pr }) => {

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { TEST } from "../../queries/analytics_queries";
-import { groupByMonth } from "./groupByMonth";
+import { groupByMonth } from "../../utils/groupByMonth";
 import { useState } from "react";
 // import ChartTest from "./ChartTest";
 import RepositoryList from "./RepositoryList";

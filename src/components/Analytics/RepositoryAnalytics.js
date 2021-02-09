@@ -1,4 +1,4 @@
-import "./loader.css";
+// import "./loader.css";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import {
@@ -6,20 +6,14 @@ import {
   ISSUES_AND_PR_AVERAGE,
   ISSUES_AND_PR_SPLITUP,
 } from "../../queries/analytics_queries";
-import { groupByMonth } from "./groupByMonth";
+import { groupByMonth } from "../../utils/groupByMonth";
 import LineGraph from "./LineGraph";
 import { assembleData } from "../../utils/assemble-data";
 import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
 import DoughnutGraph from "./DoughnutGraph";
-import { calculateAverageDays } from "./calculateAverageDays";
+import { calculateAverageDays } from "../../utils/calculateAverageDays";
 import { Card } from "antd";
-
-const instance = (
-  <div id="loaderInverseWrapper" style={{ height: 200 }}>
-    <Loader center content="loading..." />
-  </div>
-);
 
 const RepositoryAnalytics = ({ selectedRepository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
