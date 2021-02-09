@@ -6,10 +6,14 @@ import ReleasesAndTags from "./ReleasesAndTags";
 import RepositoryDropdown from "./RepositoryDropdown.";
 
 const Collections = () => {
-  const [repository, setRepository] = useState("cisco.nxos");
+  const [repository, setRepository] = useState({
+    owner: "ansible-collections",
+    repo: "cisco.nxos",
+  });
 
-  const repositoryCallback = (repo) => {
-    setRepository(repo);
+  const repositoryCallback = (owner, repo) => {
+    setRepository({ owner: owner, repo: repo });
+    console.log(repository);
   };
 
   return (
@@ -20,18 +24,27 @@ const Collections = () => {
             <RepositoryDropdown repositoryCallback={repositoryCallback} />
           </div>
           <div>
-            <CollectionInsights repository={repository} />
+            <CollectionInsights
+              owner={repository.owner}
+              repository={repository.repo}
+            />
           </div>
           <div>
-            <ReleasesAndTags repository={repository} />
+            <ReleasesAndTags
+              owner={repository.owner}
+              repository={repository.repo}
+            />
           </div>
         </div>
         <div className="tables">
           <div>
-            <ACIssues repository={repository} />
+            <ACIssues owner={repository.owner} repository={repository.repo} />
           </div>
           <div>
-            <ACPullRequests repository={repository} />
+            <ACPullRequests
+              owner={repository.owner}
+              repository={repository.repo}
+            />
           </div>
         </div>
       </div>

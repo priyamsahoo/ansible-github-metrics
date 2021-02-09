@@ -4,9 +4,9 @@ import moment from "moment";
 // import { Card } from "reactstrap";
 import { Card } from "antd";
 
-const ReleasesAndTags = ({ repository }) => {
+const ReleasesAndTags = ({ owner, repository }) => {
   const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
-    variables: { repositoryName: repository },
+    variables: { repositoryName: repository, ownerName: owner },
   });
 
   console.log(data);

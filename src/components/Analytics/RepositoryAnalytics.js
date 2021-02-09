@@ -15,7 +15,7 @@ import DoughnutGraph from "./DoughnutGraph";
 import { calculateAverageDays } from "../../utils/calculateAverageDays";
 import { Card } from "antd";
 
-const RepositoryAnalytics = ({ selectedRepository }) => {
+const RepositoryAnalytics = ({ owner, repository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
   const [mergedPRData, setMergedPRData] = useState(null);
 
@@ -43,7 +43,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
     error: splitupDataError,
     data: splitupDataData,
   } = useQuery(ISSUES_AND_PR_SPLITUP, {
-    variables: { repository: selectedRepository },
+    variables: { repositoryName: repository, ownerName: owner },
   });
 
   const {
@@ -51,7 +51,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
     erorr: averageDataError,
     data: averageDataData,
   } = useQuery(ISSUES_AND_PR_AVERAGE, {
-    variables: { repository: selectedRepository },
+    variables: { repositoryName: repository, ownerName: owner },
   });
 
   useEffect(() => {
@@ -153,7 +153,7 @@ const RepositoryAnalytics = ({ selectedRepository }) => {
 
   return (
     <div>
-      <h2>{selectedRepository} Analytics</h2>
+      <h2>{repository} Analytics</h2>
       <div className="overall-graphs">
         {/* {issuesGroupedByMonth && (
             <LineGraph

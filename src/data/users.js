@@ -13,4 +13,5 @@ export const USERS = [
   "rohitthakur2590",
   "alinabuzachis",
   "GomathiselviS",
+  "trishnaguha",
 ];

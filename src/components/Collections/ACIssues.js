@@ -3,11 +3,11 @@ import { ISSUES } from "../../queries/queries";
 import IssueTable from "./IssueTable";
 import { useState } from "react";
 
-const ACIssues = ({ repository }) => {
+const ACIssues = ({ owner, repository }) => {
   // const [repository, setRepository] = useState("cisco.nxos");
 
-  const { loading, error, data, refetch } = useQuery(ISSUES, {
-    variables: { repositoryName: repository },
+  const { loading, error, data } = useQuery(ISSUES, {
+    variables: { repositoryName: repository, ownerName: owner },
   });
   // console.log(data);
 

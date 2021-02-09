@@ -1,27 +1,8 @@
 import { gql } from "@apollo/client";
 
-// const ISSUES_AND_PR = gql`
-//   query MyQuery($repository: String!) {
-//     repository(name: $repository, owner: "ansible-collections") {
-//       issues(last: 100, states: OPEN) {
-//         totalCount
-//         nodes {
-//           createdAt
-//         }
-//       }
-//       pullRequests(last: 100) {
-//         totalCount
-//         nodes {
-//           createdAt
-//         }
-//       }
-//     }
-//   }
-// `;
-
 const ISSUES_AND_PR_SPLITUP = gql`
-  query MyQuery($repository: String!) {
-    OPEN_ISSUES: repository(name: $repository, owner: "ansible-collections") {
+  query MyQuery($repositoryName: String!, $ownerName: String!) {
+    OPEN_ISSUES: repository(name: $repositoryName, owner: $ownerName) {
       issues(last: 100, states: OPEN) {
         totalCount
         nodes {
@@ -29,7 +10,7 @@ const ISSUES_AND_PR_SPLITUP = gql`
         }
       }
     }
-    CLOSED_ISSUES: repository(name: $repository, owner: "ansible-collections") {
+    CLOSED_ISSUES: repository(name: $repositoryName, owner: $ownerName) {
       issues(last: 100, states: CLOSED) {
         totalCount
         nodes {
@@ -37,7 +18,7 @@ const ISSUES_AND_PR_SPLITUP = gql`
         }
       }
     }
-    OPEN_PR: repository(name: $repository, owner: "ansible-collections") {
+    OPEN_PR: repository(name: $repositoryName, owner: $ownerName) {
       pullRequests(states: OPEN, last: 100) {
         totalCount
         nodes {
@@ -45,7 +26,7 @@ const ISSUES_AND_PR_SPLITUP = gql`
         }
       }
     }
-    MERGED_PR: repository(name: $repository, owner: "ansible-collections") {
+    MERGED_PR: repository(name: $repositoryName, owner: $ownerName) {
       pullRequests(states: MERGED, last: 100) {
         totalCount
         nodes {
@@ -57,8 +38,8 @@ const ISSUES_AND_PR_SPLITUP = gql`
 `;
 
 const ISSUES_AND_PR_AVERAGE = gql`
-  query MyQuery($repository: String!) {
-    ISSUE_AVG: repository(name: $repository, owner: "ansible-collections") {
+  query MyQuery($repositoryName: String!, $ownerName: String!) {
+    ISSUE_AVG: repository(name: $repositoryName, owner: $ownerName) {
       issues(states: CLOSED, last: 100) {
         nodes {
           createdAt
@@ -66,7 +47,7 @@ const ISSUES_AND_PR_AVERAGE = gql`
         }
       }
     }
-    PR_AVG: repository(name: $repository, owner: "ansible-collections") {
+    PR_AVG: repository(name: $repositoryName, owner: $ownerName) {
       pullRequests(states: MERGED, last: 100) {
         nodes {
           createdAt

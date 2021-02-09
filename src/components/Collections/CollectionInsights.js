@@ -3,9 +3,9 @@ import { COLLECTION_INSIGHTS } from "../../queries/queries";
 import { Statistic, Card } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 
-const CollectionInsights = ({ repository }) => {
+const CollectionInsights = ({ owner, repository }) => {
   const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {
-    variables: { repositoryName: repository },
+    variables: { repositoryName: repository, ownerName: owner },
   });
 
   console.log(data);

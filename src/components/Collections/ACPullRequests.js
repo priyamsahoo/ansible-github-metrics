@@ -3,11 +3,11 @@ import { PR } from "../../queries/queries";
 import PRTable from "./PRTable";
 import { useState } from "react";
 
-const ACPullRequests = ({ repository }) => {
+const ACPullRequests = ({ owner, repository }) => {
   // const [repository, setRepository] = useState("cisco.nxos");
 
-  const { loading, error, data, refetch } = useQuery(PR, {
-    variables: { repositoryName: repository },
+  const { loading, error, data } = useQuery(PR, {
+    variables: { repositoryName: repository, ownerName: owner },
   });
   // console.log(data);
 

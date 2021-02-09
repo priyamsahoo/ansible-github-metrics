@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const ISSUES = gql`
-  query($repositoryName: String!) {
-    repository(name: $repositoryName, owner: "ansible-collections") {
+  query($repositoryName: String!, $ownerName: String!) {
+    repository(name: $repositoryName, owner: $ownerName) {
       name
       issues(last: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
         edges {
@@ -24,10 +24,10 @@ const ISSUES = gql`
 `;
 
 const PR = gql`
-  query($repositoryName: String!) {
-    repository(name: $repositoryName, owner: "ansible-collections") {
+  query($repositoryName: String!, $ownerName: String!) {
+    repository(name: $repositoryName, owner: $ownerName) {
       name
-      pullRequests(last: 100, orderBy: { field: CREATED_AT, direction: ASC }) {
+      pullRequests(last: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
         edges {
           node {
             author {
@@ -54,8 +54,8 @@ const PR = gql`
 `;
 
 const COLLECTION_INSIGHTS = gql`
-  query($repositoryName: String!) {
-    repository(name: $repositoryName, owner: "ansible-collections") {
+  query($repositoryName: String!, $ownerName: String!) {
+    repository(name: $repositoryName, owner: $ownerName) {
       openIssues: issues(filterBy: { states: [OPEN] }) {
         totalCount
       }
@@ -76,8 +76,8 @@ const COLLECTION_INSIGHTS = gql`
 `;
 
 const RELEASES_AND_TAGS = gql`
-  query($repositoryName: String!) {
-    release: repository(name: $repositoryName, owner: "ansible-collections") {
+  query($repositoryName: String!, $ownerName: String!) {
+    release: repository(name: $repositoryName, owner: $ownerName) {
       releases {
         totalCount
       }
@@ -90,7 +90,7 @@ const RELEASES_AND_TAGS = gql`
         }
       }
     }
-    tags: repository(name: $repositoryName, owner: "ansible-collections") {
+    tags: repository(name: $repositoryName, owner: $ownerName) {
       refs(refPrefix: "refs/tags/", last: 1) {
         totalCount
         edges {

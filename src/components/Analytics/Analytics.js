@@ -8,10 +8,11 @@ import RepositoryAnalytics from "./RepositoryAnalytics";
 import { Card } from "antd";
 
 const Analytics = () => {
-  const [selectedRepository, setSelectedRepository] = useState("");
+  const [selectedRepository, setSelectedRepository] = useState({});
   const repositoryCallback = (selectedRepository) => {
     setSelectedRepository(selectedRepository);
   };
+  console.log("SELECED REPOSITORY:", selectedRepository);
 
   return (
     <div className="analytics">
@@ -19,7 +20,10 @@ const Analytics = () => {
         <RepositoryList repositoryCallback={repositoryCallback} />
       </Card>
       <div className="repo-analytics">
-        <RepositoryAnalytics selectedRepository={selectedRepository} />
+        <RepositoryAnalytics
+          owner={selectedRepository.owner}
+          repository={selectedRepository.repo}
+        />
       </div>
     </div>
   );

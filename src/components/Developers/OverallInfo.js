@@ -8,26 +8,16 @@ import * as moment from "moment";
 // import { Card, Input } from "reactstrap";
 import { useState } from "react";
 import { Card, Select } from "antd";
+import { REPOSITORIES } from "../../data/repositories";
 
 const OverallInfo = ({ selectedDeveloper }) => {
-  let repository_list = [
-    "ansible-collections/cisco.nxos",
-    "ansible-collections/cisco.ios",
-    "ansible-collections/cisco.iosxr",
-    "ansible-collections/arista.eos",
-    "ansible-collections/vyos.vyos",
-    "ansible-collections/junipernetworks.junos",
-    "ansible-collections/cisco.asa",
-    "ansible-collections/ansible.netcommon",
-    "ansible-collections/frr.frr",
-    "ansible-collections/openvswitch.openvswitch",
-    "ansible-collections/community.yang",
-    "ansible-collections/ansible.utils",
-  ];
+  let repositoryList = REPOSITORIES.map(
+    (repository) => `${repository.owner}/${repository.repo}`
+  );
 
-  repository_list = repository_list.map((item) => "repo:" + item);
+  repositoryList = repositoryList.map((item) => "repo:" + item);
 
-  const repoQueryString = repository_list.join(" ");
+  const repoQueryString = repositoryList.join(" ");
   // console.log(repoQueryString);
 
   const authorQueryString = selectedDeveloper;
