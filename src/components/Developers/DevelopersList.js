@@ -2,38 +2,24 @@ import { event } from "jquery";
 import { useState, useEffect } from "react";
 // import { Input } from "rsuite";
 import { Input } from "antd";
+import { USERS } from "../../data/users";
 
 const DeveloperList = ({ developerCallback }) => {
   const [searchName, setSearchName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // const people = developers.map((developer) => developer.name);
-  //   console.log(people);
+  // const users = developers.map((developer) => developer.name);
+  //   console.log(users);
 
-  const people = [
-    "goneri",
-    "Akasurde",
-    "Qalthos",
-    "pabelanger",
-    "maxamillion",
-    "ashwini-mhatre",
-    "jillr",
-    "ganeshrn",
-    "NilashishC",
-    "cidrblock",
-    "justjais",
-    "rohitthakur2590",
-    "alinabuzachis",
-    "GomathiselviS",
-  ];
+  const users = USERS;
 
   const handleSearch = (e) => {
     setSearchName(e);
   };
 
   useEffect(() => {
-    const results = people.filter((person) =>
-      person.toLowerCase().includes(searchName.toLowerCase())
+    const results = users.filter((user) =>
+      user.toLowerCase().includes(searchName.toLowerCase())
     );
     setSearchResults(results);
   }, [searchName]);
@@ -47,7 +33,7 @@ const DeveloperList = ({ developerCallback }) => {
       <h2>Developers:</h2>
       <Input
         // type="text"
-        placeholder={`Search (${people.length})`}
+        placeholder={`Search (${users.length})`}
         value={searchName}
         onChange={(e) => handleSearch(e.target.value)}
       />
