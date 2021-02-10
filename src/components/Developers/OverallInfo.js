@@ -23,7 +23,9 @@ const OverallInfo = ({ selectedDeveloper }) => {
   const authorQueryString = selectedDeveloper;
 
   const [dateQueryString, setDateQueryString] = useState(
-    `<=${moment().format("YYYY-MM-DD").toString()}`
+    moment().subtract(1, "month").format("YYYY-MM-DD").toString() +
+      ".." +
+      moment().format("YYYY-MM-DD").toString()
   );
 
   const issueOpenQueryString = `${repoQueryString} type:issue is:open author:${selectedDeveloper} updated:${dateQueryString}`;
