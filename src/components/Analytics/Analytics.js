@@ -6,9 +6,11 @@ import { useState } from "react";
 import RepositoryList from "./RepositoryList";
 import RepositoryAnalytics from "./RepositoryAnalytics";
 import { Card } from "antd";
+import { REPOSITORIES } from "../../data/repositories";
 
 const Analytics = () => {
-  const [selectedRepository, setSelectedRepository] = useState({});
+  // Default repository is the first repository object in the REPOSITORIES list
+  const [selectedRepository, setSelectedRepository] = useState(REPOSITORIES[0]);
   const repositoryCallback = (selectedRepository) => {
     setSelectedRepository(selectedRepository);
   };

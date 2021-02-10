@@ -1,14 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { Card } from "antd";
 import { useState } from "react";
+import { USERS } from "../../data/users";
 import { DEVELOPER_LIST } from "../../queries/developer_queries";
 import DeveloperDetails from "./DeveloperDetails";
 import DeveloperList from "./DevelopersList";
 
 const Developers = () => {
-  // const { loading, error, data } = useQuery(DEVELOPER_LIST);
-
-  const [selectedDeveloper, setSeletedDeveloper] = useState(null);
+  // Default user is the first user in the USERS list
+  const [selectedDeveloper, setSeletedDeveloper] = useState(USERS[0]);
   const developerCallback = (selectedDeveloper) => {
     setSeletedDeveloper(selectedDeveloper);
   };

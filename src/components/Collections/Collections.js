@@ -4,12 +4,11 @@ import ACPullRequests from "./ACPullRequests";
 import CollectionInsights from "./CollectionInsights";
 import ReleasesAndTags from "./ReleasesAndTags";
 import RepositoryDropdown from "./RepositoryDropdown.";
+import { REPOSITORIES } from "../../data/repositories";
 
 const Collections = () => {
-  const [repository, setRepository] = useState({
-    owner: "ansible-collections",
-    repo: "cisco.nxos",
-  });
+  // Default repository is the first repository object in REPOSITORIES list
+  const [repository, setRepository] = useState(REPOSITORIES[0]);
 
   const repositoryCallback = (owner, repo) => {
     setRepository({ owner: owner, repo: repo });
