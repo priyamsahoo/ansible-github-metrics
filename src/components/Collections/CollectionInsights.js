@@ -90,7 +90,6 @@ const CollectionInsights = ({ owner, repository }) => {
   return (
     <Card className="collection-insights">
       <h2>Collection Insights: {repository}</h2>
-      <br></br>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && displayDetails()}

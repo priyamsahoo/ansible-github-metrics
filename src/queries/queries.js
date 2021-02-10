@@ -77,19 +77,6 @@ const COLLECTION_INSIGHTS = gql`
 
 const RELEASES_AND_TAGS = gql`
   query($repositoryName: String!, $ownerName: String!) {
-    release: repository(name: $repositoryName, owner: $ownerName) {
-      releases {
-        totalCount
-      }
-      latestRelease {
-        name
-        tagName
-        publishedAt
-        author {
-          name
-        }
-      }
-    }
     tags: repository(name: $repositoryName, owner: $ownerName) {
       refs(refPrefix: "refs/tags/", last: 1) {
         totalCount

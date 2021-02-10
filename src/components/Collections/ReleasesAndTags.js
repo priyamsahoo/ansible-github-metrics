@@ -14,33 +14,13 @@ const ReleasesAndTags = ({ owner, repository }) => {
   return (
     <Card className="releases-and-tags">
       <h2>Releases and Tags: {repository}</h2>
-      <br />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {data && (
         <div className="information">
-          <div className="release-info">
-            <h4>Total Releases: {data.release.releases.totalCount}</h4>
-            <h4>Latest Release Information: </h4>
-            {!data.release.latestRelease && <p>-</p>}
-            {data.release.latestRelease && (
-              <div>
-                <p>Name: {data.release.latestRelease.name}</p>
-                <p>Tag name: {data.release.latestRelease.tagName}</p>
-                <p>
-                  Published on:{" "}
-                  {moment(
-                    new Date(data.release.latestRelease.publishedAt)
-                  ).format("ll")}
-                </p>
-                <p>Author: {data.release.latestRelease.author.name}</p>
-              </div>
-            )}
-          </div>
-          <br></br>
           <div className="tags-info">
-            <h4>Total Tags: {data.tags.refs.totalCount}</h4>
-            <h4>Latest Tag Information: </h4>
+            <h3>Total Tags: {data.tags.refs.totalCount}</h3>
+            <h3>Latest Tag Information: </h3>
             {!data.tags.refs.edges && <p>-</p>}
             {data.tags.refs.edges && data.tags.refs.totalCount && (
               <div>
