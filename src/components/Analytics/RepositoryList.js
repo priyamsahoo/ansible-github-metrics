@@ -16,8 +16,8 @@ const RepositoryList = ({ repositoryCallback }) => {
   };
   console.log(searchRepository);
   useEffect(() => {
-    const results = repositories.filter((repo) =>
-      repo["repo"].toLowerCase().includes(searchRepository.toLowerCase())
+    const results = repositories.filter((repository) =>
+      repository["repo"].toLowerCase().includes(searchRepository.toLowerCase())
     );
     setSearchResults(results);
   }, [searchRepository]);
