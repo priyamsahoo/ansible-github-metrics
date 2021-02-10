@@ -7,7 +7,7 @@ import {
 import * as moment from "moment";
 // import { Card, Input } from "reactstrap";
 import { useState } from "react";
-import { Card, Select } from "antd";
+import { Card, Divider, Select } from "antd";
 import { REPOSITORIES } from "../../data/repositories";
 
 const OverallInfo = ({ selectedDeveloper }) => {
@@ -59,7 +59,7 @@ const OverallInfo = ({ selectedDeveloper }) => {
 
   // console.log(dateQueryString);
 
-  const { Option } = Select;
+  const { Option, OptGroup } = Select;
 
   const displayDetails = () => {
     return (
@@ -77,7 +77,7 @@ const OverallInfo = ({ selectedDeveloper }) => {
             <label>Period: </label>
             <Select
               // type="select"
-              style={{ width: 120 }}
+              style={{ width: 180 }}
               defaultValue={dateQueryString}
               onChange={(e) => {
                 // console.log(e);
@@ -110,18 +110,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
               </Option>
               <Option
                 value={
-                  moment()
-                    .subtract(7, "month")
-                    .format("YYYY-MM-DD")
-                    .toString() +
-                  ".." +
-                  moment().format("YYYY-MM-DD").toString()
-                }
-              >
-                Last 6 months
-              </Option>
-              <Option
-                value={
                   moment().subtract(1, "year").format("YYYY-MM-DD").toString() +
                   ".." +
                   moment().format("YYYY-MM-DD").toString()
@@ -129,6 +117,92 @@ const OverallInfo = ({ selectedDeveloper }) => {
               >
                 Last year
               </Option>
+              <OptGroup label="Current year">
+                <Option
+                  value={
+                    moment()
+                      .month("Jan")
+                      .startOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString() +
+                    ".." +
+                    moment()
+                      .month("Mar")
+                      .endOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString()
+                  }
+                >
+                  {`${moment()
+                    .month("Jan")
+                    .format("MMM 'YY")} - ${moment()
+                    .month("Mar")
+                    .format("MMM 'YY")}`}
+                </Option>
+                <Option
+                  value={
+                    moment()
+                      .month("Apr")
+                      .startOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString() +
+                    ".." +
+                    moment()
+                      .month("Jun")
+                      .endOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString()
+                  }
+                >
+                  {`${moment()
+                    .month("Apr")
+                    .format("MMM 'YY")} - ${moment()
+                    .month("Jun")
+                    .format("MMM 'YY")}`}
+                </Option>
+                <Option
+                  value={
+                    moment()
+                      .month("Jul")
+                      .startOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString() +
+                    ".." +
+                    moment()
+                      .month("Sep")
+                      .endOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString()
+                  }
+                >
+                  {`${moment()
+                    .month("Jul")
+                    .format("MMM 'YY")} - ${moment()
+                    .month("Sep")
+                    .format("MMM 'YY")}`}
+                </Option>
+                <Option
+                  value={
+                    moment()
+                      .month("Oct")
+                      .startOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString() +
+                    ".." +
+                    moment()
+                      .month("Dec")
+                      .endOf("month")
+                      .format("YYYY-MM-DD")
+                      .toString()
+                  }
+                >
+                  {`${moment()
+                    .month("Oct")
+                    .format("MMM 'YY")} - ${moment()
+                    .month("Dec")
+                    .format("MMM 'YY")}`}
+                </Option>
+              </OptGroup>
             </Select>
           </Card>
         </div>
