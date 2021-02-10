@@ -5,6 +5,7 @@ import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { COLUMNS } from "./PRColumns";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
 import { Button } from "bootstrap";
+import { Empty } from "antd";
 
 const PRTable = ({ pr }) => {
   // const columns = useMemo(() => COLUMNS, []);
@@ -67,18 +68,26 @@ const PRTable = ({ pr }) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+          {rows.length === 0 ? (
+            <td colSpan="5">
+              <Empty />
+            </td>
+          ) : (
+            <>
+              {page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </>
+          )}
         </tbody>
       </Table>
       <div>
