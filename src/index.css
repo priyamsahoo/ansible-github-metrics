@@ -25,11 +25,7 @@ p {
   background-color: transparent;
 }
 
-/* .Card {
-  margin: 6px;
-  background-color: #cc9c00;
-} */
-
+/* ************************************************************************************** */
 /* navbar styles */
 .navbar {
   padding: 20px;
@@ -39,7 +35,7 @@ p {
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #009879;
+  background-color: #93a392;
 }
 .navbar img {
   background: transparent;
@@ -68,7 +64,9 @@ p {
 .navbar a:hover {
   color: #cc9c00;
 }
+/* ************************************************************************************** */
 
+/* ************************************************************************************** */
 /* Collection styles */
 .collections {
   padding: 10px;
@@ -104,7 +102,9 @@ p {
 } */
 
 .repository-dropdown {
+  border-top: #ffc107 solid;
   background-color: #eee;
+  /* background-color: #dbaca9; */
 }
 .repository-dropdown label {
   font-weight: bold;
@@ -120,22 +120,25 @@ p {
   padding: 6px;
   margin: 10px 0px;
   background-color: #eee;
+  border-top: #ffc107 solid;
 }
 .releases-and-tags {
   /* border: #009879 dotted; */
   padding: 6px;
   margin: 10px 0px;
   background-color: #eee;
+  border-top: #ffc107 solid;
 }
 
 .tables {
   width: 80%;
   /* flex-grow: 1; */
   margin: 10px;
+  /* background-color: #eee; */
 }
 /* ac issues component styles */
 .ac-issues {
-  border: #009879 dotted;
+  /* border: #539987 dotted; */
   padding: 12px;
   margin: 10px 0px;
 }
@@ -150,10 +153,10 @@ p {
 }
 .issue-table a {
   text-decoration: none;
-  color: #009879;
+  color: #539987;
 }
 .issue-table thead th {
-  background-color: #5b5b5b;
+  background-color: #539987;
   color: #eee;
   text-align: left;
   font-size: 1.2em;
@@ -166,20 +169,20 @@ p {
   border-bottom: 1px solid #dddddd;
 }
 .issue-table tbody tr:hover {
-  border-bottom: 1px solid #009879;
-  border-left: 1px solid #009879;
-  border-right: 1px solid #009879;
+  border-bottom: 1px solid #539987;
+  border-left: 1px solid #539987;
+  border-right: 1px solid #539987;
 }
 .issue-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .issue-table tbody tr:last-of-type {
-  border-bottom: 2px solid #5b5b5b;
+  border-bottom: 2px solid #539987;
 }
 
 /* ac pull request component styles */
 .ac-pull-requests {
-  border: #009879 dotted;
+  /* border: #009879 dotted; */
   padding: 12px;
   margin: 10px 0px;
 }
@@ -197,7 +200,7 @@ p {
   color: #009879;
 }
 .pr-table thead th {
-  background-color: #5b5b5b;
+  background-color: #2a9d8f;
   color: #ffffff;
   text-align: left;
   font-size: 1.2em;
@@ -220,8 +223,10 @@ p {
 .pr-table tbody tr:last-of-type {
   border-bottom: 2px solid #5b5b5b;
 }
+/* ************************************************************************************** */
 
-/* developer component styles */
+/* ************************************************************************************** */
+/* Developers styles */
 .developers {
   padding: 10px;
 }
@@ -234,11 +239,12 @@ p {
 .dev-list {
   /* border: #009879 dotted; */
   background-color: #eee;
+  border-top: #ffc107 solid;
   width: 20%;
   margin: 10px;
 }
 .dev-details {
-  border: #009879 dotted;
+  /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
   margin: 10px;
@@ -376,13 +382,10 @@ p {
   color: #eee;
   padding: 6px;
 }
+/* ************************************************************************************** */
 
-.chart {
-  width: 700px;
-  height: 700px;
-}
-
-/* Styling for Analytics Component */
+/* ************************************************************************************** */
+/* Analytics styles */
 .analytics {
   padding: 10px;
   display: flex;
@@ -395,7 +398,7 @@ p {
 
 .repo-list {
   /* border: #009879 dotted; */
-  background-color: #eee;
+  background-color: #e9c46a;
   padding: 6px;
   width: 20%;
   margin: 10px;
@@ -506,3 +509,4 @@ p {
   /* width: 50%; */
   height: 50%;
 }
+/* ************************************************************************************** */
