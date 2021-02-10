@@ -8,12 +8,16 @@ import { REPOSITORIES } from "../../data/repositories";
 
 const Collections = () => {
   // Default repository is the first repository object in REPOSITORIES list
-  const [repository, setRepository] = useState(REPOSITORIES[0]);
+  const [repository, setRepository] = useState(
+    JSON.parse(localStorage.getItem("collectionsRepository")) || REPOSITORIES[0]
+  );
 
   const repositoryCallback = (owner, repo) => {
     setRepository({ owner: owner, repo: repo });
     console.log(repository);
   };
+
+  localStorage.setItem("collectionsRepository", JSON.stringify(repository));
 
   return (
     <div className="collections">

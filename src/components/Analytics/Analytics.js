@@ -10,11 +10,18 @@ import { REPOSITORIES } from "../../data/repositories";
 
 const Analytics = () => {
   // Default repository is the first repository object in the REPOSITORIES list
-  const [selectedRepository, setSelectedRepository] = useState(REPOSITORIES[0]);
+  const [selectedRepository, setSelectedRepository] = useState(
+    JSON.parse(localStorage.getItem("analyticsRepository")) || REPOSITORIES[0]
+  );
   const repositoryCallback = (selectedRepository) => {
     setSelectedRepository(selectedRepository);
   };
   console.log("SELECED REPOSITORY:", selectedRepository);
+
+  localStorage.setItem(
+    "analyticsRepository",
+    JSON.stringify(selectedRepository)
+  );
 
   return (
     <div className="analytics">

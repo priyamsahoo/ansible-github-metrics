@@ -8,10 +8,14 @@ import DeveloperList from "./DevelopersList";
 
 const Developers = () => {
   // Default user is the first user in the USERS list
-  const [selectedDeveloper, setSeletedDeveloper] = useState(USERS[0]);
+  const [selectedDeveloper, setSeletedDeveloper] = useState(
+    localStorage.getItem("user") || USERS[0]
+  );
   const developerCallback = (selectedDeveloper) => {
     setSeletedDeveloper(selectedDeveloper);
   };
+
+  localStorage.setItem("user", selectedDeveloper);
 
   // console.log(selectedDeveloper);
 
