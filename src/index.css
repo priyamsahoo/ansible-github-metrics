@@ -238,7 +238,7 @@ p {
 .dev-list {
   /* border: #009879 dotted; */
   background-color: #eee;
-  border-top: #ffc107 solid;
+  border-top: #ffa630 solid 4px;
   width: 25%;
   margin: 10px;
 }
@@ -278,7 +278,7 @@ p {
   /* margin: 10px 0px; */
 }
 .developer-list p:hover {
-  color: #009879;
+  color: #6f909d;
   transform: scale(1.02);
 }
 
@@ -287,7 +287,7 @@ p {
   /* margin: 10px 0px; */
 }
 .overall-info {
-  padding: 6px;
+  /* padding: 6px; */
   margin: 10px 0px;
   /* border: #009879 dotted; */
   text-align: center;
@@ -301,13 +301,19 @@ p {
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  border: #009879 solid 1px;
+  border: #3d5861 solid 1px;
   background-position: "center";
   background-size: auto 80px;
 }
+.profile-info h1 {
+  margin: auto;
+}
 .profile-info a {
   text-decoration: none;
-  color: #009879;
+  color: #3d5861;
+}
+.profile-info p {
+  color: #3d5861;
 }
 
 .collection-contributions {
@@ -321,7 +327,8 @@ p {
   padding: 6px;
   width: 200px;
   height: 140px;
-  background: #009879;
+  background: #6f909d;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .collection-contributions h2 {
   background: transparent;
@@ -329,7 +336,7 @@ p {
 .collection-contributions h1 {
   background: transparent;
   font-size: 3em;
-  color: #009879;
+  color: #3d5861;
 }
 .total-contributions h2 {
   color: #eee;
@@ -341,14 +348,16 @@ p {
   /* border: #009879 dotted; */
   width: 200px;
   height: 140px;
-  background-color: rgb(207, 228, 215);
+  /* background-color: rgb(207, 228, 215); */
+  border-top: #3d5861 solid 2px;
   margin: 6px;
   padding: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .splitup-info {
   padding: 6px;
   margin: 10px 0px;
-  border: #009879 dotted;
+  /* border: #009879 dotted; */
   text-align: center;
 }
 .repository-wise-details {
@@ -365,7 +374,7 @@ p {
   /* border: #009879 dotted; */
 }
 .repository-wise-issue-pr-data {
-  border: #009879 solid 1px;
+  border: #6f909d solid 1px;
   background-color: #eee;
   margin: 10px;
   padding-bottom: 10px;
@@ -377,7 +386,7 @@ p {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .repository-wise-issue-pr-data h2 {
-  background: #009879;
+  background: #6f909d;
   color: #eee;
   padding: 6px;
 }

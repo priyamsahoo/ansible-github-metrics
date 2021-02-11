@@ -32,6 +32,7 @@ const DeveloperList = ({ developerCallback }) => {
     <div className="developer-list">
       <h2>Developers:</h2>
       <Input
+        size="small"
         allowClear={true}
         // type="text"
         placeholder={`Search (${users.length})`}

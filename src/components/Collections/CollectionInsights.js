@@ -89,7 +89,7 @@ const CollectionInsights = ({ owner, repository }) => {
 
   return (
     <Card className="collection-insights">
-      <h2>Collection Insights: {repository}</h2>
+      <h2>Collection Insights</h2>
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
       {data && displayDetails()}

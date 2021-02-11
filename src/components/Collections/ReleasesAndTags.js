@@ -13,7 +13,7 @@ const ReleasesAndTags = ({ owner, repository }) => {
 
   return (
     <Card className="releases-and-tags">
-      <h2>Releases and Tags: {repository}</h2>
+      <h2>Release Tags</h2>
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {data && (
