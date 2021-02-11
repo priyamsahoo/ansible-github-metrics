@@ -41,10 +41,11 @@ const Collections = () => {
           </div>
         </div>
         <div className="tables">
+          <h1>{`Tables for ${repository.repo} repository`}</h1>
           <div>
             <ACIssues owner={repository.owner} repository={repository.repo} />
           </div>
-          <Divider plain style={{ backgroundColor: "#3d5861" }}></Divider>
+          <Divider plain style={{ backgroundColor: "#6f909d" }}></Divider>
           <div>
             <ACPullRequests
               owner={repository.owner}

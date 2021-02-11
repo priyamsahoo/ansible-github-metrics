@@ -22,6 +22,7 @@ export const DefaultColumnFilter = ({
 }) => {
   return (
     <Input
+      size="small"
       value={filterValue || ""}
       onChange={(e) => {
         setFilter(e.target.value || undefined);
@@ -47,6 +48,7 @@ export const SelectColumnFilter = ({
 
   return (
     <Select
+      size="small"
       style={{ width: 100 }}
       id="custom-select"
       type="select"
@@ -130,6 +132,7 @@ export const DateFilter = (props) => {
     //   ranges={RANGES}
     // />
     <RangePicker
+      size="small"
       format="ll"
       ranges={{
         Today: [moment(), moment()],

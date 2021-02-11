@@ -103,14 +103,14 @@ p {
 
 .collection-insights {
   /* border: #009879 dotted; */
-  padding: 6px;
+  /* padding: 6px; */
   margin: 10px 0px;
   background-color: #eee;
   border-top: #ffa630 solid 4px;
 }
 .releases-and-tags {
   /* border: #009879 dotted; */
-  padding: 6px;
+  /* padding: 6px; */
   margin: 10px 0px;
   background-color: #eee;
   border-top: #ffa630 solid 4px;
@@ -118,14 +118,20 @@ p {
 
 .tables {
   width: 100%;
+  text-align: center;
+  /* border: #009879; */
   /* flex-grow: 1; */
   margin: 10px;
   /* background-color: #eee; */
 }
+.tables h1 {
+  color: #3d5861;
+}
 /* ac issues component styles */
 .ac-issues {
   /* border: #539987 dotted; */
-  padding: 12px;
+  text-align: center;
+  /* padding: 12px; */
   margin: 10px 0px;
 }
 
@@ -133,43 +139,47 @@ p {
 .issue-table {
   border-collapse: collapse;
   margin: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
   /* font-size: 1em; */
   min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .issue-table a {
   text-decoration: none;
-  color: #539987;
+  color: #6f909d;
 }
 .issue-table thead th {
   background-color: #6f909d;
   color: #eee;
   text-align: left;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
 }
 .issue-table th,
 .issue-table td {
   padding: 10px 14px;
+  text-align: left;
 }
 .issue-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 .issue-table tbody tr:hover {
-  border-bottom: 1px solid #539987;
-  border-left: 1px solid #539987;
-  border-right: 1px solid #539987;
+  border-bottom: 1px solid #6f909d;
+  border-left: 1px solid #6f909d;
+  border-right: 1px solid #6f909d;
 }
 .issue-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .issue-table tbody tr:last-of-type {
-  border-bottom: 2px solid #539987;
+  border-bottom: 2px solid #6f909d;
 }
 
 /* ac pull request component styles */
 .ac-pull-requests {
   /* border: #009879 dotted; */
-  padding: 12px;
+  text-align: center;
+  /* padding: 12px; */
   margin: 10px 0px;
 }
 
@@ -177,37 +187,40 @@ p {
 .pr-table {
   border-collapse: collapse;
   margin: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
   /* font-size: 0.9em; */
   min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .pr-table a {
   text-decoration: none;
-  color: #009879;
+  color: #6f909d;
 }
 .pr-table thead th {
   background-color: #6f909d;
   color: #ffffff;
   text-align: left;
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
 }
 .pr-table th,
 .pr-table td {
   padding: 10px 14px;
+  text-align: left;
 }
 .pr-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 .pr-table tbody tr:hover {
-  border-bottom: 1px solid #009879;
-  border-left: 1px solid #009879;
-  border-right: 1px solid #009879;
+  border-bottom: 1px solid #6f909d;
+  border-left: 1px solid #6f909d;
+  border-right: 1px solid #6f909d;
 }
 .pr-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .pr-table tbody tr:last-of-type {
-  border-bottom: 2px solid #5b5b5b;
+  border-bottom: 2px solid #6f909d;
 }
 /* ************************************************************************************** */
 

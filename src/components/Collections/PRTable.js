@@ -4,8 +4,8 @@ import { Table } from "reactstrap";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { COLUMNS } from "./PRColumns";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
-import { Button } from "bootstrap";
-import { Empty } from "antd";
+// import { Button } from "bootstrap";
+import { Empty, Input, Select, Button } from "antd";
 
 const PRTable = ({ pr }) => {
   // const columns = useMemo(() => COLUMNS, []);
@@ -45,6 +45,8 @@ const PRTable = ({ pr }) => {
 
   const { pageIndex, pageSize } = state;
 
+  const { Option } = Select;
+
   return (
     <div className="pr-list">
       <h3>PRs: {rows.length}</h3>
@@ -53,7 +55,7 @@ const PRTable = ({ pr }) => {
         hover
         className="pr-table"
         {...getTableProps()}
-        width={1300}
+        width={1450}
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -99,7 +101,9 @@ const PRTable = ({ pr }) => {
         </span>
         <span>
           | Go to page:{" "}
-          <input
+          <Input
+            min="1"
+            size="small"
             type="number"
             defaultValue={pageIndex + 1}
             onChange={(e) => {
@@ -109,30 +113,44 @@ const PRTable = ({ pr }) => {
               gotoPage(pageNumber);
             }}
             style={{ width: "50px" }}
-          ></input>
+          ></Input>{" "}
         </span>
-        <select
+        <Select
+          size="small"
           value={pageSize}
-          onChange={(e) => setPageSize(Number(e.target.value))}
+          onChange={(e) => setPageSize(Number(e))}
         >
           {[10, 25, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
+            <Option key={pageSize} value={pageSize}>
               Show {pageSize}
-            </option>
+            </Option>
           ))}
-        </select>
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        </Select>
+        {" | "}
+        <Button
+          size="small"
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        >
           {"<<"}
-        </button>
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        </Button>{" "}
+        <Button
+          size="small"
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
           Previous
-        </button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
+        </Button>{" "}
+        <Button size="small" onClick={() => nextPage()} disabled={!canNextPage}>
           Next
-        </button>
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+        </Button>{" "}
+        <Button
+          size="small"
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
           {">>"}
-        </button>
+        </Button>
       </div>
     </div>
   );

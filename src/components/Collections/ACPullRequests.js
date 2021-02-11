@@ -16,7 +16,7 @@ const ACPullRequests = ({ owner, repository }) => {
 
   return (
     <div className="ac-pull-requests">
-      <h2>PR Table: {name}</h2>
+      <h2>Pull Requests Table</h2>
       {/* <h3>Total PRs: {count >= 100 ? "100+" : count}</h3> */}
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
