@@ -47,7 +47,7 @@ p {
 .navbar .links {
   margin-left: auto;
   background: transparent;
-  color: #009879;
+  color: #ffa630;
 }
 .navbar a {
   text-decoration: none;
@@ -58,7 +58,7 @@ p {
   color: #eee;
 }
 .navbar a:hover {
-  color: #cc9c00;
+  color: #ffa630;
 }
 /* ************************************************************************************** */
 
@@ -147,7 +147,7 @@ p {
 }
 .issue-table a {
   text-decoration: none;
-  color: #6f909d;
+  color: #3d5861;
 }
 .issue-table thead th {
   background-color: #6f909d;
@@ -195,7 +195,7 @@ p {
 }
 .pr-table a {
   text-decoration: none;
-  color: #6f909d;
+  color: #3d5861;
 }
 .pr-table thead th {
   background-color: #6f909d;
@@ -406,17 +406,22 @@ p {
 
 .repo-list {
   /* border: #009879 dotted; */
-  background-color: #e9c46a;
-  padding: 6px;
+  background-color: #eee;
+  border-top: #ffa630 solid 4px;
+  /* padding: 6px; */
   width: 25%;
   margin: 10px;
 }
 .repo-analytics {
-  border: #009879 dotted;
+  /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
   margin: 10px;
   text-align: center;
+}
+
+.repo-analytics h1 {
+  color: #3d5861;
 }
 
 .repo-list h2 {
@@ -441,13 +446,13 @@ p {
   /* margin: 10px 0px; */
 }
 .repo-list p:hover {
-  color: #009879;
+  color: #6f909d;
   transform: scale(1.02);
 }
 
 .repo-analytics {
-  padding: 6px;
-  /* margin: 10px 0px; */
+  /* padding: 6px; */
+  margin: 10px 0px;
 }
 .overall-graphs {
   justify-content: flex-start;
@@ -481,9 +486,11 @@ p {
   margin: 6px;
   height: 50%;
 }
+
 .issue-close-average h2,
 .pr-merge-average h2 {
   font-size: 5.5em;
+  color: #3d5861;
 }
 .chart-bar {
   /* border: #009879 dotted; */

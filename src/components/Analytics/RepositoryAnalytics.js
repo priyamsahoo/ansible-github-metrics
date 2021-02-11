@@ -152,8 +152,8 @@ const RepositoryAnalytics = ({ owner, repository }) => {
   ]);
 
   return (
-    <div>
-      <h2>{repository} Analytics</h2>
+    <div className="repository-analytics">
+      <h1>Analytics for {repository} repository</h1>
       <div className="overall-graphs">
         {/* {issuesGroupedByMonth && (
             <LineGraph

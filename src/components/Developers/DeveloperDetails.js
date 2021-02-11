@@ -1,3 +1,4 @@
+import { Divider } from "antd";
 import OverallInfo from "./OverallInfo";
 import SpiltupInfo from "./SplitupInfo";
 
@@ -16,6 +17,7 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
       )} */}
 
       <OverallInfo selectedDeveloper={selectedDeveloper} />
+      <Divider plain style={{ backgroundColor: "#6f909d" }} />
       <SpiltupInfo selectedDeveloper={selectedDeveloper} />
     </div>
   );

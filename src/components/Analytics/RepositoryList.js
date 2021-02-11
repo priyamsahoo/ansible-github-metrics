@@ -32,6 +32,7 @@ const RepositoryList = ({ repositoryCallback }) => {
         onChange={(e) => handleSearch(e)}
       /> */}
       <Input
+        size="small"
         placeholder={`Search (${searchResults.length})`}
         // type="text"
         allowClear={true}
