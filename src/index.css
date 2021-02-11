@@ -28,25 +28,21 @@ p {
 /* ************************************************************************************** */
 /* navbar styles */
 .navbar {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #93a392;
+  background-color: #3d5861;
 }
 .navbar img {
   background: transparent;
-  /* background-color: aqua; */
 }
-.navbar h1 {
+.navbar h2 {
   color: #eee;
-  /* background-color: aqua; */
   background: transparent;
-  /* font-size: 2em; */
-  font-size: x-large;
 }
 .navbar .links {
   margin-left: auto;
@@ -68,17 +64,16 @@ p {
 
 /* ************************************************************************************** */
 /* Collection styles */
-.collections {
+/* .collections {
   padding: 10px;
-}
+} */
 
 .collection-contents {
   display: flex;
   flex-direction: row;
 }
-
 .insights-and-release-info {
-  width: 20%;
+  width: 25%;
   margin: 10px;
 }
 .information-inner {
@@ -90,19 +85,9 @@ p {
   margin: 6px;
   width: 40%;
 }
-/* .information-percentage {
-  margin: 6px;
-  width: 50%;
-  height: 50%;
-  border: #009879 dotted;
-  text-align: center;
-}
-.information-percentage h3 {
-  font-size: 2.5em;
-} */
 
 .repository-dropdown {
-  border-top: #ffc107 solid;
+  border-top: #ffa630 solid 4px;
   background-color: #eee;
   /* background-color: #dbaca9; */
 }
@@ -115,23 +100,24 @@ p {
   font-weight: bold;
 }
 /* collection insight component style */
+
 .collection-insights {
   /* border: #009879 dotted; */
   padding: 6px;
   margin: 10px 0px;
   background-color: #eee;
-  border-top: #ffc107 solid;
+  border-top: #ffa630 solid 4px;
 }
 .releases-and-tags {
   /* border: #009879 dotted; */
   padding: 6px;
   margin: 10px 0px;
   background-color: #eee;
-  border-top: #ffc107 solid;
+  border-top: #ffa630 solid 4px;
 }
 
 .tables {
-  width: 80%;
+  width: 100%;
   /* flex-grow: 1; */
   margin: 10px;
   /* background-color: #eee; */
@@ -156,7 +142,7 @@ p {
   color: #539987;
 }
 .issue-table thead th {
-  background-color: #539987;
+  background-color: #6f909d;
   color: #eee;
   text-align: left;
   font-size: 1.2em;
@@ -200,7 +186,7 @@ p {
   color: #009879;
 }
 .pr-table thead th {
-  background-color: #2a9d8f;
+  background-color: #6f909d;
   color: #ffffff;
   text-align: left;
   font-size: 1.2em;
@@ -227,9 +213,9 @@ p {
 
 /* ************************************************************************************** */
 /* Developers styles */
-.developers {
+/* .developers {
   padding: 10px;
-}
+} */
 
 .developers-content {
   display: flex;
@@ -240,7 +226,7 @@ p {
   /* border: #009879 dotted; */
   background-color: #eee;
   border-top: #ffc107 solid;
-  width: 20%;
+  width: 25%;
   margin: 10px;
 }
 .dev-details {
@@ -387,7 +373,7 @@ p {
 /* ************************************************************************************** */
 /* Analytics styles */
 .analytics {
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
   flex-direction: row;
 }
@@ -400,7 +386,7 @@ p {
   /* border: #009879 dotted; */
   background-color: #e9c46a;
   padding: 6px;
-  width: 20%;
+  width: 25%;
   margin: 10px;
 }
 .repo-analytics {

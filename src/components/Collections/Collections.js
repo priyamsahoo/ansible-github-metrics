@@ -5,6 +5,7 @@ import CollectionInsights from "./CollectionInsights";
 import ReleasesAndTags from "./ReleasesAndTags";
 import RepositoryDropdown from "./RepositoryDropdown.";
 import { REPOSITORIES } from "../../data/repositories";
+import { Divider } from "antd";
 
 const Collections = () => {
   // Default repository is the first repository object in REPOSITORIES list
@@ -43,6 +44,7 @@ const Collections = () => {
           <div>
             <ACIssues owner={repository.owner} repository={repository.repo} />
           </div>
+          <Divider plain style={{ backgroundColor: "#3d5861" }}></Divider>
           <div>
             <ACPullRequests
               owner={repository.owner}
