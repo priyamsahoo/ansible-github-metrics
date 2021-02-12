@@ -1,12 +1,18 @@
 @import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+/* Color theme of the app */
+:root {
+  --primary-color: #3d5861;
+  --primary-color-light: #6f909d;
+  --secondary-color: #ffa630;
+  --side-nav-background: #eee;
+}
+
 /* base styles */
 * {
   margin: 0;
   font-family: "Quicksand";
-  color: #333;
-  /* background-color: #eee; */
 }
 h1,
 h2,
@@ -18,10 +24,6 @@ span,
 div,
 svg {
   background: transparent;
-}
-
-p {
-  /* font-size: medium; */
   background-color: transparent;
 }
 
@@ -35,19 +37,19 @@ p {
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
-  background-color: #3d5861;
+  background-color: var(--primary-color);
 }
 .navbar img {
   background: transparent;
 }
 .navbar h2 {
-  color: #eee;
+  color: var(--side-nav-background);
   background: transparent;
 }
 .navbar .links {
   margin-left: auto;
   background: transparent;
-  color: #ffa630;
+  color: var(--secondary-color);
 }
 .navbar a {
   text-decoration: none;
@@ -55,10 +57,10 @@ p {
   font-weight: 600;
   padding: 0px 16px;
   background-color: transparent;
-  color: #eee;
+  color: var(--side-nav-background);
 }
 .navbar a:hover {
-  color: #ffa630;
+  color: var(--secondary-color);
 }
 /* ************************************************************************************** */
 
@@ -67,6 +69,10 @@ p {
 /* .collections {
   padding: 10px;
 } */
+
+.page-header {
+  border-bottom: 1px solid rgb(235, 237, 240);
+}
 
 .collection-contents {
   display: flex;
@@ -87,8 +93,8 @@ p {
 }
 
 .repository-dropdown {
-  border-top: #ffa630 solid 4px;
-  background-color: #eee;
+  border-top: var(--secondary-color) solid 4px;
+  background-color: var(--side-nav-background);
   /* background-color: #dbaca9; */
 }
 .repository-dropdown label {
@@ -105,15 +111,15 @@ p {
   /* border: #009879 dotted; */
   /* padding: 6px; */
   margin: 10px 0px;
-  background-color: #eee;
-  border-top: #ffa630 solid 4px;
+  background-color: var(--side-nav-background);
+  border-top: var(--secondary-color) solid 4px;
 }
 .releases-and-tags {
   /* border: #009879 dotted; */
   /* padding: 6px; */
   margin: 10px 0px;
-  background-color: #eee;
-  border-top: #ffa630 solid 4px;
+  background-color: var(--side-nav-background);
+  border-top: var(--secondary-color) solid 4px;
 }
 
 .tables {
@@ -122,10 +128,10 @@ p {
   /* border: #009879; */
   /* flex-grow: 1; */
   margin: 10px;
-  /* background-color: #eee; */
+  /* background-color: var(--side-nav-background); */
 }
 .tables h1 {
-  color: #3d5861;
+  color: var(--primary-color);
 }
 /* ac issues component styles */
 .ac-issues {
@@ -147,11 +153,11 @@ p {
 }
 .issue-table a {
   text-decoration: none;
-  color: #3d5861;
+  color: var(--primary-color);
 }
 .issue-table thead th {
-  background-color: #6f909d;
-  color: #eee;
+  background-color: var(--primary-color-light);
+  color: var(--side-nav-background);
   text-align: left;
   /* font-size: 1.2em; */
 }
@@ -164,15 +170,15 @@ p {
   border-bottom: 1px solid #dddddd;
 }
 .issue-table tbody tr:hover {
-  border-bottom: 1px solid #6f909d;
-  border-left: 1px solid #6f909d;
-  border-right: 1px solid #6f909d;
+  border-bottom: 1px solid var(--primary-color-light);
+  border-left: 1px solid var(--primary-color-light);
+  border-right: 1px solid var(--primary-color-light);
 }
 .issue-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .issue-table tbody tr:last-of-type {
-  border-bottom: 2px solid #6f909d;
+  border-bottom: 2px solid var(--primary-color-light);
 }
 
 /* ac pull request component styles */
@@ -195,10 +201,10 @@ p {
 }
 .pr-table a {
   text-decoration: none;
-  color: #3d5861;
+  color: var(--primary-color);
 }
 .pr-table thead th {
-  background-color: #6f909d;
+  background-color: var(--primary-color-light);
   color: #ffffff;
   text-align: left;
   /* font-size: 1.2em; */
@@ -212,15 +218,15 @@ p {
   border-bottom: 1px solid #dddddd;
 }
 .pr-table tbody tr:hover {
-  border-bottom: 1px solid #6f909d;
-  border-left: 1px solid #6f909d;
-  border-right: 1px solid #6f909d;
+  border-bottom: 1px solid var(--primary-color-light);
+  border-left: 1px solid var(--primary-color-light);
+  border-right: 1px solid var(--primary-color-light);
 }
 .pr-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
 .pr-table tbody tr:last-of-type {
-  border-bottom: 2px solid #6f909d;
+  border-bottom: 2px solid var(--primary-color-light);
 }
 /* ************************************************************************************** */
 
@@ -237,8 +243,8 @@ p {
 
 .dev-list {
   /* border: #009879 dotted; */
-  background-color: #eee;
-  border-top: #ffa630 solid 4px;
+  background-color: var(--side-nav-background);
+  border-top: var(--secondary-color) solid 4px;
   width: 25%;
   margin: 10px;
 }
@@ -248,12 +254,6 @@ p {
   width: 100%;
   margin: 10px;
   text-align: center;
-}
-
-.developer-list {
-  padding: 6px;
-  /* margin: 10px 0px; */
-  /* width: 80%; */
 }
 
 .developer-list h2 {
@@ -278,14 +278,10 @@ p {
   /* margin: 10px 0px; */
 }
 .developer-list p:hover {
-  color: #6f909d;
+  color: var(--primary-color-light);
   transform: scale(1.02);
 }
 
-.developer-details {
-  padding: 6px;
-  /* margin: 10px 0px; */
-}
 .overall-info {
   /* padding: 6px; */
   margin: 10px 0px;
@@ -301,7 +297,7 @@ p {
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  border: #3d5861 solid 1px;
+  border: var(--primary-color) solid 1px;
   background-position: "center";
   background-size: auto 80px;
 }
@@ -310,10 +306,10 @@ p {
 }
 .profile-info a {
   text-decoration: none;
-  color: #3d5861;
+  color: var(--primary-color);
 }
 .profile-info p {
-  color: #3d5861;
+  color: var(--primary-color);
 }
 
 .collection-contributions {
@@ -327,7 +323,7 @@ p {
   padding: 6px;
   width: 200px;
   height: 140px;
-  background: #6f909d;
+  background: var(--primary-color-light);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .collection-contributions h2 {
@@ -336,20 +332,20 @@ p {
 .collection-contributions h1 {
   background: transparent;
   font-size: 3em;
-  color: #3d5861;
+  color: var(--primary-color);
 }
 .total-contributions h2 {
-  color: #eee;
+  color: var(--side-nav-background);
 }
 .total-contributions h1 {
-  color: #eee;
+  color: var(--side-nav-background);
 }
 .contribution-splits {
   /* border: #009879 dotted; */
   width: 200px;
   height: 140px;
   /* background-color: rgb(207, 228, 215); */
-  border-top: #3d5861 solid 2px;
+  border-top: var(--primary-color) solid 2px;
   margin: 6px;
   padding: 6px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
@@ -374,8 +370,8 @@ p {
   /* border: #009879 dotted; */
 }
 .repository-wise-issue-pr-data {
-  border: #6f909d solid 1px;
-  background-color: #eee;
+  border: var(--primary-color-light) solid 1px;
+  background-color: var(--side-nav-background);
   margin: 10px;
   padding-bottom: 10px;
   width: 300px;
@@ -386,8 +382,8 @@ p {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .repository-wise-issue-pr-data h2 {
-  background: #6f909d;
-  color: #eee;
+  background: var(--primary-color-light);
+  color: var(--side-nav-background);
   padding: 6px;
 }
 /* ************************************************************************************** */
@@ -406,8 +402,8 @@ p {
 
 .repo-list {
   /* border: #009879 dotted; */
-  background-color: #eee;
-  border-top: #ffa630 solid 4px;
+  background-color: var(--side-nav-background);
+  border-top: var(--secondary-color) solid 4px;
   /* padding: 6px; */
   width: 25%;
   margin: 10px;
@@ -421,7 +417,7 @@ p {
 }
 
 .repo-analytics h1 {
-  color: #3d5861;
+  color: var(--primary-color);
 }
 
 .repo-list h2 {
@@ -446,7 +442,7 @@ p {
   /* margin: 10px 0px; */
 }
 .repo-list p:hover {
-  color: #6f909d;
+  color: var(--primary-color-light);
   transform: scale(1.02);
 }
 
@@ -478,7 +474,7 @@ p {
 }
 /* Doughnut Chart */
 .chart-doughnut {
-  background-color: #eee;
+  background-color: var(--side-nav-background);
   padding: 6px;
   margin: 6px;
   justify-content: center;
@@ -490,7 +486,7 @@ p {
 /* Divs for averages */
 .issue-close-average,
 .pr-merge-average {
-  background-color: #eee;
+  background-color: var(--side-nav-background);
   padding: 6px;
   margin: 6px;
   /* width: 100%;
@@ -499,11 +495,11 @@ p {
 .issue-close-average h2,
 .pr-merge-average h2 {
   font-size: 6em;
-  color: #3d5861;
+  color: var(--primary-color);
 }
 /* Bar Chart */
 .chart-bar {
-  background-color: #eee;
+  background-color: var(--side-nav-background);
   padding: 6px;
   margin: 6px;
   justify-content: center;

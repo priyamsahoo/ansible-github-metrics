@@ -5,7 +5,7 @@ import CollectionInsights from "./CollectionInsights";
 import ReleasesAndTags from "./ReleasesAndTags";
 import RepositoryDropdown from "./RepositoryDropdown.";
 import { REPOSITORIES } from "../../data/repositories";
-import { Divider } from "antd";
+import { Divider, PageHeader } from "antd";
 
 const Collections = () => {
   // Default repository is the first repository object in REPOSITORIES list
@@ -41,7 +41,11 @@ const Collections = () => {
           </div>
         </div>
         <div className="tables">
-          <h1>{`Tables for ${repository.repo} repository`}</h1>
+          <PageHeader
+            className="page-header"
+            title="Tables"
+            subTitle={repository.repo}
+          />
           <div>
             <ACIssues owner={repository.owner} repository={repository.repo} />
           </div>

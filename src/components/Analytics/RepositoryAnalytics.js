@@ -13,7 +13,7 @@ import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
 import DoughnutGraph from "./DoughnutGraph";
 import { calculateAverageDays } from "../../utils/calculateAverageDays";
-import { Row, Col } from "antd";
+import { Row, Col, PageHeader } from "antd";
 
 const RepositoryAnalytics = ({ owner, repository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
@@ -153,8 +153,12 @@ const RepositoryAnalytics = ({ owner, repository }) => {
 
   return (
     <div className="repository-analytics">
-      <h1>Analytics for {repository} repository</h1>
-
+      {/* <h1>Analytics for {repository} repository</h1> */}
+      <PageHeader
+        className="page-header"
+        title="Analytics"
+        subTitle={repository}
+      />
       <Row>
         <Col span={12}>
           {mergedIssueData && (
@@ -232,7 +236,6 @@ const RepositoryAnalytics = ({ owner, repository }) => {
           )}
         </Col>
       </Row>
-
       {/* <div className="overall-graphs">
         {mergedIssueData && (
           <LineGraph
