@@ -4,7 +4,9 @@
 /* Color theme of the app */
 :root {
   --primary-color: #3d5861;
+  /* --primary-color: #454b61; */
   --primary-color-light: #6f909d;
+  /* --primary-color-light: #6a6f81; */
   --secondary-color: #ffa630;
   --side-nav-background: #eee;
 }
@@ -321,6 +323,7 @@ svg {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .total-contributions {
   /* border: #009879 dotted; */
