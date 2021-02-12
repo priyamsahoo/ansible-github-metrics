@@ -3,7 +3,7 @@ import ACIssues from "./ACIssues";
 import ACPullRequests from "./ACPullRequests";
 import CollectionInsights from "./CollectionInsights";
 import ReleasesAndTags from "./ReleasesAndTags";
-import RepositoryDropdown from "./RepositoryDropdown.";
+import RepositoryDropdown from "./RepositoryDropdown";
 import { REPOSITORIES } from "../../data/repositories";
 import { Divider, PageHeader } from "antd";
 

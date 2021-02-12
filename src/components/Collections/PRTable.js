@@ -55,7 +55,7 @@ const PRTable = ({ pr }) => {
         hover
         className="pr-table"
         {...getTableProps()}
-        width={1450}
+        style={{ width: "100%" }}
       >
         <thead>
           {headerGroups.map((headerGroup) => (

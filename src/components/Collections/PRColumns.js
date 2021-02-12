@@ -17,7 +17,7 @@ export const COLUMNS = [
     filter: (rows, columnId, filterValues) => {
       return filterValues;
     },
-    maxWidth: 100,
+    width: 100,
   },
   // {
   //     id: 'node.closed',
@@ -35,7 +35,7 @@ export const COLUMNS = [
     Filter: SelectColumnFilter,
     filter: "equals",
     disableSortBy: true,
-    maxWidth: 100,
+    width: 100,
   },
   {
     // Header: <CenteredHeader name="Title" />,
@@ -48,7 +48,7 @@ export const COLUMNS = [
       </a>
     ),
     disableSortBy: true,
-    maxWidth: 250,
+    width: 250,
   },
   {
     // Header: <CenteredHeader name="Updated At" />,
@@ -59,7 +59,7 @@ export const COLUMNS = [
       return moment(new Date(value)).format("ll");
     },
     disableFilters: true,
-    maxWidth: 100,
+    width: 100,
   },
   {
     // Header: <CenteredHeader name="Author" />,
@@ -67,6 +67,6 @@ export const COLUMNS = [
     Footer: "Author",
     accessor: "node.author.login",
     disableFilters: true,
-    maxWidth: 100,
+    width: 100,
   },
 ];

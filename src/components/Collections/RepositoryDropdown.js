@@ -14,7 +14,7 @@ const RepositoryDropdown = ({ repositoryCallback }) => {
         onChange={(e) => repositoryCallback(e[1], e[0])}
         // onSelect={(e) => console.log(e[1], e[0])}
         defaultValue={[repositories[0].repo, repositories[0].owner]}
-        style={{ width: 250 }}
+        style={{ width: "100%" }}
       >
         {repositories.map((repository) => (
           <Option value={[repository.repo, repository.owner]}>

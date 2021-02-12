@@ -59,7 +59,8 @@ const IssueTable = ({ issues }) => {
         hover
         className="issue-table"
         {...getTableProps()}
-        width={1450}
+        // width={1450}
+        style={{ width: "100%" }}
       >
         <thead>
           {headerGroups.map((headerGroup) => (
