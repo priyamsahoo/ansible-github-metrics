@@ -13,7 +13,10 @@ const RepositoryDropdown = ({ repositoryCallback }) => {
       <Select
         onChange={(e) => repositoryCallback(e[1], e[0])}
         // onSelect={(e) => console.log(e[1], e[0])}
-        defaultValue={[repositories[0].repo, repositories[0].owner]}
+        defaultValue={
+          JSON.parse(localStorage.getItem("collectionsRepository")).repo ||
+          repositories[0].repo
+        }
         style={{ width: "100%" }}
       >
         {repositories.map((repository) => (

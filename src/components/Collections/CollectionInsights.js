@@ -10,8 +10,6 @@ const CollectionInsights = ({ owner, repository }) => {
 
   console.log(data);
 
-  // let openIssues = data.repository.issues.totalCount;
-
   const displayDetails = () => {
     return (
       <div className="information">
@@ -21,17 +19,13 @@ const CollectionInsights = ({ owner, repository }) => {
             <p>Closed Issues: {data.repository.closedIssues.totalCount}</p>
           </div>
           <div className="information-percentage">
-            {/* <h3>
-              {(
-                (data.repository.closedIssues.totalCount /
-                  (data.repository.openIssues.totalCount +
-                    data.repository.closedIssues.totalCount)) *
-                100
-              ).toFixed(2)}
-              %
-            </h3> */}
-            {/* <h4>Closed issues</h4> */}
-            <Card>
+            <div
+              style={{
+                backgroundColor: "white",
+                height: "100%",
+                padding: "10px",
+              }}
+            >
               <Statistic
                 title="Closed Issues"
                 value={
@@ -45,7 +39,7 @@ const CollectionInsights = ({ owner, repository }) => {
                 prefix={<ArrowUpOutlined />}
                 suffix="%"
               />
-            </Card>
+            </div>
           </div>
         </div>
         <br></br>
@@ -56,17 +50,13 @@ const CollectionInsights = ({ owner, repository }) => {
             <p>Merged PRs: {data.repository.mergedPRs.totalCount}</p>
           </div>
           <div className="information-percentage">
-            {/* <h3>
-              {(
-                (data.repository.mergedPRs.totalCount /
-                  (data.repository.openPRs.totalCount +
-                    data.repository.mergedPRs.totalCount)) *
-                100
-              ).toFixed(2)}
-              %
-            </h3>
-            <h4>Merged PRs</h4> */}
-            <Card>
+            <div
+              style={{
+                backgroundColor: "white",
+                height: "100%",
+                padding: "10px",
+              }}
+            >
               <Statistic
                 title="Merged PRs"
                 value={
@@ -80,7 +70,7 @@ const CollectionInsights = ({ owner, repository }) => {
                 prefix={<ArrowUpOutlined />}
                 suffix="%"
               />
-            </Card>
+            </div>
           </div>
         </div>
       </div>

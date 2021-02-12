@@ -78,6 +78,13 @@ svg {
   display: flex;
   flex-direction: row;
 }
+.collection-insights {
+  /* border: #009879 dotted; */
+  /* padding: 6px; */
+  margin: 10px 0px;
+  background-color: var(--side-nav-background);
+  border-top: var(--secondary-color) solid 4px;
+}
 .insights-and-release-info {
   width: 25%;
   margin: 10px;
@@ -89,7 +96,12 @@ svg {
 }
 .information-numericals {
   margin: 6px;
-  width: 40%;
+  width: 60%;
+}
+.information-percentage {
+  text-align: center;
+  margin: 6px;
+  width: 100%;
 }
 
 .repository-dropdown {
@@ -107,13 +119,6 @@ svg {
 }
 /* collection insight component style */
 
-.collection-insights {
-  /* border: #009879 dotted; */
-  /* padding: 6px; */
-  margin: 10px 0px;
-  background-color: var(--side-nav-background);
-  border-top: var(--secondary-color) solid 4px;
-}
 .releases-and-tags {
   /* border: #009879 dotted; */
   /* padding: 6px; */
