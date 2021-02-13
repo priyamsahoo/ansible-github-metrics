@@ -1,19 +1,15 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { Table } from "reactstrap";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
-import { COLUMNS } from "./IssueColumns";
+// import { COLUMNS } from "./IssueColumns";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
-// import { Button } from "bootstrap";
 import { Empty, Input, Select } from "antd";
 import { Button } from "antd";
 
-const IssueTable = ({ issues }) => {
+const DataTable = ({ title, tableData, tableColumns }) => {
   // const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => issues, []);
 
-  const columns = COLUMNS;
-  const data = issues;
+  const columns = tableColumns;
+  const data = tableData;
 
   const tableInstance = useTable(
     {
@@ -48,13 +44,11 @@ const IssueTable = ({ issues }) => {
 
   const { Option } = Select;
 
-  //
-  //
-
   return (
     <div className="issue-list">
+      <h2>{title}</h2>
       <h3>Issues: {rows.length}</h3>
-      <Table
+      <table
         bordered
         hover
         className="issue-table"
@@ -96,7 +90,7 @@ const IssueTable = ({ issues }) => {
             </>
           )}
         </tbody>
-      </Table>
+      </table>
       <div>
         <span>
           Page{" "}
@@ -161,4 +155,4 @@ const IssueTable = ({ issues }) => {
   );
 };
 
-export default IssueTable;
+export default DataTable;

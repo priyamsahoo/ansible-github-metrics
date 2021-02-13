@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { ISSUES } from "../../queries/queries";
-import IssueTable from "./IssueTable";
-import { useState } from "react";
+import DataTable from "./DataTable";
+import { ISSUE_COLUMNS } from "./IssueColumns";
 
 const ACIssues = ({ owner, repository }) => {
   // const [repository, setRepository] = useState("cisco.nxos");
@@ -11,16 +11,17 @@ const ACIssues = ({ owner, repository }) => {
   });
   // console.log(data);
 
-  const name = data ? data.repository.name : null;
-  const count = data ? data.repository.issues.edges.length : 0;
-
   return (
     <div className="ac-issues">
-      <h2>Issues Table</h2>
-      {/* <h3>Total Issues: {count >= 100 ? "100+" : count}</h3> */}
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
-      {data && <IssueTable issues={data.repository.issues.edges} />}
+      {data && (
+        <DataTable
+          title="Issues Table"
+          tableData={data.repository.issues.edges}
+          tableColumns={ISSUE_COLUMNS}
+        />
+      )}
     </div>
   );
 };

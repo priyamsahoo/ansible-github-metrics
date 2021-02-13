@@ -4,7 +4,7 @@ import { DateFilter, SelectColumnFilter } from "../../utils/filters";
 import moment from "moment";
 // import { CenteredHeader } from "./CenteredHeader";
 
-export const COLUMNS = [
+export const ISSUE_COLUMNS = [
   {
     // Header: <CenteredHeader name="Created At" />,
     Header: "Created At",
