@@ -142,7 +142,7 @@ const SpiltupInfo = ({ selectedDeveloper }) => {
     }
   );
 
-  // console.log(prData);
+  console.log("PR DATA: ", prData);
 
   return (
     <div className="splitup-info">

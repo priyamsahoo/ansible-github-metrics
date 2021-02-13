@@ -9,7 +9,7 @@ const Navbar = () => {
       {/* <Avatar icon={logo} size={50}></Avatar> */}
       <h2 style={{ fontWeight: "bold" }}> Networks Collection Metrics</h2>
       <div className="links">
-        <Link to="/">Collections</Link>
+        <Link to="/collections">Collections</Link>
         <Link to="/developers">Developers</Link>
         <Link to="/analytics">Analytics</Link>
       </div>

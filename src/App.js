@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Collections from "./components/Collections/Collections";
 import Developers from "./components/Developers/Developers";
 import Analytics from "./components/Analytics/Analytics";
+import Error404 from "./components/ErrorPage/Error404";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path={["/", "/collections"]}>
             <Collections />
           </Route>
           <Route exact path="/developers">
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path="/analytics">
             <Analytics />
+          </Route>
+          <Route path="*">
+            <Error404 />
           </Route>
         </Switch>
       </div>
