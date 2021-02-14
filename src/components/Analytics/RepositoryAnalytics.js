@@ -183,16 +183,6 @@ const RepositoryAnalytics = ({ owner, repository }) => {
               )}
             </Col>
             <Col span={12}>
-              {averageDaysIssueClosed && (
-                <div className="issue-close-average">
-                  <h3>Avg. days to close an issue</h3>
-                  <h2>{averageDaysIssueClosed}</h2>
-                </div>
-              )}
-            </Col>
-          </Row>
-          <Row>
-            <Col span={12}>
               {totalOpenPRCount && totalMergePRCount && (
                 <DoughnutGraph
                   heading="Pull Request Chart"
@@ -201,6 +191,16 @@ const RepositoryAnalytics = ({ owner, repository }) => {
                   label2="Merge PRs"
                   data2={totalMergePRCount}
                 />
+              )}
+            </Col>
+          </Row>
+          <Row>
+            <Col span={12}>
+              {averageDaysIssueClosed && (
+                <div className="issue-close-average">
+                  <h3>Avg. days to close an issue</h3>
+                  <h2>{averageDaysIssueClosed}</h2>
+                </div>
               )}
             </Col>
             <Col span={12}>

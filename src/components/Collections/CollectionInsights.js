@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/queries";
-import { Statistic, Card } from "antd";
+import { Row, Col, Statistic, Card, Divider } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 
 const CollectionInsights = ({ owner, repository }) => {
@@ -13,65 +13,91 @@ const CollectionInsights = ({ owner, repository }) => {
   const displayDetails = () => {
     return (
       <div className="information">
-        <div className="information-inner">
-          <div className="information-numericals">
-            <p>Open Issues: {data.repository.openIssues.totalCount}</p>
-            <p>Closed Issues: {data.repository.closedIssues.totalCount}</p>
-          </div>
-          <div className="information-percentage">
-            <div
-              style={{
-                backgroundColor: "white",
-                height: "100%",
-                padding: "10px",
-              }}
-            >
-              <Statistic
-                title="Closed Issues"
-                value={
-                  (data.repository.closedIssues.totalCount /
-                    (data.repository.openIssues.totalCount +
-                      data.repository.closedIssues.totalCount)) *
-                  100
-                }
-                precision={2}
-                valueStyle={{ color: "#3f8600" }}
-                prefix={<ArrowUpOutlined />}
-                suffix="%"
-              />
-            </div>
-          </div>
-        </div>
-        <br></br>
-        <div className="information-inner">
-          <div className="information-numericals">
-            <p>Open PRs: {data.repository.openPRs.totalCount}</p>
-            <p>Closed PRs: {data.repository.closedPRs.totalCount}</p>
-            <p>Merged PRs: {data.repository.mergedPRs.totalCount}</p>
-          </div>
-          <div className="information-percentage">
-            <div
-              style={{
-                backgroundColor: "white",
-                height: "100%",
-                padding: "10px",
-              }}
-            >
-              <Statistic
-                title="Merged PRs"
-                value={
-                  (data.repository.mergedPRs.totalCount /
-                    (data.repository.openPRs.totalCount +
-                      data.repository.mergedPRs.totalCount)) *
-                  100
-                }
-                precision={2}
-                valueStyle={{ color: "#3f8600" }}
-                prefix={<ArrowUpOutlined />}
-                suffix="%"
-              />
-            </div>
-          </div>
+        <Divider orientation="center" plain>
+          Issues
+        </Divider>
+
+        <Row gutter={16}>
+          <Col span={12}>
+            <Statistic
+              title="Open"
+              value={data.repository.openIssues.totalCount}
+            />
+          </Col>
+          <Col span={12}>
+            <Statistic
+              title="Closed"
+              value={data.repository.closedIssues.totalCount}
+            />
+          </Col>
+        </Row>
+
+        <Divider orientation="center" plain>
+          Pull Requests
+        </Divider>
+
+        <Row gutter={16}>
+          <Col span={8}>
+            <Statistic
+              title="Open"
+              value={data.repository.openPRs.totalCount}
+            />
+          </Col>
+          <Col span={8}>
+            <Statistic
+              title="Closed"
+              value={data.repository.closedPRs.totalCount}
+            />
+          </Col>
+          <Col span={8}>
+            <Statistic
+              title="Merged"
+              value={data.repository.mergedPRs.totalCount}
+            />
+          </Col>
+        </Row>
+
+        <Divider orientation="center" plain>
+          Percentage
+        </Divider>
+
+        <div className="site-statistic-demo-card">
+          <Row gutter={6}>
+            <Col span={12}>
+              <Card>
+                <Statistic
+                  title="Closed Issues"
+                  value={
+                    (data.repository.closedIssues.totalCount /
+                      (data.repository.openIssues.totalCount +
+                        data.repository.closedIssues.totalCount)) *
+                    100
+                  }
+                  precision={2}
+                  valueStyle={{ color: "#3f8600" }}
+                  prefix={<ArrowUpOutlined />}
+                  suffix="%"
+                />
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Statistic
+                  title="Merged PRs"
+                  value={
+                    (data.repository.mergedPRs.totalCount /
+                      (data.repository.openPRs.totalCount +
+                        data.repository.mergedPRs.totalCount)) *
+                    100
+                  }
+                  precision={2}
+                  valueStyle={{ color: "#3f8600" }}
+                  prefix={<ArrowUpOutlined />}
+                  suffix="%"
+                />
+              </Card>
+            </Col>
+          </Row>
         </div>
       </div>
     );

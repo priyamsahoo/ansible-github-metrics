@@ -9,8 +9,8 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
     datasets: [
       {
         data: [data1, data2],
-        backgroundColor: ["#DC5459", "#FFCE56", "#36A2EB"],
-        hoverBackgroundColor: ["#DC5459", "#FFCE56", "#36A2EB"],
+        backgroundColor: ["#DC5459", "#FFCE56"],
+        hoverBackgroundColor: ["#DC5459", "#FFCE56"],
       },
     ],
   };
