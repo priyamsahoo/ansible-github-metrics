@@ -7,14 +7,6 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
 
   return (
     <div className="developer-details">
-      {/* <p>{selectedDeveloper}</p> */}
-      {/* {data && (
-        <OverallInfo
-          collectionInfo={
-            data.user.ansibleCollections.contributionCalendar.totalContributions
-          }
-        />
-      )} */}
       <PageHeader
         className="page-header"
         title="Developer"
