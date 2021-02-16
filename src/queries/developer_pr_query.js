@@ -1,120 +1,78 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
+import { REPOSITORIES } from '../data/repositories';
 
-const DEVELOPER_PR = gql`
-  query pr(
-    $cisco_nxos_open_pr: String!
-    $cisco_nxos_merged_pr: String!
-    $cisco_ios_open_pr: String!
-    $cisco_ios_merged_pr: String!
-    $cisco_iosxr_open_pr: String!
-    $cisco_iosxr_merged_pr: String!
-    $arista_eos_open_pr: String!
-    $arista_eos_merged_pr: String!
-    $vyos_open_pr: String!
-    $vyos_merged_pr: String!
-    $junos_open_pr: String!
-    $junos_merged_pr: String!
-    $cisco_asa_open_pr: String!
-    $cisco_asa_merged_pr: String!
-    $ansible_netcommon_open_pr: String!
-    $ansible_netcommon_merged_pr: String!
-    $frr_open_pr: String!
-    $frr_merged_pr: String!
-    $openvswitch_open_pr: String!
-    $openvswitch_merged_pr: String!
-    $community_yang_open_pr: String!
-    $community_yang_merged_pr: String!
-    $ansible_utils_open_pr: String!
-    $ansible_utils_merged_pr: String!
-  ) {
-    CISCO_NXOS_OPEN_PR: search(query: $cisco_nxos_open_pr, type: ISSUE) {
-      issueCount
+const removeSpecialCharacters = str => str.replace(/[^a-zA-Z ]/g, '');
+
+const open_pr_qs = (repo, owner, selectedDeveloper) =>
+    `"repo:${owner}/${repo} type:pr is:open author:${selectedDeveloper}"`;
+
+const merged_pr_qs = (repo, owner, selectedDeveloper) =>
+    `"repo:${owner}/${repo} type:pr is:merged author:${selectedDeveloper}"`;
+
+const open_issue_qs = (repo, owner, selectedDeveloper) =>
+    `"repo:${owner}/${repo} type:issue is:open author:${selectedDeveloper}"`;
+
+const closed_issue_qs = (repo, owner, selectedDeveloper) =>
+    `"repo:${owner}/${repo} type:issue is:closed author:${selectedDeveloper}"`;
+
+const queryGenerator = (name, owner, selectedDeveloper) => {
+    return `
+   ${removeSpecialCharacters(name).toUpperCase()}_OPEN_PR: search(query: ${open_pr_qs(
+        name,
+        owner,
+        selectedDeveloper,
+    )}, type: ISSUE, last: 100) {
+                issueCount
+            }
+
+   ${removeSpecialCharacters(name).toUpperCase()}_MERGED_PR: search(query: ${merged_pr_qs(
+        name,
+        owner,
+        selectedDeveloper,
+    )}, type: ISSUE, last: 100) {
+                issueCount
+            }
+
+   ${removeSpecialCharacters(name).toUpperCase()}_OPEN_ISSUE: search(query: ${open_issue_qs(
+        name,
+        owner,
+        selectedDeveloper,
+    )}, type: ISSUE, last: 100) {
+                issueCount
+            }
+
+   ${removeSpecialCharacters(name).toUpperCase()}_CLOSED_ISSUE: search(query: ${closed_issue_qs(
+        name,
+        owner,
+        selectedDeveloper,
+    )}, type: ISSUE, last: 100) {
+                issueCount
+            }
+
+
+            `;
+};
+
+const innerQuery = selectedDeveloper => {
+    let innerQuery = ``;
+    for (let repository of REPOSITORIES) {
+        innerQuery += queryGenerator(repository.repo, repository.owner, selectedDeveloper);
     }
-    CISCO_NXOS_MERGED_PR: search(query: $cisco_nxos_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_IOS_OPEN_PR: search(query: $cisco_ios_open_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_IOS_MERGED_PR: search(query: $cisco_ios_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_IOSXR_OPEN_PR: search(query: $cisco_iosxr_open_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_IOSXR_MERGED_PR: search(query: $cisco_iosxr_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    ARISTA_EOS_OPEN_PR: search(query: $arista_eos_open_pr, type: ISSUE) {
-      issueCount
-    }
-    ARISTA_EOS_MERGED_PR: search(query: $arista_eos_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    VYOS_OPEN_PR: search(query: $vyos_open_pr, type: ISSUE) {
-      issueCount
-    }
-    VYOS_MERGED_PR: search(query: $vyos_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    JUNOS_OPEN_PR: search(query: $junos_open_pr, type: ISSUE) {
-      issueCount
-    }
-    JUNOS_MERGED_PR: search(query: $junos_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_ASA_OPEN_PR: search(query: $cisco_asa_open_pr, type: ISSUE) {
-      issueCount
-    }
-    CISCO_ASA_MERGED_PR: search(query: $cisco_asa_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    ANSIBLE_NETCOMMON_OPEN_PR: search(
-      query: $ansible_netcommon_open_pr
-      type: ISSUE
-    ) {
-      issueCount
-    }
-    ANSIBLE_NETCOMMON_MERGED_PR: search(
-      query: $ansible_netcommon_merged_pr
-      type: ISSUE
-    ) {
-      issueCount
-    }
-    FRR_OPEN_PR: search(query: $frr_open_pr, type: ISSUE) {
-      issueCount
-    }
-    FRR_MERGED_PR: search(query: $frr_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    OPENVSWITCH_OPEN_PR: search(query: $openvswitch_open_pr, type: ISSUE) {
-      issueCount
-    }
-    OPENVSWITCH_MERGED_PR: search(query: $openvswitch_merged_pr, type: ISSUE) {
-      issueCount
-    }
-    COMMUNITY_YANG_OPEN_PR: search(
-      query: $community_yang_open_pr
-      type: ISSUE
-    ) {
-      issueCount
-    }
-    COMMUNITY_YANG_MERGED_PR: search(
-      query: $community_yang_merged_pr
-      type: ISSUE
-    ) {
-      issueCount
-    }
-    ANSIBLE_UTILS_OPEN_PR: search(query: $ansible_utils_open_pr, type: ISSUE) {
-      issueCount
-    }
-    ANSIBLE_UTILS_MERGED_PR: search(
-      query: $ansible_utils_merged_pr
-      type: ISSUE
-    ) {
-      issueCount
-    }
-  }
-`;
+
+    return innerQuery;
+};
+
+const DEVELOPER_PR = selectedDeveloper => {
+    let query = `
+        query pr {
+            ${innerQuery(selectedDeveloper)}
+        }
+
+    `;
+
+    return gql`
+        ${query}
+    `;
+};
 
 export { DEVELOPER_PR };
