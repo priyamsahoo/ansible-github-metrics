@@ -141,7 +141,7 @@ svg {
   text-align: center;
   /* border: #009879; */
   /* flex-grow: 1; */
-  margin: 10px;
+  /* margin: 10px; */
   /* background-color: var(--side-nav-background); */
 }
 .tables h1 {
@@ -266,7 +266,7 @@ svg {
   /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
-  margin: 10px;
+  /* margin: 10px; */
   text-align: center;
 }
 
@@ -427,7 +427,7 @@ svg {
   /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
-  margin: 10px;
+  /* margin: 10px; */
   text-align: center;
 }
 
@@ -461,10 +461,6 @@ svg {
   transform: scale(1.02);
 }
 
-.repo-analytics {
-  /* padding: 6px; */
-  margin: 10px 0px;
-}
 .overall-graphs {
   justify-content: flex-start;
   display: flex;
