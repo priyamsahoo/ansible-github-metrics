@@ -208,11 +208,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
             </Select>
           </Card>
         </div>
-        {contributionLoading && (
-          <div className="collection-contributions">
-            <Skeleton />
-          </div>
-        )}
+        {contributionLoading && <Skeleton />}
+        {contributionError && <p>{contributionError}</p>}
         {contributionData && !contributionLoading && (
           <div className="collection-contributions">
             <Card

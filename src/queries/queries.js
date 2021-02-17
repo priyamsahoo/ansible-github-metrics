@@ -4,7 +4,7 @@ const ISSUES = gql`
   query($repositoryName: String!, $ownerName: String!) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
-      issues(last: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
+      issues(first: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
         edges {
           node {
             author {
@@ -15,7 +15,6 @@ const ISSUES = gql`
             createdAt
             url
             updatedAt
-            id
           }
         }
       }
@@ -27,21 +26,16 @@ const PR = gql`
   query($repositoryName: String!, $ownerName: String!) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
-      pullRequests(last: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
+      pullRequests(
+        first: 100
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
         edges {
           node {
             author {
               login
             }
             createdAt
-            merged
-            mergeable
-            milestone {
-              description
-              creator {
-                login
-              }
-            }
             updatedAt
             url
             state
