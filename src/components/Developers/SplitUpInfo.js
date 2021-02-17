@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { DEVELOPER_REPO_WISE_ISSUE_PR } from "../../queries/developer_repo_wise_issue_pr_query";
 import RepositoryWiseDetails from "./RepositoryWiseDetails";
 
-const SpiltupInfo = ({ selectedDeveloper }) => {
+const SpiltUpInfo = ({ selectedDeveloper }) => {
   const { loading, error, data } = useQuery(
     DEVELOPER_REPO_WISE_ISSUE_PR(selectedDeveloper)
   );
@@ -17,4 +17,4 @@ const SpiltupInfo = ({ selectedDeveloper }) => {
   );
 };
 
-export default SpiltupInfo;
+export default SpiltUpInfo;

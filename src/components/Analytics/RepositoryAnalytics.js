@@ -48,7 +48,7 @@ const RepositoryAnalytics = ({ owner, repository }) => {
 
   const {
     loading: averageDataLoading,
-    erorr: averageDataError,
+    error: averageDataError,
     data: averageDataData,
   } = useQuery(ISSUES_AND_PR_AVERAGE, {
     variables: { repositoryName: repository, ownerName: owner },

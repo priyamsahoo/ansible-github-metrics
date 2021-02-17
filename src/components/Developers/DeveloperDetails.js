@@ -1,6 +1,6 @@
 import { Divider, PageHeader } from "antd";
 import OverallInfo from "./OverallInfo";
-import SpiltupInfo from "./SplitupInfo";
+import SpiltUpInfo from "./SplitUpInfo";
 
 const DeveloperDetails = ({ selectedDeveloper }) => {
   // console.log(data);
@@ -15,7 +15,7 @@ const DeveloperDetails = ({ selectedDeveloper }) => {
 
       <OverallInfo selectedDeveloper={selectedDeveloper} />
       <Divider plain style={{ backgroundColor: "#6f909d" }} />
-      <SpiltupInfo selectedDeveloper={selectedDeveloper} />
+      <SpiltUpInfo selectedDeveloper={selectedDeveloper} />
     </div>
   );
 };

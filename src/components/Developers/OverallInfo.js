@@ -7,7 +7,7 @@ import {
 import * as moment from "moment";
 // import { Card, Input } from "reactstrap";
 import { useState } from "react";
-import { Card, Divider, Select } from "antd";
+import { Card, Divider, Select, Skeleton } from "antd";
 import { REPOSITORIES } from "../../data/repositories";
 
 const OverallInfo = ({ selectedDeveloper }) => {
@@ -208,39 +208,54 @@ const OverallInfo = ({ selectedDeveloper }) => {
             </Select>
           </Card>
         </div>
-        <div className="collection-contributions">
-          <Card
-            className="total-contributions"
-            title="Total contribution"
-            size="small"
-          >
-            <h1>{contributionData.TOTAL_CONTRIBUTION.issueCount}</h1>
-          </Card>
-          <Card
-            className="contribution-splits"
-            title="Issues opened"
-            size="small"
-          >
-            {/* <h2>Issues opened: </h2> */}
-            <h1>{contributionData.OPEN_ISSUES.issueCount}</h1>
-          </Card>
-          <Card
-            className="contribution-splits"
-            title="Issues closed"
-            size="small"
-          >
-            {/* <h2>Issues closed:</h2> */}
-            <h1>{contributionData.CLOSED_ISSUES.issueCount}</h1>
-          </Card>
-          <Card className="contribution-splits" title="PRs Opened" size="small">
-            {/* <h2>Open pull requests:</h2> */}
-            <h1>{contributionData.OPEN_PR.issueCount}</h1>
-          </Card>
-          <Card className="contribution-splits" title="PRs merged" size="small">
-            {/* <h2>Merged pull requests:</h2> */}
-            <h1>{contributionData.MERGED_PR.issueCount}</h1>
-          </Card>
-        </div>
+        {contributionLoading && (
+          <div className="collection-contributions">
+            <Skeleton />
+          </div>
+        )}
+        {contributionData && !contributionLoading && (
+          <div className="collection-contributions">
+            <Card
+              className="total-contributions"
+              title="Total contribution"
+              size="small"
+            >
+              <h1>{contributionData.TOTAL_CONTRIBUTION.issueCount}</h1>
+            </Card>
+            <Card
+              className="contribution-splits"
+              title="Issues opened"
+              size="small"
+            >
+              {/* <h2>Issues opened: </h2> */}
+              <h1>{contributionData.OPEN_ISSUES.issueCount}</h1>
+            </Card>
+            <Card
+              className="contribution-splits"
+              title="Issues closed"
+              size="small"
+            >
+              {/* <h2>Issues closed:</h2> */}
+              <h1>{contributionData.CLOSED_ISSUES.issueCount}</h1>
+            </Card>
+            <Card
+              className="contribution-splits"
+              title="PRs Opened"
+              size="small"
+            >
+              {/* <h2>Open pull requests:</h2> */}
+              <h1>{contributionData.OPEN_PR.issueCount}</h1>
+            </Card>
+            <Card
+              className="contribution-splits"
+              title="PRs merged"
+              size="small"
+            >
+              {/* <h2>Merged pull requests:</h2> */}
+              <h1>{contributionData.MERGED_PR.issueCount}</h1>
+            </Card>
+          </div>
+        )}
         <div className="contributionInfo"></div>
       </div>
     );
@@ -251,7 +266,7 @@ const OverallInfo = ({ selectedDeveloper }) => {
       {/* <h3>Total contributions: {collectionInfo}</h3> */}
       {infoLoading && <p>Loading...</p>}
       {infoError && <p>{infoError}</p>}
-      {infoData && contributionData && displayDetails()}
+      {infoData && displayDetails()}
     </div>
   );
 };
