@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { RELEASES_AND_TAGS } from "../../queries/queries";
+import { RELEASES_AND_TAGS } from "../../queries/collections_queries";
 import moment from "moment";
 // import { Card } from "reactstrap";
 import { Card } from "antd";

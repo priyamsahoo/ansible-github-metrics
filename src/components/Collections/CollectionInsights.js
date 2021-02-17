@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { COLLECTION_INSIGHTS } from "../../queries/queries";
+import { COLLECTION_INSIGHTS } from "../../queries/collections_queries";
 import { Row, Col, Statistic, Card, Divider } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 

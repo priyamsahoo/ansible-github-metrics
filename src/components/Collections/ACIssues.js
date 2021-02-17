@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { ISSUES } from "../../queries/queries";
+import { ISSUES } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
 import { ISSUE_COLUMNS } from "./IssueColumns";
 
