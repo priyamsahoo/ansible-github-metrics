@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 import { Card } from "antd";
 
 const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
-  //   console.log(data);
+  console.log("DOUGHNUT DATA", data1, data2);
   const dataToPlot = {
     labels: [label1, label2],
     datasets: [

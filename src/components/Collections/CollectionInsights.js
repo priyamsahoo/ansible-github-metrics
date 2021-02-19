@@ -71,7 +71,7 @@ const CollectionInsights = ({ owner, repository }) => {
                     (data.repository.closedIssues.totalCount /
                       (data.repository.openIssues.totalCount +
                         data.repository.closedIssues.totalCount)) *
-                    100
+                      100 || 0
                   }
                   precision={2}
                   valueStyle={{ color: "#3f8600" }}

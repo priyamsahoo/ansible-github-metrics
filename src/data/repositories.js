@@ -11,4 +11,5 @@ export const REPOSITORIES = [
   { owner: "ansible-collections", repo: "openvswitch.openvswitch" },
   { owner: "ansible-collections", repo: "community.yang" },
   { owner: "ansible-collections", repo: "ansible.utils" },
+  { owner: "ansible-network", repo: "resource_module_models" },
 ];

@@ -2,14 +2,14 @@ import { useQuery } from "@apollo/client";
 import { RELEASES_AND_TAGS } from "../../queries/collections_queries";
 import moment from "moment";
 // import { Card } from "reactstrap";
-import { Card } from "antd";
+import { Card, Empty } from "antd";
 
 const ReleasesAndTags = ({ owner, repository }) => {
   const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
     variables: { repositoryName: repository, ownerName: owner },
   });
 
-  console.log(data);
+  console.log("RELEASE DATA", data);
 
   return (
     <Card className="releases-and-tags">
@@ -21,8 +21,8 @@ const ReleasesAndTags = ({ owner, repository }) => {
           <div className="tags-info">
             <h3>Total Tags: {data.tags.refs.totalCount}</h3>
             <h3>Latest Tag Information: </h3>
-            {!data.tags.refs.edges && <p>-</p>}
-            {data.tags.refs.edges && data.tags.refs.totalCount && (
+            {/* {!data.tags.refs.edges.length && <p>-</p>} */}
+            {data.tags.refs.edges && data.tags.refs.totalCount ? (
               <div>
                 <p>Name: {data.tags.refs.edges[0].node.target.name}</p>
                 <p>
@@ -36,6 +36,8 @@ const ReleasesAndTags = ({ owner, repository }) => {
                 </p>
                 <p>Author: {data.tags.refs.edges[0].node.target.tagger.name}</p>
               </div>
+            ) : (
+              <Empty description={"No latest release info available"} />
             )}
           </div>
         </div>

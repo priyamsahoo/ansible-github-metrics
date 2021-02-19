@@ -13,7 +13,7 @@ import BarGraph from "./BarGraph";
 import { Loader } from "rsuite";
 import DoughnutGraph from "./DoughnutGraph";
 import { calculateAverageDays } from "../../utils/calculateAverageDays";
-import { Row, Col, PageHeader } from "antd";
+import { Row, Col, PageHeader, Empty } from "antd";
 
 const RepositoryAnalytics = ({ owner, repository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
@@ -172,7 +172,7 @@ const RepositoryAnalytics = ({ owner, repository }) => {
         <Col span={12}>
           <Row>
             <Col span={12}>
-              {totalOpenIssueCount && totalCloseIssueCount && (
+              {totalOpenIssueCount && totalCloseIssueCount ? (
                 <DoughnutGraph
                   heading="Issue Chart"
                   label1="Open Issues"
@@ -180,10 +180,15 @@ const RepositoryAnalytics = ({ owner, repository }) => {
                   label2="Close Issues"
                   data2={totalCloseIssueCount}
                 />
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={'No "Issue chart" data available'}
+                />
               )}
             </Col>
             <Col span={12}>
-              {totalOpenPRCount && totalMergePRCount && (
+              {totalOpenPRCount && totalMergePRCount ? (
                 <DoughnutGraph
                   heading="Pull Request Chart"
                   label1="Open PRs"
@@ -191,24 +196,41 @@ const RepositoryAnalytics = ({ owner, repository }) => {
                   label2="Merge PRs"
                   data2={totalMergePRCount}
                 />
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={'No "Pull request chart" data available'}
+                />
               )}
             </Col>
           </Row>
           <Row>
             <Col span={12}>
-              {averageDaysIssueClosed && (
+              {averageDaysIssueClosed ? (
                 <div className="issue-close-average">
                   <h3>Avg. days to close an issue</h3>
                   <h2>{averageDaysIssueClosed}</h2>
                 </div>
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={
+                    'No "avg. days to close an issue" data available'
+                  }
+                />
               )}
             </Col>
             <Col span={12}>
-              {averageDaysPRMerged && (
+              {averageDaysPRMerged ? (
                 <div className="pr-merge-average">
                   <h3>Avg. days to merge a PR</h3>
                   <h2>{averageDaysPRMerged}</h2>
                 </div>
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={'No "avg. days to merge a PR" data available'}
+                />
               )}
             </Col>
           </Row>
