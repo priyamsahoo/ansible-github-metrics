@@ -29,6 +29,10 @@ svg {
   background-color: transparent;
 }
 
+.page-header {
+  border-bottom: 1px solid rgb(235, 237, 240);
+}
+
 .ant-card-body {
   padding: 10px;
 }
@@ -36,52 +40,107 @@ svg {
   text-align: center;
 }
 
+.ant-btn {
+  color: var(--side-nav-background);
+  background-color: var(--secondary-color);
+}
+
 /* ************************************************************************************** */
-/* navbar styles */
+/* header styles */
+/* ************************************************************************************** */
+
 .navbar {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  max-width: 100%;
-  margin: 0 auto;
   background-color: var(--primary-color);
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 6px;
 }
-.navbar img {
-  background: transparent;
+
+.main-layout .ant-layout-header {
+  padding: 0;
+  height: auto;
+  line-height: 1.6;
 }
-.navbar h2 {
+
+.ant-layout-header {
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.header .logo h2 {
   color: var(--side-nav-background);
-  background: transparent;
 }
-.navbar .links {
-  margin-left: auto;
-  background: transparent;
-  color: var(--secondary-color);
+
+.header .ant-anchor-wrapper {
+  background: none;
 }
-.navbar a {
-  text-decoration: none;
+
+.header .ant-anchor {
+  display: flex;
+}
+
+.header .ant-anchor-ink {
+  display: none;
+}
+
+.header .ant-anchor-link {
+  padding: 0 10px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.header .ant-anchor-link-title {
   font-size: 1.2em;
-  font-weight: 600;
-  padding: 0px 16px;
-  background-color: transparent;
   color: var(--side-nav-background);
 }
-.navbar a:hover {
+.header .ant-anchor-link-title:hover {
   color: var(--secondary-color);
 }
+
+.header .ant-anchor-link:after {
+  left: auto;
+  right: 30%;
+}
+
+.header .ant-anchor-link.ant-anchor-link-active:before,
+.header .ant-anchor-link:hover:before {
+  left: 5%;
+  opacity: 1;
+}
+
+.header .ant-anchor-link.ant-anchor-link-active:after,
+.header .ant-anchor-link:hover:after {
+  right: 5%;
+  opacity: 1;
+}
+
 /* ************************************************************************************** */
+/* content styles */
+/* ************************************************************************************** */
+
+.main-layout .ant-layout-content {
+  padding: 6px;
+}
 
 /* ************************************************************************************** */
 /* Collection styles */
+/* ************************************************************************************** */
+
 /* .collections {
   padding: 10px;
 } */
-
-.page-header {
-  border-bottom: 1px solid rgb(235, 237, 240);
-}
 
 .collection-contents {
   display: flex;
@@ -89,14 +148,14 @@ svg {
 }
 .collection-insights {
   /* border: #009879 dotted; */
-  padding: 6px;
+  /* padding: 6px; */
   margin: 10px 0px;
   background-color: var(--side-nav-background);
   border-top: var(--secondary-color) solid 4px;
 }
 .insights-and-release-info {
   width: 25%;
-  margin: 10px;
+  margin: 0px 6px;
 }
 .information-inner {
   display: flex;
@@ -139,6 +198,7 @@ svg {
 .tables {
   width: 100%;
   text-align: center;
+  margin: 0px 6px;
   /* border: #009879; */
   /* flex-grow: 1; */
   /* margin: 10px; */
@@ -242,10 +302,11 @@ svg {
 .pr-table tbody tr:last-of-type {
   border-bottom: 2px solid var(--primary-color-light);
 }
-/* ************************************************************************************** */
 
 /* ************************************************************************************** */
 /* Developers styles */
+/* ************************************************************************************** */
+
 /* .developers {
   padding: 10px;
 } */
@@ -260,13 +321,13 @@ svg {
   background-color: var(--side-nav-background);
   border-top: var(--secondary-color) solid 4px;
   width: 25%;
-  margin: 10px;
+  margin: 0px 6px;
 }
 .dev-details {
   /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
-  /* margin: 10px; */
+  margin: 0px 6px;
   text-align: center;
 }
 
@@ -401,10 +462,11 @@ svg {
   color: var(--side-nav-background);
   padding: 6px;
 }
-/* ************************************************************************************** */
 
 /* ************************************************************************************** */
 /* Analytics styles */
+/* ************************************************************************************** */
+
 .analytics {
   /* padding: 10px; */
   display: flex;
@@ -421,13 +483,13 @@ svg {
   border-top: var(--secondary-color) solid 4px;
   /* padding: 6px; */
   width: 25%;
-  margin: 10px;
+  margin: 0px 6px;
 }
 .repo-analytics {
   /* border: #009879 dotted; */
   /* flex-grow: 1; */
   width: 100%;
-  /* margin: 10px; */
+  margin: 0px 6px;
   text-align: center;
 }
 
@@ -519,4 +581,40 @@ svg {
   justify-items: center;
   /* width: 100%; */
   /* height: 100%; */
+}
+
+/* ************************************************************************************** */
+/* non-mobile view */
+/* ************************************************************************************** */
+
+.mobile-visible {
+  display: none;
+}
+
+.mobile-hidden {
+  display: block;
+}
+
+/* ************************************************************************************** */
+/* responsive */
+/* ************************************************************************************** */
+
+@media only screen and (max-width: 991px) {
+  .pricingBlock .ant-row > div:nth-child(2) .ant-list-item {
+    transform: scale(1.14);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .pricingBlock .ant-row > div:nth-child(2) .ant-list-item {
+    transform: scale(1);
+  }
+
+  .mobile-visible {
+    display: block;
+  }
+
+  .mobile-hidden {
+    display: none;
+  }
 }

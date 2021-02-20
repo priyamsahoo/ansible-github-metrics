@@ -1,4 +1,5 @@
 import React from "react";
+import "antd/dist/antd.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Collections from "./components/Collections/Collections";
@@ -6,26 +7,34 @@ import Developers from "./components/Developers/Developers";
 import Analytics from "./components/Analytics/Analytics";
 import Error404 from "./components/ErrorPage/Error404";
 
+import { Layout } from "antd";
+
+const { Header, Content } = Layout;
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Navbar />
-        <Switch>
-          <Route exact path={["/", "/collections"]}>
-            <Collections />
-          </Route>
-          <Route exact path="/developers">
-            <Developers />
-          </Route>
-          <Route exact path="/analytics">
-            <Analytics />
-          </Route>
-          <Route path="*">
-            <Error404 />
-          </Route>
-        </Switch>
-      </div>
+      <Layout className="main-layout">
+        <Header>
+          <Navbar />
+        </Header>
+        <Content>
+          <Switch>
+            <Route exact path={["/", "/collections"]}>
+              <Collections />
+            </Route>
+            <Route exact path="/developers">
+              <Developers />
+            </Route>
+            <Route exact path="/analytics">
+              <Analytics />
+            </Route>
+            <Route path="*">
+              <Error404 />
+            </Route>
+          </Switch>
+        </Content>
+      </Layout>
     </Router>
   );
 }
