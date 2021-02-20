@@ -1,9 +1,8 @@
-import { Card } from "antd";
 import { Line } from "react-chartjs-2";
 
 const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
   // console.log(totalOpenIssues);
-  console.log(data);
+  // console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [
@@ -11,8 +10,7 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
         label: label,
         fill: true,
         lineTension: 0.1,
-        // backgroundColor: "rgba(75,192,192,0.4)",
-        // borderColor: "rgba(75,192,192,1)",
+
         backgroundColor: "rgba(77, 161, 169,0.07)",
         borderColor: "rgba(77, 161, 169,1)",
         borderWidth: 1,
@@ -29,8 +27,7 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        // data: data.map((item) =>
-        //   (item.open / (totalOpenIssues - item.closed)).toFixed(2)
+
         data: data.map((item) =>
           ((item.closed / (item.open + item.closed)) * 100).toFixed(2)
         ),
@@ -60,12 +57,12 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
     },
   };
 
-  console.log("Plotting data: ", dataToPlot.datasets[0].data);
+  // console.log("Plotting data: ", dataToPlot.datasets[0].data);
 
   return (
     <div className="chart-line">
       <h3>{heading}</h3>
-      <Line data={dataToPlot} />
+      <Line data={dataToPlot} options={option} />
     </div>
   );
 };

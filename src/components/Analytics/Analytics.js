@@ -1,8 +1,4 @@
-import { useQuery } from "@apollo/client";
-import { TEST } from "../../queries/analytics_queries";
-import { groupByMonth } from "../../utils/groupByMonth";
 import { useState } from "react";
-// import ChartTest from "./ChartTest";
 import RepositoryList from "./RepositoryList";
 import RepositoryAnalytics from "./RepositoryAnalytics";
 import { Card } from "antd";
@@ -16,7 +12,7 @@ const Analytics = () => {
   const repositoryCallback = (selectedRepository) => {
     setSelectedRepository(selectedRepository);
   };
-  console.log("SELECED REPOSITORY:", selectedRepository);
+  // console.log("SELECTED REPOSITORY:", selectedRepository);
 
   localStorage.setItem(
     "analyticsRepository",

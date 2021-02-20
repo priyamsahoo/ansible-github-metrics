@@ -4,8 +4,7 @@ import DataTable from "./DataTable";
 import { ISSUE_COLUMNS } from "./IssueColumns";
 
 const ACIssues = ({ owner, repository }) => {
-  // const [repository, setRepository] = useState("cisco.nxos");
-
+  // Query for obtaining issues
   const { loading, error, data } = useQuery(ISSUES, {
     variables: { repositoryName: repository, ownerName: owner },
   });

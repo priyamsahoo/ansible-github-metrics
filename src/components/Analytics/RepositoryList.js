@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { Input } from "rsuite";
 import { Input } from "antd";
 import { REPOSITORIES } from "../../data/repositories";
 
@@ -8,40 +7,32 @@ const RepositoryList = ({ repositoryCallback }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   const repositories = REPOSITORIES;
-  console.log(repositories);
+  // console.log(repositories);
 
   const handleSearch = (e) => {
     // console.log(e);
     setSearchRepository(e);
   };
-  console.log(searchRepository);
+  // console.log(searchRepository);
   useEffect(() => {
     const results = repositories.filter((repository) =>
       repository["repo"].toLowerCase().includes(searchRepository.toLowerCase())
     );
     setSearchResults(results);
-  }, [searchRepository]);
+  }, [searchRepository, repositories]);
 
   return (
     <div className="repository-list">
       <h2>Repositories:</h2>
-      {/* <input
-        type="text"
-        placeholder={`Search (${repositories.length})`}
-        value={searchRepository}
-        onChange={(e) => handleSearch(e)}
-      /> */}
       <Input
         size="small"
         placeholder={`Search (${searchResults.length})`}
-        // type="text"
         allowClear={true}
         value={searchRepository}
         onChange={(e) => handleSearch(e.target.value)}
       />
-      {searchResults.map((item) => (
-        <p value={item} onClick={(e) => repositoryCallback(item)}>
-          {/* <p value={item.repo} onClick={(e) => console.log(item)}> */}
+      {searchResults.map((item, index) => (
+        <p key={index} value={item} onClick={(e) => repositoryCallback(item)}>
           {item.repo}
         </p>
       ))}

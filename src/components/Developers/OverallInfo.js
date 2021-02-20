@@ -1,13 +1,11 @@
 import { useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
 import {
   DEVELOPER_DETAILS,
   DEVELOPER_CONTRIBUTIONS,
 } from "../../queries/developer_queries";
 import * as moment from "moment";
-// import { Card, Input } from "reactstrap";
 import { useState } from "react";
-import { Card, Divider, Select, Skeleton } from "antd";
+import { Card, Select, Skeleton } from "antd";
 import { REPOSITORIES } from "../../data/repositories";
 
 const OverallInfo = ({ selectedDeveloper }) => {
@@ -15,25 +13,27 @@ const OverallInfo = ({ selectedDeveloper }) => {
     (repository) => `${repository.owner}/${repository.repo}`
   );
 
+  // constructing a query string to handle all repositories
+  // eg., repo: repo1 repo2 repo3...
   repositoryList = repositoryList.map((item) => "repo:" + item);
-
   const repoQueryString = repositoryList.join(" ");
   // console.log(repoQueryString);
 
-  const authorQueryString = selectedDeveloper;
-
+  // value returned from the period dropdown
   const [dateQueryString, setDateQueryString] = useState(
     moment().subtract(1, "month").format("YYYY-MM-DD").toString() +
       ".." +
       moment().format("YYYY-MM-DD").toString()
   );
 
+  // constructing final query string for developer's overall contributions in all the repositories mentioned in the list
   const issueOpenQueryString = `${repoQueryString} type:issue is:open author:${selectedDeveloper} updated:${dateQueryString}`;
   const issueClosedQueryString = `${repoQueryString} type:issue is:closed author:${selectedDeveloper} updated:${dateQueryString}`;
   const prOpenQueryString = `${repoQueryString} type:pr is:open author:${selectedDeveloper} updated:${dateQueryString}`;
   const prMergedQueryString = `${repoQueryString} type:pr is:merged author:${selectedDeveloper} updated:${dateQueryString}`;
   const totalContributionQueryString = `${repoQueryString} author:${selectedDeveloper} updated:${dateQueryString}`;
 
+  // Query for obtaining selected developer's overall contributions in all the repositories mentioned in the list
   const {
     loading: contributionLoading,
     error: contributionError,
@@ -46,16 +46,15 @@ const OverallInfo = ({ selectedDeveloper }) => {
       queryStringPRMerged: prMergedQueryString,
       queryStringTotal: totalContributionQueryString,
     },
-    fetchPolicy: "cache-and-network",
   });
 
-  console.log(contributionData);
+  // console.log(contributionData);
 
+  // Query for obtaining selected developer's information
   const { loading: infoLoading, error: infoError, data: infoData } = useQuery(
     DEVELOPER_DETAILS,
     {
       variables: { userName: selectedDeveloper },
-      fetchPolicy: "cache-and-network",
     }
   );
 
@@ -66,19 +65,24 @@ const OverallInfo = ({ selectedDeveloper }) => {
   const displayDetails = () => {
     return (
       <div>
+        {/* Developer's profile info */}
         <div className="profile-info">
           <img src={infoData.user.avatarUrl}></img>
           <h1>
-            <a href={infoData.user.url} target="_blank">
+            <a
+              href={infoData.user.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {infoData.user.name}
             </a>
           </h1>
           <p>{infoData.user.login}</p>
 
+          {/* Period dropdown */}
           <Card className="period-dropdown">
             <label>Period: </label>
             <Select
-              // type="select"
               style={{ width: 180 }}
               defaultValue={dateQueryString}
               onChange={(e) => {
@@ -208,6 +212,8 @@ const OverallInfo = ({ selectedDeveloper }) => {
             </Select>
           </Card>
         </div>
+
+        {/* Overall information of a selected developer's contributions */}
         {contributionLoading && <Skeleton />}
         {contributionError && <p>{contributionError}</p>}
         {contributionData && !contributionLoading && (
@@ -224,7 +230,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
               title="Issues opened"
               size="small"
             >
-              {/* <h2>Issues opened: </h2> */}
               <h1>{contributionData.OPEN_ISSUES.issueCount}</h1>
             </Card>
             <Card
@@ -232,7 +237,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
               title="Issues closed"
               size="small"
             >
-              {/* <h2>Issues closed:</h2> */}
               <h1>{contributionData.CLOSED_ISSUES.issueCount}</h1>
             </Card>
             <Card
@@ -240,7 +244,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
               title="PRs Opened"
               size="small"
             >
-              {/* <h2>Open pull requests:</h2> */}
               <h1>{contributionData.OPEN_PR.issueCount}</h1>
             </Card>
             <Card
@@ -248,7 +251,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
               title="PRs merged"
               size="small"
             >
-              {/* <h2>Merged pull requests:</h2> */}
               <h1>{contributionData.MERGED_PR.issueCount}</h1>
             </Card>
           </div>
@@ -260,7 +262,6 @@ const OverallInfo = ({ selectedDeveloper }) => {
 
   return (
     <div className="overall-info">
-      {/* <h3>Total contributions: {collectionInfo}</h3> */}
       {infoLoading && <p>Loading...</p>}
       {infoError && <p>{infoError}</p>}
       {infoData && displayDetails()}

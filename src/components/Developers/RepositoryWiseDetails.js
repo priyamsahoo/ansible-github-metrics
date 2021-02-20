@@ -1,5 +1,6 @@
 import { REPOSITORIES } from "../../data/repositories";
 
+// remove special characters from the repository name
 const removeSpecialCharacters = (str) => str.replace(/[^a-zA-Z ]/g, "");
 
 const RepositoryWiseDetails = ({ data }) => {

@@ -1,9 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { CustomInput } from "reactstrap";
+import React, { useEffect } from "react";
 import * as moment from "moment";
-import { DateRangePicker } from "rsuite";
 import { Input, Select, DatePicker } from "antd";
-// import { DatePicker, Space } from "antd";
 
 export const Filter = ({ column }) => {
   return (
@@ -13,6 +10,7 @@ export const Filter = ({ column }) => {
   );
 };
 
+// Search filter: This is the default filter
 export const DefaultColumnFilter = ({
   column: {
     filterValue,
@@ -26,13 +24,13 @@ export const DefaultColumnFilter = ({
       value={filterValue || ""}
       onChange={(e) => {
         setFilter(e.target.value || undefined);
-        // console.log(e.target.value);
       }}
       placeholder={`search (${length})`}
     />
   );
 };
 
+// Drop-down filter
 export const SelectColumnFilter = ({
   column: { filterValue, setFilter, preFilteredRows, id },
 }) => {
@@ -68,30 +66,7 @@ export const SelectColumnFilter = ({
   );
 };
 
-const RANGES = [
-  {
-    label: "Past week",
-    value: [
-      moment().subtract(6, "days").startOf("day").toDate(),
-      moment().endOf("day").toDate(),
-    ],
-  },
-  {
-    label: "Past Month",
-    value: [
-      moment().subtract(29, "days").startOf("day").toDate(),
-      moment().endOf("day").toDate(),
-    ],
-  },
-  {
-    label: "Past Three Months",
-    value: [
-      moment().subtract(89, "days").startOf("day").toDate(),
-      moment().endOf("day").toDate(),
-    ],
-  },
-];
-
+// Date range filter
 export const DateFilter = (props) => {
   const {
     column: { setFilter, preFilteredRows },
@@ -101,6 +76,23 @@ export const DateFilter = (props) => {
     moment().subtract(13, "days").startOf("day"),
     moment().endOf("day"),
   ];
+
+  const dateRanges = {
+    Today: [moment(), moment()],
+    "This Month": [moment().startOf("month"), moment().endOf("month")],
+    "Past Week": [
+      moment().subtract(6, "days").startOf("day"),
+      moment().endOf("day"),
+    ],
+    "Past Month": [
+      moment().subtract(29, "days").startOf("day"),
+      moment().endOf("day"),
+    ],
+    "Past 3 months": [
+      moment().subtract(3, "months").startOf("day"),
+      moment().endOf("day"),
+    ],
+  };
 
   useEffect(() => {
     setFilter(filterByDate(defValue));
@@ -121,41 +113,13 @@ export const DateFilter = (props) => {
   };
   const { RangePicker } = DatePicker;
   return (
-    // <DateRangePicker
-    //   appearance="default"
-    //   defaultValue={[
-    //     moment().subtract(30, "days").startOf("day").toDate(),
-    //     moment().endOf("day").toDate(),
-    //   ]}
-    //   // onChange={(value) => setFilter(filterByDate(value))}
-    //   onChange={(value) => console.log(value)}
-    //   ranges={RANGES}
-    // />
     <RangePicker
       size="small"
       format="ll"
-      ranges={{
-        Today: [moment(), moment()],
-        "This Month": [moment().startOf("month"), moment().endOf("month")],
-        "Past Month": [
-          moment().subtract(29, "days").startOf("day"),
-          moment().endOf("day"),
-        ],
-        "Past Week": [
-          moment().subtract(6, "days").startOf("day"),
-          moment().endOf("day"),
-        ],
-      }}
-      defaultValue={[
-        moment().subtract(13, "days").startOf("day"),
-        moment().endOf("day"),
-      ]}
-      defaultPickerValue={[
-        moment().subtract(13, "days").startOf("day"),
-        moment().endOf("day"),
-      ]}
+      ranges={dateRanges}
+      defaultValue={defValue}
+      defaultPickerValue={defValue}
       onChange={(value) => setFilter(filterByDate(value))}
-      // onChange={(value) => console.log(value[0]._d, value[1]._d)}
     />
   );
 };

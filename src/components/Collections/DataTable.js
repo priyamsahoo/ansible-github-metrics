@@ -1,5 +1,4 @@
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
-// import { COLUMNS } from "./IssueColumns";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
 import { Empty, Input, Select } from "antd";
 import { Button } from "antd";
@@ -48,9 +47,9 @@ const DataTable = ({ title, tableData, tableColumns }) => {
     <div className="issue-list">
       <h2>{title}</h2>
       <h3>Issues: {rows.length}</h3>
+
+      {/* Boilerplate table code */}
       <table
-        bordered
-        hover
         className="issue-table"
         {...getTableProps()}
         // width={1450}
@@ -69,7 +68,7 @@ const DataTable = ({ title, tableData, tableColumns }) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.length == 0 ? (
+          {rows.length === 0 ? (
             <td colSpan="5">
               <Empty />
             </td>

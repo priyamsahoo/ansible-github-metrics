@@ -4,8 +4,7 @@ import DataTable from "./DataTable";
 import { PR_COLUMNS } from "./PRColumns";
 
 const ACPullRequests = ({ owner, repository }) => {
-  // const [repository, setRepository] = useState("cisco.nxos");
-
+  // Query for obtaining pull requests
   const { loading, error, data } = useQuery(PR, {
     variables: { repositoryName: repository, ownerName: owner },
   });

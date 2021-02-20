@@ -1,15 +1,8 @@
-import { Card } from "antd";
 import { Bar } from "react-chartjs-2";
 
-const BarGraph = ({
-  dataGroupedByMonth: data,
-  totalOpen,
-  label1,
-  label2,
-  heading,
-}) => {
+const BarGraph = ({ dataGroupedByMonth: data, label1, label2, heading }) => {
   // console.log(totalOpen);
-  console.log(data);
+  // console.log(data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [

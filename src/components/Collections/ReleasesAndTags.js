@@ -5,11 +5,12 @@ import moment from "moment";
 import { Card, Empty } from "antd";
 
 const ReleasesAndTags = ({ owner, repository }) => {
+  // Query for obtaining release-tags info
   const { loading, error, data } = useQuery(RELEASES_AND_TAGS, {
     variables: { repositoryName: repository, ownerName: owner },
   });
 
-  console.log("RELEASE DATA", data);
+  // console.log("RELEASE DATA", data);
 
   return (
     <Card className="releases-and-tags">
@@ -21,7 +22,6 @@ const ReleasesAndTags = ({ owner, repository }) => {
           <div className="tags-info">
             <h3>Total Tags: {data.tags.refs.totalCount}</h3>
             <h3>Latest Tag Information: </h3>
-            {/* {!data.tags.refs.edges.length && <p>-</p>} */}
             {data.tags.refs.edges && data.tags.refs.totalCount ? (
               <div>
                 <p>Name: {data.tags.refs.edges[0].node.target.name}</p>

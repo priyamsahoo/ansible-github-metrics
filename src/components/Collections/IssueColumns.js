@@ -1,12 +1,8 @@
-import { format } from "date-fns";
-import { CustomInput } from "reactstrap";
 import { DateFilter, SelectColumnFilter } from "../../utils/filters";
 import moment from "moment";
-// import { CenteredHeader } from "./CenteredHeader";
 
 export const ISSUE_COLUMNS = [
   {
-    // Header: <CenteredHeader name="Created At" />,
     Header: "Created At",
     Footer: "Created At",
     accessor: "node.createdAt",
@@ -29,7 +25,6 @@ export const ISSUE_COLUMNS = [
   //     filter: 'equals'
   // },
   {
-    // Header: <CenteredHeader name="Status" />,
     Header: "Status",
     Footer: "Status",
     accessor: "node.state",
@@ -39,13 +34,12 @@ export const ISSUE_COLUMNS = [
     width: 100,
   },
   {
-    // Header: <CenteredHeader name="Title" />,
     Header: "Title",
-    // Header: { row.length },
+
     Footer: "Title",
     accessor: "node.title",
     Cell: ({ cell: { value }, row: { original } }) => (
-      <a href={original.node.url} target="_blank">
+      <a href={original.node.url} target="_blank" rel="noopener noreferrer">
         {value}
       </a>
     ),
@@ -53,7 +47,6 @@ export const ISSUE_COLUMNS = [
     width: 250,
   },
   {
-    // Header: <CenteredHeader name="Updated At" />,
     Header: "Updated At",
     Footer: "Updated At",
     accessor: "node.updatedAt",
@@ -64,7 +57,6 @@ export const ISSUE_COLUMNS = [
     width: 100,
   },
   {
-    // Header: <CenteredHeader name="Author" />,
     Header: "Author",
     Footer: "Author",
     accessor: "node.author.login",

@@ -1,6 +1,5 @@
-import { event } from "jquery";
 import { useState, useEffect } from "react";
-// import { Input } from "rsuite";
+
 import { Input } from "antd";
 import { USERS } from "../../data/users";
 
@@ -22,11 +21,7 @@ const DeveloperList = ({ developerCallback }) => {
       user.toLowerCase().includes(searchName.toLowerCase())
     );
     setSearchResults(results);
-  }, [searchName]);
-
-  // const handleClick = (item) => {
-  //   console.log(item);
-  // };
+  }, [searchName, users]);
 
   return (
     <div className="developer-list">
@@ -34,13 +29,12 @@ const DeveloperList = ({ developerCallback }) => {
       <Input
         size="small"
         allowClear={true}
-        // type="text"
         placeholder={`Search (${users.length})`}
         value={searchName}
         onChange={(e) => handleSearch(e.target.value)}
       />
-      {searchResults.map((item) => (
-        <p value={item} onClick={(e) => developerCallback(item)}>
+      {searchResults.map((item, index) => (
+        <p key={index} value={item} onClick={(e) => developerCallback(item)}>
           {item}
         </p>
       ))}

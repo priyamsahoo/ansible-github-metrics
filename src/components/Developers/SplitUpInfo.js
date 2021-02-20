@@ -3,6 +3,7 @@ import { DEVELOPER_REPO_WISE_ISSUE_PR } from "../../queries/developer_repo_wise_
 import RepositoryWiseDetails from "./RepositoryWiseDetails";
 
 const SpiltUpInfo = ({ selectedDeveloper }) => {
+  // Query for obtaining selected developer's repository-wise info
   const { loading, error, data } = useQuery(
     DEVELOPER_REPO_WISE_ISSUE_PR(selectedDeveloper)
   );

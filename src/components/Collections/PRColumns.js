@@ -1,11 +1,8 @@
-// import "./cell.css";
 import { DateFilter, SelectColumnFilter } from "../../utils/filters";
 import moment from "moment";
-// import { CenteredHeader } from "./CenteredHeader";
 
 export const PR_COLUMNS = [
   {
-    // Header: <CenteredHeader name="Created At" />,
     Header: "Created At",
     Footer: "Created At",
     accessor: "node.createdAt",
@@ -28,7 +25,6 @@ export const PR_COLUMNS = [
   //     filter: 'equals'
   // },
   {
-    // Header: <CenteredHeader name="Status" />,
     Header: "Status",
     Footer: "Status",
     accessor: "node.state",
@@ -38,12 +34,11 @@ export const PR_COLUMNS = [
     width: 100,
   },
   {
-    // Header: <CenteredHeader name="Title" />,
     Header: "Title",
     Footer: "Title",
     accessor: "node.title",
     Cell: ({ cell: { value }, row: { original } }) => (
-      <a href={original.node.url} target="_blank">
+      <a href={original.node.url} target="_blank" rel="noopener noreferrer">
         {value}
       </a>
     ),
@@ -51,7 +46,6 @@ export const PR_COLUMNS = [
     width: 250,
   },
   {
-    // Header: <CenteredHeader name="Updated At" />,
     Header: "Updated At",
     Footer: "Updated At",
     accessor: "node.updatedAt",
@@ -62,7 +56,6 @@ export const PR_COLUMNS = [
     width: 100,
   },
   {
-    // Header: <CenteredHeader name="Author" />,
     Header: "Author",
     Footer: "Author",
     accessor: "node.author.login",

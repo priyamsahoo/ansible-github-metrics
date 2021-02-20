@@ -1,14 +1,15 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/collections_queries";
 import { Row, Col, Statistic, Card, Divider } from "antd";
-import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
+import { ArrowUpOutlined } from "@ant-design/icons";
 
 const CollectionInsights = ({ owner, repository }) => {
+  // Query for obtaining collection insight info
   const { loading, error, data } = useQuery(COLLECTION_INSIGHTS, {
     variables: { repositoryName: repository, ownerName: owner },
   });
 
-  console.log(data);
+  // console.log(data);
 
   const displayDetails = () => {
     return (

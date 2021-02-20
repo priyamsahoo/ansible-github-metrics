@@ -1,18 +1,16 @@
-import { useQuery } from "@apollo/client";
 import { Card } from "antd";
 import { useState } from "react";
 import { USERS } from "../../data/users";
-import { DEVELOPER_LIST } from "../../queries/developer_queries";
 import DeveloperDetails from "./DeveloperDetails";
 import DeveloperList from "./DevelopersList";
 
 const Developers = () => {
   // Default user is the first user in the USERS list
-  const [selectedDeveloper, setSeletedDeveloper] = useState(
+  const [selectedDeveloper, setSelectedDeveloper] = useState(
     localStorage.getItem("user") || USERS[0]
   );
   const developerCallback = (selectedDeveloper) => {
-    setSeletedDeveloper(selectedDeveloper);
+    setSelectedDeveloper(selectedDeveloper);
   };
 
   localStorage.setItem("user", selectedDeveloper);
