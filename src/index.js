@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
 import "./index.css";
+import { message } from "antd";
 import App from "./App";
 import {
   ApolloClient,
@@ -26,7 +28,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       )
     );
 
-  if (networkError) console.log(`[Network error]: ${networkError}`);
+  if (networkError) {
+    console.log(`[Network error]: ${networkError}`);
+  }
+
+  message.error("Something's wrong with your network");
 });
 
 const client = new ApolloClient({

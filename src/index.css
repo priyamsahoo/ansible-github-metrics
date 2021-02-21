@@ -633,7 +633,9 @@ svg {
   .dev-list {
     display: none;
   }
+
   .dev-list-mobile {
+    background-color: var(--primary-color);
     color: var(--side-nav-background);
   }
   .dev-list-mobile h2 {

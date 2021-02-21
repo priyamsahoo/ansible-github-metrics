@@ -1,5 +1,4 @@
 import React from "react";
-import "antd/dist/antd.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import PageFooter from "./components/Navbar/PageFooter";
