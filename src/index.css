@@ -9,6 +9,7 @@
   /* --primary-color-light: #6a6f81; */
   --secondary-color: #ffa630;
   --side-nav-background: #eee;
+  --footer-background: #222;
 }
 
 /* base styles */
@@ -214,97 +215,52 @@ svg {
 }
 /* ac issues component styles */
 .ac-issues {
-  /* border: #539987 dotted; */
   text-align: center;
-  /* padding: 12px; */
   margin: 10px 0px;
 }
 
-/* issue table style */
-.issue-table {
+/* ac pull request component styles */
+.ac-pull-requests {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+/* table styles */
+.table-data {
   border-collapse: collapse;
   margin: 10px 0;
   margin-left: auto;
   margin-right: auto;
-  /* font-size: 1em; */
-  min-width: 500px;
+  /* min-width: 500px; */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-.issue-table a {
+.table-data a {
   text-decoration: none;
   color: var(--primary-color);
 }
-.issue-table thead th {
+.table-data thead th {
   background-color: var(--primary-color-light);
   color: var(--side-nav-background);
   text-align: left;
   /* font-size: 1.2em; */
 }
-.issue-table th,
-.issue-table td {
+.table-data th,
+.table-data td {
   padding: 10px 14px;
   text-align: left;
 }
-.issue-table tbody tr {
+.table-data tbody tr {
   border-bottom: 1px solid #dddddd;
 }
-.issue-table tbody tr:hover {
+.table-data tbody tr:hover {
   border-bottom: 1px solid var(--primary-color-light);
   border-left: 1px solid var(--primary-color-light);
   border-right: 1px solid var(--primary-color-light);
 }
-.issue-table tbody tr:nth-of-type(even) {
+.table-data tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
-.issue-table tbody tr:last-of-type {
-  border-bottom: 2px solid var(--primary-color-light);
-}
-
-/* ac pull request component styles */
-.ac-pull-requests {
-  /* border: #009879 dotted; */
-  text-align: center;
-  /* padding: 12px; */
-  margin: 10px 0px;
-}
-
-/* pr table style */
-.pr-table {
-  border-collapse: collapse;
-  margin: 10px 0;
-  margin-left: auto;
-  margin-right: auto;
-  /* font-size: 0.9em; */
-  min-width: 500px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.pr-table a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-.pr-table thead th {
-  background-color: var(--primary-color-light);
-  color: #ffffff;
-  text-align: left;
-  /* font-size: 1.2em; */
-}
-.pr-table th,
-.pr-table td {
-  padding: 10px 14px;
-  text-align: left;
-}
-.pr-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-.pr-table tbody tr:hover {
-  border-bottom: 1px solid var(--primary-color-light);
-  border-left: 1px solid var(--primary-color-light);
-  border-right: 1px solid var(--primary-color-light);
-}
-.pr-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-.pr-table tbody tr:last-of-type {
+.table-data tbody tr:last-of-type {
   border-bottom: 2px solid var(--primary-color-light);
 }
 
@@ -594,15 +550,34 @@ svg {
 }
 
 .ant-layout-footer {
-  background: #111;
-  color: #fff;
+  background: var(--footer-background);
+  color: var(--side-nav-background);
   padding: 60px 0;
   text-align: center;
 }
 
+.ant-layout-footer .logo p {
+  margin-bottom: 0px;
+}
+
 .copyright {
-  font-size: 00.8em;
+  font-size: 0.6em;
   color: var(--side-nav-background);
+}
+
+.social {
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 24px;
+}
+.social .anticon svg {
+  color: var(--side-nav-background);
+}
+
+.social .anticon svg:hover {
+  color: var(--secondary-color);
 }
 
 /* ************************************************************************************** */
@@ -651,20 +626,21 @@ svg {
     margin: 0px 6px;
   }
 
-  /* .issue-table {
-    width: 200px;
-  }
-
-  .pr-table {
-    width: 200px;
-  } */
-
   .developers-content {
     flex-direction: column;
   }
 
   .dev-list {
     display: none;
+  }
+  .dev-list-mobile {
+    color: var(--side-nav-background);
+  }
+  .dev-list-mobile h2 {
+    color: var(--side-nav-background);
+  }
+  .dev-list-mobile p:hover {
+    color: var(--secondary-color);
   }
 
   .analytics {
@@ -673,6 +649,16 @@ svg {
 
   .repo-list {
     display: none;
+  }
+
+  .repo-list-mobile {
+    color: var(--side-nav-background);
+  }
+  .repo-list-mobile h2 {
+    color: var(--side-nav-background);
+  }
+  .repo-list-mobile p:hover {
+    color: var(--secondary-color);
   }
 
   .analytic-graphs {

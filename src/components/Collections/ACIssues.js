@@ -17,6 +17,7 @@ const ACIssues = ({ owner, repository }) => {
       {data && (
         <DataTable
           title="Issues Table"
+          tag="Issues"
           tableData={data.repository.issues.edges}
           tableColumns={ISSUE_COLUMNS}
         />

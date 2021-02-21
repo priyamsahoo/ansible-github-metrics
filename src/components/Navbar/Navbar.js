@@ -39,6 +39,7 @@ const Navbar = () => {
           ></Button>
           <Drawer
             placement="right"
+            title="Navigate"
             closable={false}
             onClose={onClose}
             visible={visible}

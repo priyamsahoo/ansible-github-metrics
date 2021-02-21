@@ -17,6 +17,7 @@ const ACPullRequests = ({ owner, repository }) => {
       {data && (
         <DataTable
           title="Pull Requests Table"
+          tag="Pull requests"
           tableData={data.repository.pullRequests.edges}
           tableColumns={PR_COLUMNS}
         />

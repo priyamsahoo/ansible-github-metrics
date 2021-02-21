@@ -2,8 +2,9 @@ import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
 import { Empty, Input, Select } from "antd";
 import { Button } from "antd";
+import { BackwardOutlined, ForwardOutlined } from "@ant-design/icons";
 
-const DataTable = ({ title, tableData, tableColumns }) => {
+const DataTable = ({ title, tag, tableData, tableColumns }) => {
   // const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => issues, []);
 
@@ -44,13 +45,15 @@ const DataTable = ({ title, tableData, tableColumns }) => {
   const { Option } = Select;
 
   return (
-    <div className="issue-list">
+    <>
       <h2>{title}</h2>
-      <h3>Issues: {rows.length}</h3>
+      <h3>
+        {tag}: {rows.length}
+      </h3>
 
       {/* Boilerplate table code */}
       <table
-        className="issue-table"
+        className="table-data"
         {...getTableProps()}
         // width={1450}
         style={{ width: "100%" }}
@@ -130,7 +133,7 @@ const DataTable = ({ title, tableData, tableColumns }) => {
           onClick={() => gotoPage(0)}
           disabled={!canPreviousPage}
         >
-          {"<<"}
+          <BackwardOutlined />
         </Button>{" "}
         <Button
           size="small"
@@ -147,10 +150,10 @@ const DataTable = ({ title, tableData, tableColumns }) => {
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
         >
-          {">>"}
+          <ForwardOutlined />
         </Button>
       </div>
-    </div>
+    </>
   );
 };
 

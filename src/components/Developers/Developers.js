@@ -55,10 +55,11 @@ const Developers = () => {
             onClose={onClose}
             visible={visible}
             getContainer={false}
+            drawerStyle={{ backgroundColor: "#3d5861" }}
           >
-            <Card className="dev-list-mobile">
+            <div className="dev-list-mobile">
               <DeveloperList developerCallback={developerCallback} />
-            </Card>
+            </div>
           </Drawer>
         </div>
         <div className="dev-details">

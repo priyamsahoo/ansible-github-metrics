@@ -47,10 +47,11 @@ const Analytics = () => {
           onClose={onClose}
           visible={visible}
           getContainer={false}
+          drawerStyle={{ backgroundColor: "#3d5861" }}
         >
-          <Card className="repo-list-mobile">
+          <div className="repo-list-mobile">
             <RepositoryList repositoryCallback={repositoryCallback} />
-          </Card>
+          </div>
         </Drawer>
       </div>
       <div className="repo-analytics">
