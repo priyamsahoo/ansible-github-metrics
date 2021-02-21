@@ -1,4 +1,12 @@
-import { Card } from "antd";
+import {
+  CaretLeftOutlined,
+  CloseOutlined,
+  ImportOutlined,
+  LeftCircleOutlined,
+  UnorderedListOutlined,
+  VerticalRightOutlined,
+} from "@ant-design/icons";
+import { Button, Card, Drawer } from "antd";
 import { useState } from "react";
 import { USERS } from "../../data/users";
 import DeveloperDetails from "./DeveloperDetails";
@@ -17,12 +25,42 @@ const Developers = () => {
 
   // console.log(selectedDeveloper);
 
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
+
   return (
     <div className="developers">
       <div className="developers-content">
+        {/* <div className="mobile-hidden"> */}
         <Card className="dev-list">
           <DeveloperList developerCallback={developerCallback} />
         </Card>
+        {/* </div> */}
+        <div className="mobile-visible">
+          <Button
+            icon={<UnorderedListOutlined />}
+            size="small"
+            onClick={showDrawer}
+          ></Button>
+          <Drawer
+            placement="left"
+            closable={true}
+            onClose={onClose}
+            visible={visible}
+            getContainer={false}
+          >
+            <Card className="dev-list-mobile">
+              <DeveloperList developerCallback={developerCallback} />
+            </Card>
+          </Drawer>
+        </div>
         <div className="dev-details">
           {!selectedDeveloper && (
             <p> &lt;-- Click on a developer for more details</p>

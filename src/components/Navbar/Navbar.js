@@ -1,6 +1,6 @@
 import logo from "../../assets/image.png";
 import { Anchor, Drawer, Button } from "antd";
-import { UnorderedListOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 const { Link } = Anchor;
@@ -32,7 +32,8 @@ const Navbar = () => {
         </div>
         <div className="mobile-visible">
           <Button
-            icon={<UnorderedListOutlined />}
+            size="small"
+            icon={<MenuOutlined />}
             size="small"
             onClick={showDrawer}
           ></Button>

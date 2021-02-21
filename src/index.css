@@ -42,7 +42,8 @@ svg {
 
 .ant-btn {
   color: var(--side-nav-background);
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: none;
 }
 
 /* ************************************************************************************** */
@@ -67,6 +68,7 @@ svg {
   right: 0;
   z-index: 999;
   position: fixed;
+  border-bottom: solid 4px var(--side-nav-background);
 }
 
 .header {
@@ -481,10 +483,8 @@ svg {
 } */
 
 .repo-list {
-  /* border: #009879 dotted; */
   background-color: var(--side-nav-background);
   border-top: var(--secondary-color) solid 4px;
-  /* padding: 6px; */
   width: 25%;
   margin: 0px 6px;
 }
@@ -500,18 +500,18 @@ svg {
   color: var(--primary-color);
 }
 
-.repo-list h2 {
+.repository-list h2 {
   padding-bottom: 6px;
   /* background-color: #F5BB00; */
   /* padding-right: 250px; */
   /* margin: 10px 0px; */
 }
-.repo-list input {
+.repository-list input {
   margin: 6px 0px;
   width: auto;
   /* margin: 10px 0px; */
 }
-.repo-list p {
+.repository-list p {
   margin: 6px 0px;
   width: auto;
   font-size: 1.2em;
@@ -521,7 +521,7 @@ svg {
   cursor: pointer;
   /* margin: 10px 0px; */
 }
-.repo-list p:hover {
+.repository-list p:hover {
   color: var(--primary-color-light);
   transform: scale(1.02);
 }
@@ -617,19 +617,70 @@ svg {
   display: block;
 }
 
+.analytic-graphs-mobile {
+  display: none;
+}
+
 /* ************************************************************************************** */
 /* responsive */
 /* ************************************************************************************** */
 
-@media only screen and (max-width: 991px) {
+/* @media only screen and (max-width: 991px) {
   .pricingBlock .ant-row > div:nth-child(2) .ant-list-item {
     transform: scale(1.14);
   }
-}
+} */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 992px) {
   .pricingBlock .ant-row > div:nth-child(2) .ant-list-item {
     transform: scale(1);
+  }
+
+  .main-layout .ant-layout-content {
+    /* margin is to solve the overlapping from of header when used with "position: fixed" attribute */
+    margin-top: 64px;
+    padding: 6px;
+  }
+
+  .collection-contents {
+    display: flex;
+    flex-direction: column;
+  }
+  .insights-and-release-info {
+    width: 100%;
+    margin: 0px 6px;
+  }
+
+  /* .issue-table {
+    width: 200px;
+  }
+
+  .pr-table {
+    width: 200px;
+  } */
+
+  .developers-content {
+    flex-direction: column;
+  }
+
+  .dev-list {
+    display: none;
+  }
+
+  .analytics {
+    flex-direction: column;
+  }
+
+  .repo-list {
+    display: none;
+  }
+
+  .analytic-graphs {
+    display: none;
+  }
+
+  .analytic-graphs-mobile {
+    display: block;
   }
 
   .mobile-visible {
