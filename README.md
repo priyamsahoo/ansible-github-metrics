@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Ansible Github Metrics
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application provides a dashboard in terms of factual metrics system for the github projects managed by Ansible Networking Team that helps the team to stay on track with the projects.
 
-## Available Scripts
+## Features
+
+The application collects information about a Github repositories (and org.) along with the developers of the team, and aggregates the data across all projects into a single user interface.
+
+Namely, there are 3 routes:
+
+1. Collections
+2. Developers
+3. Analytics
+
+### Collections
+
+// gif for collections
+
+- Shows tables for issues and pull requests and allows user to sort and filter data with a date ranges
+- Displays collection insight in terms of number of issues opened/closed and number of PRs opened/closed/merged
+- Provides details of Releases and Tags
+
+### Developers
+
+// gif for developers
+
+- Shows the details of the developers in terms of their contributions to the observed repositories
+- Overall contributions can be filters according to different timelines
+
+### Analytics
+
+// gif for analytics
+
+- Displays graphical representations of various Key Performance Indicators (KPIs) of the observed repositories
+  (based on the latest data)
+- Graphs are interactive in nature and thus dynamic filters can be applied
+
+**Note:**
+
+> This project is bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and designed with flavours of [Ant Design](https://ant.design/).
+
+## How to use
+
+- Prior to starting the application, make a _`.env`_ file and provide the github token and graphql endpoint
+
+- To add repositories and developers of interest or to modify the existing list hop on to `src/data/repositories.js` or `src/data/users.js` and update the list accordingly.
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-Runs the app in the development mode.\
+This runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
