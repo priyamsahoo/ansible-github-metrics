@@ -14,7 +14,7 @@ Namely, there are 3 routes:
 
 ### Collections
 
-// gif for collections
+![](https://github.com/priyamsahoo/ansible-github-metrics/blob/doc-updates/screenshots/collections.gif)
 
 - Shows tables for issues and pull requests and allows user to sort and filter data with a date ranges
 - Displays collection insight in terms of number of issues opened/closed and number of PRs opened/closed/merged
@@ -22,14 +22,14 @@ Namely, there are 3 routes:
 
 ### Developers
 
-// gif for developers
+![](https://github.com/priyamsahoo/ansible-github-metrics/blob/doc-updates/screenshots/developers.gif)
 
 - Shows the details of the developers in terms of their contributions to the observed repositories
 - Overall contributions can be filters according to different timelines
 
 ### Analytics
 
-// gif for analytics
+![](https://github.com/priyamsahoo/ansible-github-metrics/blob/doc-updates/screenshots/analytics.gif)
 
 - Displays graphical representations of various Key Performance Indicators (KPIs) of the observed repositories
   (based on the latest data)
