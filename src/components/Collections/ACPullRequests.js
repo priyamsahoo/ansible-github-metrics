@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { Button, Typography } from "antd";
 import { PR } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
 import { PR_COLUMNS } from "./PRColumns";
@@ -18,8 +19,17 @@ const ACPullRequests = ({ owner, repository }) => {
         <DataTable
           title="Pull Requests Table"
           tag="Pull requests"
+          repositoryName={data.repository.nameWithOwner}
           tableData={data.repository.pullRequests.edges}
+          totalCount={data.repository.pullRequests.totalCount}
           tableColumns={PR_COLUMNS}
+          tableDateRange={{
+            end: data.repository.pullRequests.edges[0].node.createdAt,
+            start:
+              data.repository.pullRequests.edges[
+                data.repository.pullRequests.edges.length - 1
+              ].node.createdAt,
+          }}
         />
       )}
     </div>

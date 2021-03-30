@@ -4,6 +4,7 @@ const ISSUES = gql`
   query($repositoryName: String!, $ownerName: String!) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
+      nameWithOwner
       issues(first: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
         edges {
           node {
@@ -12,11 +13,13 @@ const ISSUES = gql`
             }
             state
             title
+            number
             createdAt
             url
             updatedAt
           }
         }
+        totalCount
       }
     }
   }
@@ -26,6 +29,7 @@ const PR = gql`
   query($repositoryName: String!, $ownerName: String!) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
+      nameWithOwner
       pullRequests(
         first: 100
         orderBy: { field: CREATED_AT, direction: DESC }
@@ -40,8 +44,10 @@ const PR = gql`
             url
             state
             title
+            number
           }
         }
+        totalCount
       }
     }
   }

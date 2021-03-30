@@ -1,10 +1,19 @@
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
-import { Empty, Input, Select } from "antd";
+import { Empty, Input, Select, Typography } from "antd";
 import { Button } from "antd";
 import { BackwardOutlined, ForwardOutlined } from "@ant-design/icons";
+import moment from "moment";
 
-const DataTable = ({ title, tag, tableData, tableColumns }) => {
+const DataTable = ({
+  title,
+  tag,
+  repositoryName,
+  tableData,
+  totalCount,
+  tableColumns,
+  tableDateRange,
+}) => {
   // const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => issues, []);
 
@@ -40,13 +49,34 @@ const DataTable = ({ title, tag, tableData, tableColumns }) => {
     prepareRow,
   } = tableInstance;
 
+  console.log("Total Count", totalCount);
+
   const { pageIndex, pageSize } = state;
 
   const { Option } = Select;
 
+  const { Link } = Typography;
+
   return (
     <>
       <h2>{title}</h2>
+      <p>
+        {`Showing data from ${moment(new Date(tableDateRange.start)).format(
+          "ll"
+        )} to ${moment(new Date(tableDateRange.end)).format("ll")}.`}
+      </p>
+      <p>
+        {
+          <Link
+            disabled={totalCount > 100 ? false : true}
+            href={`/collections/${repositoryName}/${tag
+              .toLowerCase()
+              .replace(" ", "")}/all`}
+          >
+            Show more {tag.toLowerCase()}
+          </Link>
+        }
+      </p>
       <h3>
         {tag}: {rows.length}
       </h3>
