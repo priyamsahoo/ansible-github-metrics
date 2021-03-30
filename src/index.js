@@ -32,7 +32,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     console.log(`[Network error]: ${networkError}`);
   }
 
-  message.error("Something's wrong with your network");
+  message.error("Something went wrong");
 });
 
 const client = new ApolloClient({
