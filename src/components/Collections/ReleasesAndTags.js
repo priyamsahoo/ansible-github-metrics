@@ -30,11 +30,16 @@ const ReleasesAndTags = ({ owner, repository }) => {
                 </p>
                 <p>
                   Published on:{" "}
-                  {moment(
-                    new Date(data.tags.refs.edges[0].node.target.tagger.date)
-                  ).format("ll")}
+                  {data.tags.refs.edges[0].node.target.tagger &&
+                    moment(
+                      new Date(data.tags.refs.edges[0].node.target.tagger.date)
+                    ).format("ll")}
                 </p>
-                <p>Author: {data.tags.refs.edges[0].node.target.tagger.name}</p>
+                <p>
+                  Author:{" "}
+                  {data.tags.refs.edges[0].node.target.tagger &&
+                    data.tags.refs.edges[0].node.target.tagger.name}
+                </p>
               </div>
             ) : (
               <Empty description={"No latest release info available"} />

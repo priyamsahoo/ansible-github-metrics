@@ -58,6 +58,15 @@ svg {
   padding: 6px;
 }
 
+.navbar h2 {
+  font-size: 1.8vw;
+}
+
+.navbar img {
+  width: 3.4vw;
+  height: 3.4vw;
+}
+
 .main-layout .ant-layout-header {
   padding: 0;
   height: auto;
@@ -106,7 +115,7 @@ svg {
 }
 
 .header .ant-anchor-link-title {
-  font-size: 1.2em;
+  font-size: 1.2vw;
   color: var(--side-nav-background);
 }
 .header .ant-anchor-link-title:hover {

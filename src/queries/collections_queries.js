@@ -1,11 +1,16 @@
 import { gql } from "@apollo/client";
 
 const ISSUES = gql`
-  query($repositoryName: String!, $ownerName: String!) {
+  query($repositoryName: String!, $ownerName: String!, $cursor: String) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
       nameWithOwner
-      issues(first: 100, orderBy: { field: CREATED_AT, direction: DESC }) {
+      issues(
+        first: 100
+        orderBy: { field: CREATED_AT, direction: DESC }
+        after: $cursor
+      ) {
+        totalCount
         edges {
           node {
             author {
@@ -19,21 +24,26 @@ const ISSUES = gql`
             updatedAt
           }
         }
-        totalCount
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
     }
   }
 `;
 
 const PR = gql`
-  query($repositoryName: String!, $ownerName: String!) {
+  query($repositoryName: String!, $ownerName: String!, $cursor: String) {
     repository(name: $repositoryName, owner: $ownerName) {
       name
       nameWithOwner
       pullRequests(
         first: 100
         orderBy: { field: CREATED_AT, direction: DESC }
+        after: $cursor
       ) {
+        totalCount
         edges {
           node {
             author {
@@ -47,7 +57,10 @@ const PR = gql`
             number
           }
         }
-        totalCount
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
     }
   }

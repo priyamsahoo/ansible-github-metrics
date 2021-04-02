@@ -59,13 +59,12 @@ const DataTable = ({
 
   return (
     <>
-      <h2>{title}</h2>
       <p>
         {`Showing data from ${moment(new Date(tableDateRange.start)).format(
           "ll"
         )} to ${moment(new Date(tableDateRange.end)).format("ll")}.`}
       </p>
-      <p>
+      {/* <p>
         {
           <Link
             disabled={totalCount > 100 ? false : true}
@@ -76,7 +75,7 @@ const DataTable = ({
             Show more {tag.toLowerCase()}
           </Link>
         }
-      </p>
+      </p> */}
       <h3>
         {tag}: {rows.length}
       </h3>

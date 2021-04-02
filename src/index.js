@@ -35,6 +35,21 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   message.error("Something went wrong");
 });
 
+// const cache = new InMemoryCache({
+//   typePolicies: {
+//     Query: {
+//       fields: {
+//         repository: {
+//           merge(existing, incoming, { mergeObjects }) {
+//             // Correct, thanks to invoking nested merge functions.
+//             return mergeObjects(existing.issues.edges, incoming.issues.edges);
+//           },
+//         },
+//       },
+//     },
+//   },
+// });
+
 const client = new ApolloClient({
   link: errorLink.concat(httpLink),
   cache: new InMemoryCache(),
