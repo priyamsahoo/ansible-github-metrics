@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { moment } from "moment";
 import { Button, Typography } from "antd";
 import { useCallback } from "react";
 import { PR } from "../../queries/collections_queries";
@@ -9,6 +10,7 @@ const ACPullRequests = ({ owner, repository }) => {
   // Query for obtaining pull requests
   const { loading, error, data, fetchMore } = useQuery(PR, {
     variables: { repositoryName: repository, ownerName: owner, cursor: null },
+    fetchPolicy: "network-only",
   });
   // console.log(data);
 
@@ -20,26 +22,6 @@ const ACPullRequests = ({ owner, repository }) => {
       fetchMore({
         variables: { cursor: endCursor },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          // console.log("Prev Result from PR", previousResult);
-          // console.log("Fetchmore Result from PR", fetchMoreResult);
-
-          // if (!fetchMoreResult) {
-          //   return previousResult;
-          // }
-
-          // return {
-          //   repository: {
-          //     ...previousResult.repository,
-          //     pullRequests: {
-          //       ...data.repository.pullRequests,
-          //       edges: [
-          //         ...data.repository.pullRequests.edges,
-          //         ...fetchMoreResult.repository.pullRequests.edges,
-          //       ],
-          //     },
-          //   },
-          // };
-
           fetchMoreResult.repository.pullRequests.edges = [
             ...data.repository.pullRequests.edges,
             ...fetchMoreResult.repository.pullRequests.edges,
@@ -57,16 +39,27 @@ const ACPullRequests = ({ owner, repository }) => {
     <div className="ac-pull-requests">
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
-      {console.log("PR Data", data)}
+      {console.log("PR Data Rendered", data)}
       {data && (
         <>
           <h2>Pull Requests Table</h2>
-          <Button
+
+          <p>
+            {`Showing data from ${new Date(
+              data.repository.pullRequests.edges[
+                data.repository.pullRequests.edges.length - 1
+              ].node.createdAt
+            )} to ${new Date(
+              data.repository.pullRequests.edges[0].node.createdAt
+            )}.`}
+          </p>
+
+          <Link
             disabled={!data.repository.pullRequests.pageInfo.hasNextPage}
             onClick={handleClick}
           >
             Load More
-          </Button>
+          </Link>
           <DataTable
             title="Pull Requests Table"
             tag="Pull requests"

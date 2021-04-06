@@ -50,7 +50,10 @@ const Analytics = () => {
           drawerStyle={{ backgroundColor: "#3d5861" }}
         >
           <div className="repo-list-mobile">
-            <RepositoryList repositoryCallback={repositoryCallback} />
+            <RepositoryList
+              repositoryCallback={repositoryCallback}
+              drawerClose={onClose}
+            />
           </div>
         </Drawer>
       </div>

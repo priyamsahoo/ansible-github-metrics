@@ -1,17 +1,20 @@
-import { useQuery } from "@apollo/client";
+import { InMemoryCache, useQuery } from "@apollo/client";
 import { Button, Typography } from "antd";
 import { useCallback } from "react";
 import { ISSUES } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
 import { ISSUE_COLUMNS } from "./IssueColumns";
 import moment from "moment";
+import { useEffect } from "react";
+import { relayStylePagination } from "@apollo/client/utilities";
 
 const ACIssues = ({ owner, repository }) => {
   // Query for obtaining issues
   const { loading, error, data, fetchMore } = useQuery(ISSUES, {
     variables: { repositoryName: repository, ownerName: owner, cursor: null },
+    fetchPolicy: "network-only",
   });
-  // console.log(data);
+  console.log("Received data", data);
 
   const handleClick = () => {
     const { hasNextPage, endCursor } = data.repository.issues.pageInfo;
@@ -21,26 +24,6 @@ const ACIssues = ({ owner, repository }) => {
       fetchMore({
         variables: { cursor: endCursor },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          // console.log("Prev Result from Issues", previousResult);
-          // console.log("Fetchmore Result from Issues", fetchMoreResult);
-
-          // if (!fetchMoreResult) {
-          //   return previousResult;
-          // }
-
-          // return {
-          //   repository: {
-          //     ...data.repository,
-          //     issues: {
-          //       ...data.repository.issues,
-          //       edges: [
-          //         ...data.repository.issues.edges,
-          //         ...fetchMoreResult.repository.issues.edges,
-          //       ],
-          //     },
-          //   },
-          // };
-
           fetchMoreResult.repository.issues.edges = [
             ...data.repository.issues.edges,
             ...fetchMoreResult.repository.issues.edges,
@@ -58,15 +41,25 @@ const ACIssues = ({ owner, repository }) => {
     <div className="ac-issues">
       {error && <div>{error}</div>}
       {loading && <div>Loading...</div>}
+      {console.log("ISSUE Data Rendered", data)}
       {data && (
         <>
           <h2>Issues Table</h2>
-          <Button
+
+          <p>
+            {`Showing data from ${
+              data.repository.issues.edges[
+                data.repository.issues.edges.length - 1
+              ].node.createdAt
+            } to ${data.repository.issues.edges[0].node.createdAt}.`}
+          </p>
+
+          <Link
             disabled={!data.repository.issues.pageInfo.hasNextPage}
             onClick={handleClick}
           >
             Load More
-          </Button>
+          </Link>
           <DataTable
             tag="Issues"
             repositoryName={data.repository.nameWithOwner}

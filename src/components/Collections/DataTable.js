@@ -59,11 +59,11 @@ const DataTable = ({
 
   return (
     <>
-      <p>
+      {/* <p>
         {`Showing data from ${moment(new Date(tableDateRange.start)).format(
           "ll"
         )} to ${moment(new Date(tableDateRange.end)).format("ll")}.`}
-      </p>
+      </p> */}
       {/* <p>
         {
           <Link

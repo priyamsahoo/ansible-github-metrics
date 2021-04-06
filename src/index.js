@@ -11,6 +11,7 @@ import {
   HttpLink,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import { relayStylePagination } from "@apollo/client/utilities";
 
 const httpLink = new HttpLink({
   // uri: `"${process.env.REACT_APP_GITHUB_URL}"`,
@@ -35,31 +36,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   message.error("Something went wrong");
 });
 
-// const cache = new InMemoryCache({
-//   typePolicies: {
-//     Query: {
-//       fields: {
-//         repository: {
-//           merge(existing, incoming, { mergeObjects }) {
-//             // Correct, thanks to invoking nested merge functions.
-//             return mergeObjects(existing.issues.edges, incoming.issues.edges);
-//           },
-//         },
-//       },
-//     },
-//   },
-// });
-
 const client = new ApolloClient({
   link: errorLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
   document.getElementById("root")
 );
