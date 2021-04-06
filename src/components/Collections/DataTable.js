@@ -12,7 +12,6 @@ const DataTable = ({
   tableData,
   totalCount,
   tableColumns,
-  tableDateRange,
 }) => {
   // const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => issues, []);
@@ -59,6 +58,12 @@ const DataTable = ({
 
   return (
     <>
+      {/* {totalCount === rows.length ? (
+        <p>
+          <em>( Fetched data since beginning )</em>
+        </p>
+      ) : null} */}
+
       <h3>
         {tag}:{" "}
         {rows.length === 100

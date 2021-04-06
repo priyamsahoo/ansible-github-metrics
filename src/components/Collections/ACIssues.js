@@ -66,19 +66,22 @@ const ACIssues = ({ owner, repository }) => {
             </b>
           </p>
 
+          {data.repository.issues.totalCount ===
+          data.repository.issues.edges.length ? (
+            <p>
+              <em>
+                ( Fetched data since beginning:{" "}
+                {data.repository.issues.totalCount} issues )
+              </em>
+            </p>
+          ) : null}
+
           <DataTable
             tag="Issues"
             repositoryName={data.repository.nameWithOwner}
             tableData={data.repository.issues.edges}
             totalCount={data.repository.issues.totalCount}
             tableColumns={ISSUE_COLUMNS}
-            tableDateRange={{
-              end: data.repository.issues.edges[0].node.createdAt,
-              start:
-                data.repository.issues.edges[
-                  data.repository.issues.edges.length - 1
-                ].node.createdAt,
-            }}
           />
         </>
       )}

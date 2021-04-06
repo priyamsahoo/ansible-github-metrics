@@ -64,6 +64,16 @@ const ACPullRequests = ({ owner, repository }) => {
             </b>
           </p>
 
+          {data.repository.pullRequests.totalCount ===
+          data.repository.pullRequests.edges.length ? (
+            <p>
+              <em>
+                ( Fetched data since beginning:{" "}
+                {data.repository.pullRequests.totalCount} pullRequests )
+              </em>
+            </p>
+          ) : null}
+
           <DataTable
             title="Pull Requests Table"
             tag="Pull requests"
@@ -71,13 +81,6 @@ const ACPullRequests = ({ owner, repository }) => {
             tableData={data.repository.pullRequests.edges}
             totalCount={data.repository.pullRequests.totalCount}
             tableColumns={PR_COLUMNS}
-            tableDateRange={{
-              end: data.repository.pullRequests.edges[0].node.createdAt,
-              start:
-                data.repository.pullRequests.edges[
-                  data.repository.pullRequests.edges.length - 1
-                ].node.createdAt,
-            }}
           />
         </>
       )}
