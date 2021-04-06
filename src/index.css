@@ -47,6 +47,10 @@ svg {
   border: none;
 }
 
+a.ant-typography {
+  color: var(--primary-color);
+}
+
 /* ************************************************************************************** */
 /* header styles */
 /* ************************************************************************************** */
@@ -59,12 +63,12 @@ svg {
 }
 
 .navbar h2 {
-  font-size: 1.8vw;
+  font-size: 1.8em;
 }
 
 .navbar img {
-  width: 3.4vw;
-  height: 3.4vw;
+  width: 3.4em;
+  height: 3.4em;
 }
 
 .main-layout .ant-layout-header {

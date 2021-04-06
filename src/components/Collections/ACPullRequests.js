@@ -45,21 +45,25 @@ const ACPullRequests = ({ owner, repository }) => {
           <h2>Pull Requests Table</h2>
 
           <p>
-            {`Showing data from ${new Date(
-              data.repository.pullRequests.edges[
-                data.repository.pullRequests.edges.length - 1
-              ].node.createdAt
-            )} to ${new Date(
-              data.repository.pullRequests.edges[0].node.createdAt
-            )}.`}
+            Showing data from{" "}
+            <em>
+              {
+                data.repository.pullRequests.edges[
+                  data.repository.pullRequests.edges.length - 1
+                ].node.createdAt
+              }
+            </em>{" "}
+            to <em>{data.repository.pullRequests.edges[0].node.createdAt}</em>.{" "}
+            <b>
+              <Link
+                disabled={!data.repository.pullRequests.pageInfo.hasNextPage}
+                onClick={handleClick}
+              >
+                Load More
+              </Link>
+            </b>
           </p>
 
-          <Link
-            disabled={!data.repository.pullRequests.pageInfo.hasNextPage}
-            onClick={handleClick}
-          >
-            Load More
-          </Link>
           <DataTable
             title="Pull Requests Table"
             tag="Pull requests"

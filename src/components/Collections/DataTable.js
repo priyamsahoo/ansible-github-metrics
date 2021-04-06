@@ -59,25 +59,11 @@ const DataTable = ({
 
   return (
     <>
-      {/* <p>
-        {`Showing data from ${moment(new Date(tableDateRange.start)).format(
-          "ll"
-        )} to ${moment(new Date(tableDateRange.end)).format("ll")}.`}
-      </p> */}
-      {/* <p>
-        {
-          <Link
-            disabled={totalCount > 100 ? false : true}
-            href={`/collections/${repositoryName}/${tag
-              .toLowerCase()
-              .replace(" ", "")}/all`}
-          >
-            Show more {tag.toLowerCase()}
-          </Link>
-        }
-      </p> */}
       <h3>
-        {tag}: {rows.length}
+        {tag}:{" "}
+        {rows.length === 100
+          ? rows.length.toString() + "+"
+          : rows.length.toString()}
       </h3>
 
       {/* Boilerplate table code */}

@@ -47,19 +47,25 @@ const ACIssues = ({ owner, repository }) => {
           <h2>Issues Table</h2>
 
           <p>
-            {`Showing data from ${
-              data.repository.issues.edges[
-                data.repository.issues.edges.length - 1
-              ].node.createdAt
-            } to ${data.repository.issues.edges[0].node.createdAt}.`}
+            Showing data from{" "}
+            <em>
+              {
+                data.repository.issues.edges[
+                  data.repository.issues.edges.length - 1
+                ].node.createdAt
+              }
+            </em>{" "}
+            to <em>{data.repository.issues.edges[0].node.createdAt}</em>.{" "}
+            <b>
+              <Link
+                disabled={!data.repository.issues.pageInfo.hasNextPage}
+                onClick={handleClick}
+              >
+                Load More
+              </Link>
+            </b>
           </p>
 
-          <Link
-            disabled={!data.repository.issues.pageInfo.hasNextPage}
-            onClick={handleClick}
-          >
-            Load More
-          </Link>
           <DataTable
             tag="Issues"
             repositoryName={data.repository.nameWithOwner}
