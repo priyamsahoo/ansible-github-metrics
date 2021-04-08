@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { moment } from "moment";
+import moment from "moment";
 import { Button, Typography } from "antd";
 import { useCallback } from "react";
 import { PR } from "../../queries/collections_queries";
@@ -47,13 +47,21 @@ const ACPullRequests = ({ owner, repository }) => {
           <p>
             Showing data from{" "}
             <em>
-              {
-                data.repository.pullRequests.edges[
-                  data.repository.pullRequests.edges.length - 1
-                ].node.createdAt
-              }
+              {moment(
+                new Date(
+                  data.repository.pullRequests.edges[
+                    data.repository.pullRequests.edges.length - 1
+                  ].node.createdAt
+                )
+              ).format("ll")}
             </em>{" "}
-            to <em>{data.repository.pullRequests.edges[0].node.createdAt}</em>.{" "}
+            to{" "}
+            <em>
+              {moment(
+                new Date(data.repository.pullRequests.edges[0].node.createdAt)
+              ).format("ll")}
+            </em>
+            .{" "}
             <b>
               <Link
                 disabled={!data.repository.pullRequests.pageInfo.hasNextPage}

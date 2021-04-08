@@ -49,13 +49,21 @@ const ACIssues = ({ owner, repository }) => {
           <p>
             Showing data from{" "}
             <em>
-              {
-                data.repository.issues.edges[
-                  data.repository.issues.edges.length - 1
-                ].node.createdAt
-              }
+              {moment(
+                new Date(
+                  data.repository.issues.edges[
+                    data.repository.issues.edges.length - 1
+                  ].node.createdAt
+                )
+              ).format("ll")}
             </em>{" "}
-            to <em>{data.repository.issues.edges[0].node.createdAt}</em>.{" "}
+            to{" "}
+            <em>
+              {moment(
+                new Date(data.repository.issues.edges[0].node.createdAt)
+              ).format("ll")}
+            </em>
+            .{" "}
             <b>
               <Link
                 disabled={!data.repository.issues.pageInfo.hasNextPage}

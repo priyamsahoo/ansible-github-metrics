@@ -64,11 +64,15 @@ const DataTable = ({
         </p>
       ) : null} */}
 
-      <h3>
+      {/* <h3>
         {tag}:{" "}
         {rows.length === 100
           ? rows.length.toString() + "+"
           : rows.length.toString()}
+      </h3> */}
+
+      <h3>
+        {tag}: {rows.length} of {totalCount}
       </h3>
 
       {/* Boilerplate table code */}
