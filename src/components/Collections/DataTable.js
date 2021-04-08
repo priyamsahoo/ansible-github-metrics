@@ -1,6 +1,6 @@
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { Filter, DefaultColumnFilter } from "../../utils/filters";
-import { Empty, Input, Select, Typography } from "antd";
+import { Empty, Input, Select, Statistic, Typography } from "antd";
 import { Button } from "antd";
 import { BackwardOutlined, ForwardOutlined } from "@ant-design/icons";
 import moment from "moment";
@@ -71,9 +71,16 @@ const DataTable = ({
           : rows.length.toString()}
       </h3> */}
 
-      <h3>
+      {/* <h3>
         {tag}: {rows.length} of {totalCount}
-      </h3>
+      </h3> */}
+
+      <Statistic
+        valueStyle={{ color: "#3d5861" }}
+        title={tag}
+        value={rows.length}
+        suffix={" of " + totalCount}
+      />
 
       {/* Boilerplate table code */}
       <table

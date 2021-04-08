@@ -1,5 +1,5 @@
 import { InMemoryCache, useQuery } from "@apollo/client";
-import { Button, Typography } from "antd";
+import { Button, Tag, Typography } from "antd";
 import { useCallback } from "react";
 import { ISSUES } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
@@ -63,14 +63,16 @@ const ACIssues = ({ owner, repository }) => {
                 new Date(data.repository.issues.edges[0].node.createdAt)
               ).format("ll")}
             </em>
-            .{" "}
+            .{" |  "}
             <b>
-              <Link
-                disabled={!data.repository.issues.pageInfo.hasNextPage}
-                onClick={handleClick}
-              >
-                Load More
-              </Link>
+              <Tag>
+                <Link
+                  disabled={!data.repository.issues.pageInfo.hasNextPage}
+                  onClick={handleClick}
+                >
+                  Load More
+                </Link>
+              </Tag>
             </b>
           </p>
 

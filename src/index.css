@@ -47,6 +47,12 @@ svg {
   border: none;
 }
 
+.ant-tag {
+  color: var(--primary-color);
+  background: #eceeef;
+  border-color: var(--primary-color);
+}
+
 a.ant-typography {
   color: var(--primary-color);
 }

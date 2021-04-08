@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import moment from "moment";
-import { Button, Typography } from "antd";
+import { Button, Tag, Typography } from "antd";
 import { useCallback } from "react";
 import { PR } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
@@ -61,14 +61,16 @@ const ACPullRequests = ({ owner, repository }) => {
                 new Date(data.repository.pullRequests.edges[0].node.createdAt)
               ).format("ll")}
             </em>
-            .{" "}
+            .{"  |  "}
             <b>
-              <Link
-                disabled={!data.repository.pullRequests.pageInfo.hasNextPage}
-                onClick={handleClick}
-              >
-                Load More
-              </Link>
+              <Tag>
+                <Link
+                  disabled={!data.repository.pullRequests.pageInfo.hasNextPage}
+                  onClick={handleClick}
+                >
+                  Load More
+                </Link>
+              </Tag>
             </b>
           </p>
 
