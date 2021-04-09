@@ -2,10 +2,6 @@ import * as _ from "lodash";
 
 const tempFunction = (type, month, count1, count2 = 0) => {
   let data = {};
-  console.log(type);
-  console.log(month);
-  console.log(count1);
-  console.log(count2);
   if (type === "open") {
     data = {
       Month: month,
@@ -25,8 +21,6 @@ const tempFunction = (type, month, count1, count2 = 0) => {
       open: count2,
     };
   }
-
-  console.log("DATA from assemble-data", data);
   return data;
 };
 
@@ -57,7 +51,6 @@ export const assembleData = (array1, array2, type) => {
     const { Month, Count } = issue;
 
     const temp = array2.find((elem) => elem.Month === Month);
-    console.log("temp", temp);
     if (!temp) {
       return tempFunction(type, Month, Count);
     }
