@@ -23,34 +23,34 @@ const Analytics = () => {
 
   // *******************************************
 
-  const MONTHS = () => {
-    const noOfYears = 1;
-    const noOfMonths = noOfYears * 12;
+  // const MONTHS = () => {
+  //   const noOfYears = 1;
+  //   const noOfMonths = noOfYears * 12;
 
-    const monthRanges = [];
+  //   const monthRanges = [];
 
-    for (let month = 0; month <= noOfMonths; month++) {
-      let monthStart = moment()
-        .subtract(month, "months")
-        .startOf("month")
-        .format("YYYY-MM-DD")
-        .toString();
+  //   for (let month = 0; month <= noOfMonths; month++) {
+  //     let monthStart = moment()
+  //       .subtract(month, "months")
+  //       .startOf("month")
+  //       .format("YYYY-MM-DD")
+  //       .toString();
 
-      let monthEnd = moment()
-        .subtract(month, "months")
-        .endOf("month")
-        .format("YYYY-MM-DD")
-        .toString();
+  //     let monthEnd = moment()
+  //       .subtract(month, "months")
+  //       .endOf("month")
+  //       .format("YYYY-MM-DD")
+  //       .toString();
 
-      let dateString = `${monthStart}..${monthEnd}`;
+  //     let dateString = `${monthStart}..${monthEnd}`;
 
-      monthRanges.push(dateString);
-    }
+  //     monthRanges.push(dateString);
+  //   }
 
-    return monthRanges;
-  };
+  //   return monthRanges;
+  // };
 
-  console.log("MONTH TEST", MONTHS());
+  // console.log("MONTH TEST", MONTHS());
 
   // *******************************************
 

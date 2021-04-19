@@ -12,6 +12,8 @@ import DoughnutGraph from "./DoughnutGraph";
 import { calculateAverageDays } from "../../utils/calculateAverageDays";
 import { Row, Col, PageHeader, Empty } from "antd";
 import AnalyticGraphs from "./AnalyticGraphs";
+import { ISSUES_AND_PRS_MONTHLY } from "../../queries/analytics_monthwise_stats";
+import { separateAndSplitData } from "../../utils/separateAndSplitData";
 
 const RepositoryAnalytics = ({ owner, repository }) => {
   const [mergedIssueData, setMergedIssueData] = useState(null);
@@ -43,6 +45,21 @@ const RepositoryAnalytics = ({ owner, repository }) => {
   } = useQuery(ISSUES_AND_PR_AVERAGE, {
     variables: { repositoryName: repository, ownerName: owner },
   });
+
+  // ************************
+  // ************************
+  const {
+    loading: monthlyStatLoading,
+    error: monthlyStatError,
+    data: monthlyStatData,
+  } = useQuery(ISSUES_AND_PRS_MONTHLY(`${owner}/${repository}`));
+
+  if (monthlyStatData) {
+    separateAndSplitData(monthlyStatData);
+  }
+
+  // ************************
+  // ************************
 
   useEffect(() => {
     let openIssuesGroupedByMonth,
@@ -81,9 +98,6 @@ const RepositoryAnalytics = ({ owner, repository }) => {
       mergedPRGroupedByMonth = groupByMonth(
         splitupDataData.MERGED_PR.pullRequests.nodes
       );
-
-      console.log(openIssuesGroupedByMonth);
-      console.log(closedIssuesGroupedByMonth);
 
       if (!splitupDataLoading) {
         const resultForIssues =
