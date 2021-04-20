@@ -32,6 +32,12 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
         },
       },
     },
+    legend: {
+      display: true,
+      labels: {
+        boxWidth: 15,
+      },
+    },
   };
 
   return (
