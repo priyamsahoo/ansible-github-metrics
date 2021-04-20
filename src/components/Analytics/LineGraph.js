@@ -2,7 +2,7 @@ import { Line } from "react-chartjs-2";
 
 const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
   // console.log(totalOpenIssues);
-  // console.log(data);
+  console.log("DATA FROM GRAPH", data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [
@@ -29,7 +29,7 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
         pointHitRadius: 10,
 
         data: data.map((item) =>
-          ((item.closed / (item.open + item.closed)) * 100).toFixed(2)
+          ((item.closed / (item.open + item.closed)) * 100 || 0).toFixed(2)
         ),
       },
     ],

@@ -51,8 +51,8 @@ export const separateAndSplitData = (data) => {
     };
   });
 
-  console.log("PRS", prsStatSplit);
-  console.log("ISSUES", issuesStatSplit);
+  // console.log("PRS", prsStatSplit);
+  // console.log("ISSUES", issuesStatSplit);
 
   return { issuesStatSplit, prsStatSplit };
 };

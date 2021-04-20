@@ -11,15 +11,20 @@ const AnalyticGraphs = ({
   totalMergePRCount,
   averageDaysIssueClosed,
   averageDaysPRMerged,
+  issuesStatData,
+  prsStatData,
 }) => {
+  console.log("FROMANALYTICS", issuesStatData);
+  console.log("FROMANALYTICS", prsStatData);
+
   return (
     <>
       <div className="analytic-graphs">
         <Row>
           <Col span={12}>
-            {mergedIssueData && (
+            {issuesStatData && (
               <LineGraph
-                dataGroupedByMonth={mergedIssueData}
+                dataGroupedByMonth={issuesStatData}
                 label="Issues closed %"
                 heading="Issues Trend"
               />
@@ -94,9 +99,9 @@ const AnalyticGraphs = ({
         </Row>
         <Row>
           <Col span={12}>
-            {mergedIssueData && (
+            {issuesStatData && (
               <BarGraph
-                dataGroupedByMonth={mergedIssueData}
+                dataGroupedByMonth={issuesStatData}
                 label1="Open Issue"
                 label2="Closed Issue"
                 heading="Issue Categories"
@@ -104,9 +109,9 @@ const AnalyticGraphs = ({
             )}
           </Col>
           <Col span={12}>
-            {mergedPRData && (
+            {prsStatData && (
               <BarGraph
-                dataGroupedByMonth={mergedPRData}
+                dataGroupedByMonth={prsStatData}
                 label1="Open PR"
                 label2="Merged PR"
                 heading="Pull Request Categories"
@@ -119,9 +124,9 @@ const AnalyticGraphs = ({
       <div className="analytic-graphs-mobile">
         <Row>
           <Col span={24}>
-            {mergedIssueData && (
+            {issuesStatData && (
               <LineGraph
-                dataGroupedByMonth={mergedIssueData}
+                dataGroupedByMonth={issuesStatData}
                 label="Issues closed %"
                 heading="Issues Trend"
               />
@@ -198,9 +203,9 @@ const AnalyticGraphs = ({
         </Row>
         <Row>
           <Col span={24}>
-            {mergedIssueData && (
+            {issuesStatData && (
               <BarGraph
-                dataGroupedByMonth={mergedIssueData}
+                dataGroupedByMonth={issuesStatData}
                 label1="Open Issue"
                 label2="Closed Issue"
                 heading="Issue Categories"
@@ -210,9 +215,9 @@ const AnalyticGraphs = ({
         </Row>
         <Row>
           <Col span={24}>
-            {mergedPRData && (
+            {prsStatData && (
               <BarGraph
-                dataGroupedByMonth={mergedPRData}
+                dataGroupedByMonth={prsStatData}
                 label1="Open PR"
                 label2="Merged PR"
                 heading="Pull Request Categories"

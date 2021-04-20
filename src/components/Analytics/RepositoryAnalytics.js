@@ -30,6 +30,11 @@ const RepositoryAnalytics = ({ owner, repository }) => {
   const [averageDaysIssueClosed, setAverageDaysIssueClosed] = useState(null);
   const [averageDaysPRMerged, setAverageDaysPRMerged] = useState(null);
 
+  const [issuesStatData, setIssuesStatData] = useState(null);
+  const [prsStatData, setPRsStatData] = useState(null);
+
+  // const [statData, setStatData] = useState(null);
+
   const {
     loading: splitupDataLoading,
     error: splitupDataError,
@@ -54,8 +59,8 @@ const RepositoryAnalytics = ({ owner, repository }) => {
     data: monthlyStatData,
   } = useQuery(ISSUES_AND_PRS_MONTHLY(`${owner}/${repository}`));
 
-  if (monthlyStatData) {
-    separateAndSplitData(monthlyStatData);
+  if (monthlyStatData && !monthlyStatLoading) {
+    var statData = separateAndSplitData(monthlyStatData);
   }
 
   // ************************
@@ -69,7 +74,10 @@ const RepositoryAnalytics = ({ owner, repository }) => {
       averageIssueCloseDate,
       averagePRMergeDate,
       issuesGroupedByMonth,
-      prGroupedByMonth;
+      prGroupedByMonth,
+      issuesStatSplit,
+      prsStatSplit,
+      statMonthlyData;
 
     if (averageDataData) {
       // console.log(averageDataData);
@@ -134,12 +142,20 @@ const RepositoryAnalytics = ({ owner, repository }) => {
         setTotalMergePRCount(splitupDataData.MERGED_PR.pullRequests.totalCount);
         // console.log("TOTAL COUNT", splitupDataData);
       }
+
+      // if (monthlyStatData) {
+      //   statMonthlyData = separateAndSplitData(monthlyStatData);
+      //   setStatData(statMonthlyData);
+      // }
+
+      // console.log("DATAAAAAAAAAA STATSSSSSSSS", statData);
     }
   }, [
     splitupDataLoading,
     averageDataLoading,
     splitupDataData,
     averageDataData,
+    monthlyStatData,
   ]);
 
   return (
@@ -149,16 +165,20 @@ const RepositoryAnalytics = ({ owner, repository }) => {
         title="Analytics"
         subTitle={repository}
       />
-      <AnalyticGraphs
-        mergedIssueData={mergedIssueData}
-        mergedPRData={mergedPRData}
-        totalOpenIssueCount={totalOpenIssueCount}
-        totalCloseIssueCount={totalCloseIssueCount}
-        totalOpenPRCount={totalOpenPRCount}
-        totalMergePRCount={totalMergePRCount}
-        averageDaysIssueClosed={averageDaysIssueClosed}
-        averageDaysPRMerged={averageDaysPRMerged}
-      />
+      {statData && (
+        <AnalyticGraphs
+          mergedIssueData={mergedIssueData}
+          mergedPRData={mergedPRData}
+          totalOpenIssueCount={totalOpenIssueCount}
+          totalCloseIssueCount={totalCloseIssueCount}
+          totalOpenPRCount={totalOpenPRCount}
+          totalMergePRCount={totalMergePRCount}
+          averageDaysIssueClosed={averageDaysIssueClosed}
+          averageDaysPRMerged={averageDaysPRMerged}
+          issuesStatData={statData.issuesStatSplit}
+          prsStatData={statData.prsStatSplit}
+        />
+      )}
     </div>
   );
 };
