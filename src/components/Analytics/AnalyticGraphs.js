@@ -3,8 +3,6 @@ import LineGraph from "./LineGraph";
 import BarGraph from "./BarGraph";
 import DoughnutGraph from "./DoughnutGraph";
 const AnalyticGraphs = ({
-  mergedIssueData,
-  mergedPRData,
   totalOpenIssueCount,
   totalCloseIssueCount,
   totalOpenPRCount,
