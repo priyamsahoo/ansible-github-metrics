@@ -2,7 +2,7 @@ import { Bar } from "react-chartjs-2";
 
 const BarGraph = ({ dataGroupedByMonth: data, label1, label2, heading }) => {
   // console.log(totalOpen);
-  // console.log(data);
+  console.log("DATA FROM GRAPH", data);
   const dataToPlot = {
     labels: data.map((item) => item.Month),
     datasets: [

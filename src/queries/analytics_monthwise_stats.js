@@ -21,16 +21,16 @@ query {
 */
 
 const open_pr_qs = (selectedRepository, dateString) =>
-  `"repo:${selectedRepository} type:pr is:open updated:${dateString}"`;
+  `"repo:${selectedRepository} type:pr is:open created:${dateString}"`;
 
 const merged_pr_qs = (selectedRepository, dateString) =>
-  `"repo:${selectedRepository} type:pr is:merged updated:${dateString}"`;
+  `"repo:${selectedRepository} type:pr is:merged merged:${dateString}"`;
 
 const open_issue_qs = (selectedRepository, dateString) =>
-  `"repo:${selectedRepository} type:issue is:open updated:${dateString}"`;
+  `"repo:${selectedRepository} type:issue is:open created:${dateString}"`;
 
 const closed_issue_qs = (selectedRepository, dateString) =>
-  `"repo:${selectedRepository} type:issue is:closed updated:${dateString}"`;
+  `"repo:${selectedRepository} type:issue is:closed closed:${dateString}"`;
 
 const MONTHS = () => {
   const noOfYears = 1;
