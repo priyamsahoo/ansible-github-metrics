@@ -1,3 +1,5 @@
+import { InfoCircleFilled, PieChartOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
@@ -40,8 +42,13 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
     },
   };
 
+  const message = "Doughnut graph message";
+
   return (
     <div className="chart-doughnut">
+      <Tooltip title={message} placement={"rightTop"}>
+        <PieChartOutlined />
+      </Tooltip>
       <h3>{heading}</h3>
       <Doughnut data={dataToPlot} options={option} />
     </div>

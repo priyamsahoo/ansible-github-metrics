@@ -1,7 +1,8 @@
-import { Row, Col, Empty } from "antd";
+import { Row, Col, Empty, Tooltip } from "antd";
 import LineGraph from "./LineGraph";
 import BarGraph from "./BarGraph";
 import DoughnutGraph from "./DoughnutGraph";
+import { InfoCircleFilled, FundOutlined } from "@ant-design/icons";
 const AnalyticGraphs = ({
   totalOpenIssueCount,
   totalCloseIssueCount,
@@ -14,6 +15,8 @@ const AnalyticGraphs = ({
 }) => {
   console.log("FROMANALYTICS", issuesStatData);
   console.log("FROMANALYTICS", prsStatData);
+
+  const message = "Average stats component message";
 
   return (
     <>
@@ -67,6 +70,9 @@ const AnalyticGraphs = ({
               <Col span={12}>
                 {averageDaysIssueClosed ? (
                   <div className="issue-close-average">
+                    <Tooltip title={message} placement={"rightTop"}>
+                      <FundOutlined />
+                    </Tooltip>
                     <h3>Avg. days to close an issue</h3>
                     <h2>{averageDaysIssueClosed}</h2>
                   </div>
@@ -82,6 +88,9 @@ const AnalyticGraphs = ({
               <Col span={12}>
                 {averageDaysPRMerged ? (
                   <div className="pr-merge-average">
+                    <Tooltip title={message} placement={"rightTop"}>
+                      <FundOutlined />
+                    </Tooltip>
                     <h3>Avg. days to merge a PR</h3>
                     <h2>{averageDaysPRMerged}</h2>
                   </div>
