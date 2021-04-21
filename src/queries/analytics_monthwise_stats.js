@@ -33,12 +33,12 @@ const closed_issue_qs = (selectedRepository, dateString) =>
   `"repo:${selectedRepository} type:issue is:closed closed:${dateString}"`;
 
 const MONTHS = () => {
-  const noOfYears = 1;
+  const noOfYears = 1.25;
   const noOfMonths = noOfYears * 12;
 
   const monthRanges = [];
 
-  for (let month = 0; month <= noOfMonths; month++) {
+  for (let month = noOfMonths - 1; month >= 0; month--) {
     let monthStart = moment()
       .subtract(month, "months")
       .startOf("month")
