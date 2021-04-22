@@ -1,7 +1,13 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/collections_queries";
-import { Row, Col, Statistic, Card, Divider } from "antd";
+import { Row, Col, Statistic, Card, Divider, Tooltip } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
+import {
+  IssueOpenedIcon,
+  IssueClosedIcon,
+  GitPullRequestIcon,
+  GitMergeIcon,
+} from "@primer/octicons-react";
 
 const CollectionInsights = ({ owner, repository }) => {
   // Query for obtaining collection insight info
@@ -21,13 +27,25 @@ const CollectionInsights = ({ owner, repository }) => {
         <Row gutter={16}>
           <Col span={12}>
             <Statistic
-              title="Open"
+              title={
+                <Tooltip title="Open Issues">
+                  <span style={{ color: "#3c6d0e" }}>
+                    <IssueOpenedIcon />
+                  </span>
+                </Tooltip>
+              }
               value={data.repository.openIssues.totalCount}
             />
           </Col>
           <Col span={12}>
             <Statistic
-              title="Closed"
+              title={
+                <Tooltip title="Closed Issues">
+                  <span style={{ color: "#bf0000" }}>
+                    <IssueClosedIcon />
+                  </span>
+                </Tooltip>
+              }
               value={data.repository.closedIssues.totalCount}
             />
           </Col>
@@ -40,19 +58,37 @@ const CollectionInsights = ({ owner, repository }) => {
         <Row gutter={16}>
           <Col span={8}>
             <Statistic
-              title="Open"
+              title={
+                <Tooltip title="Open PRs">
+                  <span style={{ color: "#3c6d0e" }}>
+                    <GitPullRequestIcon />
+                  </span>
+                </Tooltip>
+              }
               value={data.repository.openPRs.totalCount}
             />
           </Col>
           <Col span={8}>
             <Statistic
-              title="Closed"
+              title={
+                <Tooltip title="Closed PRs">
+                  <span style={{ color: "#bf0000" }}>
+                    <GitPullRequestIcon />
+                  </span>
+                </Tooltip>
+              }
               value={data.repository.closedPRs.totalCount}
             />
           </Col>
           <Col span={8}>
             <Statistic
-              title="Merged"
+              title={
+                <Tooltip title="Merged PRs">
+                  <span style={{ color: "	#6b4f78" }}>
+                    <GitMergeIcon />
+                  </span>
+                </Tooltip>
+              }
               value={data.repository.mergedPRs.totalCount}
             />
           </Col>

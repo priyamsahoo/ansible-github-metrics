@@ -47,6 +47,10 @@ svg {
   border: none;
 }
 
+.ant-btn-circle {
+  background-color: var(--secondary-color);
+}
+
 .ant-tag {
   color: var(--primary-color);
   background: #eceeef;

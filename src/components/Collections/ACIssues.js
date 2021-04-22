@@ -1,5 +1,5 @@
 import { InMemoryCache, useQuery } from "@apollo/client";
-import { Button, Tag, Typography } from "antd";
+import { Button, Card, Divider, Tag, Typography } from "antd";
 import { useCallback } from "react";
 import { ISSUES } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
@@ -7,6 +7,7 @@ import { ISSUE_COLUMNS } from "./IssueColumns";
 import moment from "moment";
 import { useEffect } from "react";
 import { relayStylePagination } from "@apollo/client/utilities";
+import { CalendarOutlined, SyncOutlined } from "@ant-design/icons";
 
 const ACIssues = ({ owner, repository }) => {
   // Query for obtaining issues
@@ -46,45 +47,85 @@ const ACIssues = ({ owner, repository }) => {
         <>
           <h2>Issues Table</h2>
 
-          <p>
-            Showing data from{" "}
-            <em>
-              {moment(
-                new Date(
-                  data.repository.issues.edges[
-                    data.repository.issues.edges.length - 1
-                  ].node.createdAt
-                )
-              ).format("ll")}
-            </em>{" "}
-            to{" "}
-            <em>
-              {moment(
-                new Date(data.repository.issues.edges[0].node.createdAt)
-              ).format("ll")}
-            </em>
-            .{" |  "}
-            <b>
-              <Tag>
-                <Link
-                  disabled={!data.repository.issues.pageInfo.hasNextPage}
-                  onClick={handleClick}
-                >
-                  Load More
-                </Link>
-              </Tag>
-            </b>
-          </p>
+          <div
+            style={{
+              display: "flex",
+              direction: "row",
+              justifyContent: "center",
+            }}
+          >
+            {data.repository.issues.totalCount ===
+            data.repository.issues.edges.length ? (
+              <Card
+                hoverable
+                style={{
+                  width: 200,
+                  flexGrow: 4,
+                  marginLeft: 5,
+                  marginRight: 5,
+                }}
+              >
+                <p>
+                  <em>
+                    Fetched data since beginning:{" "}
+                    {data.repository.issues.totalCount} issues
+                  </em>
+                </p>
+              </Card>
+            ) : null}
 
-          {data.repository.issues.totalCount ===
-          data.repository.issues.edges.length ? (
-            <p>
-              <em>
-                ( Fetched data since beginning:{" "}
-                {data.repository.issues.totalCount} issues )
-              </em>
-            </p>
-          ) : null}
+            <Card
+              hoverable
+              style={{
+                width: 200,
+                flexGrow: 4,
+                marginLeft: 5,
+                marginRight: 5,
+              }}
+            >
+              <p>
+                <CalendarOutlined /> data from{" "}
+                <em>
+                  {moment(
+                    new Date(
+                      data.repository.issues.edges[
+                        data.repository.issues.edges.length - 1
+                      ].node.createdAt
+                    )
+                  ).format("ll")}
+                </em>{" "}
+                to{" "}
+                <em>
+                  {moment(
+                    new Date(data.repository.issues.edges[0].node.createdAt)
+                  ).format("ll")}
+                </em>
+              </p>
+            </Card>
+
+            <Button
+              style={{ width: 50, height: 50 }}
+              shape="circle"
+              disabled={!data.repository.issues.pageInfo.hasNextPage}
+              onClick={handleClick}
+            >
+              <SyncOutlined size="large" />
+            </Button>
+
+            {/* <Card
+              hoverable={data.repository.issues.pageInfo.hasNextPage}
+              style={{
+                width: 200,
+                flexGrow: 1,
+                marginLeft: 5,
+                marginRight: 5,
+                background: "yellow",
+              }}
+              onClick={handleClick}
+            >
+              Load More
+            </Card> */}
+          </div>
 
           <DataTable
             tag="Issues"

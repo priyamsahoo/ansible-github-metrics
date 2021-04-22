@@ -3,6 +3,7 @@ import { RELEASES_AND_TAGS } from "../../queries/collections_queries";
 import moment from "moment";
 // import { Card } from "reactstrap";
 import { Card, Empty } from "antd";
+import { TagsOutlined } from "@ant-design/icons";
 
 const ReleasesAndTags = ({ owner, repository }) => {
   // Query for obtaining release-tags info
@@ -20,7 +21,9 @@ const ReleasesAndTags = ({ owner, repository }) => {
       {data && (
         <div className="information">
           <div className="tags-info">
-            <h3>Total Tags: {data.tags.refs.totalCount}</h3>
+            <h3>
+              Total <TagsOutlined />: {data.tags.refs.totalCount}
+            </h3>
             <h3>Latest Tag Information: </h3>
             {data.tags.refs.edges && data.tags.refs.totalCount ? (
               <div>
