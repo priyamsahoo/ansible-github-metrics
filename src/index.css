@@ -227,6 +227,14 @@ a.ant-typography {
   min-height: 279px;
 }
 
+.fetch-more-card {
+  background-color: var(--primary-color);
+}
+
+.fetch-more-card div {
+  color: var(--side-nav-background);
+}
+
 .tables {
   width: 100%;
   text-align: center;

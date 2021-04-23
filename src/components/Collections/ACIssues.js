@@ -1,5 +1,5 @@
 import { InMemoryCache, useQuery } from "@apollo/client";
-import { Button, Card, Divider, Tag, Typography } from "antd";
+import { Button, Card, Divider, Skeleton, Space, Tag, Typography } from "antd";
 import { useCallback } from "react";
 import { ISSUES } from "../../queries/collections_queries";
 import DataTable from "./DataTable";
@@ -7,7 +7,18 @@ import { ISSUE_COLUMNS } from "./IssueColumns";
 import moment from "moment";
 import { useEffect } from "react";
 import { relayStylePagination } from "@apollo/client/utilities";
-import { CalendarOutlined, SyncOutlined } from "@ant-design/icons";
+import {
+  CalendarFilled,
+  CalendarOutlined,
+  CarryOutFilled,
+  CheckCircleFilled,
+  CloudDownloadOutlined,
+  CloudServerOutlined,
+  DownloadOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
+import { Tooltip } from "antd";
+import { DesktopDownloadIcon } from "@primer/octicons-react";
 
 const ACIssues = ({ owner, repository }) => {
   // Query for obtaining issues
@@ -41,9 +52,13 @@ const ACIssues = ({ owner, repository }) => {
   return (
     <div className="ac-issues">
       {error && <div>{error}</div>}
-      {loading && <div>Loading...</div>}
+      {loading && (
+        <div>
+          <Skeleton />
+        </div>
+      )}
       {console.log("ISSUE Data Rendered", data)}
-      {data && (
+      {data && !loading && (
         <>
           <h2>Issues Table</h2>
 
@@ -52,6 +67,7 @@ const ACIssues = ({ owner, repository }) => {
               display: "flex",
               direction: "row",
               justifyContent: "center",
+              flexWrap: "wrap",
             }}
           >
             {data.repository.issues.totalCount ===
@@ -60,17 +76,22 @@ const ACIssues = ({ owner, repository }) => {
                 hoverable
                 style={{
                   width: 200,
-                  flexGrow: 4,
+                  height: 70,
+                  // flexGrow: 4,
                   marginLeft: 5,
                   marginRight: 5,
                 }}
               >
-                <p>
-                  <em>
-                    Fetched data since beginning:{" "}
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <CheckCircleFilled
+                    style={{ fontSize: 42, flexGrow: 1, color: "#3d5861" }}
+                  />
+                  <div style={{ flexGrow: 1 }}>
+                    Fetched all data:
+                    <br />
                     {data.repository.issues.totalCount} issues
-                  </em>
-                </p>
+                  </div>
+                </div>
               </Card>
             ) : null}
 
@@ -78,53 +99,71 @@ const ACIssues = ({ owner, repository }) => {
               hoverable
               style={{
                 width: 200,
-                flexGrow: 4,
+                height: 70,
+                // flexGrow: 4,
                 marginLeft: 5,
                 marginRight: 5,
               }}
             >
-              <p>
-                <CalendarOutlined /> data from{" "}
-                <em>
-                  {moment(
-                    new Date(
-                      data.repository.issues.edges[
-                        data.repository.issues.edges.length - 1
-                      ].node.createdAt
-                    )
-                  ).format("ll")}
-                </em>{" "}
-                to{" "}
-                <em>
-                  {moment(
-                    new Date(data.repository.issues.edges[0].node.createdAt)
-                  ).format("ll")}
-                </em>
-              </p>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <CalendarFilled
+                  style={{
+                    fontSize: 42,
+                    flexGrow: 1,
+                    color: "#3d5861",
+                  }}
+                />
+                <div style={{ flexGrow: 1 }}>
+                  From{" "}
+                  <b>
+                    {moment(
+                      new Date(
+                        data.repository.issues.edges[
+                          data.repository.issues.edges.length - 1
+                        ].node.createdAt
+                      )
+                    ).format("ll")}{" "}
+                  </b>
+                  to{" "}
+                  <b>
+                    {moment(
+                      new Date(data.repository.issues.edges[0].node.createdAt)
+                    ).format("ll")}
+                  </b>
+                </div>
+              </div>
             </Card>
 
-            <Button
-              style={{ width: 50, height: 50 }}
-              shape="circle"
-              disabled={!data.repository.issues.pageInfo.hasNextPage}
-              onClick={handleClick}
-            >
-              <SyncOutlined size="large" />
-            </Button>
-
-            {/* <Card
-              hoverable={data.repository.issues.pageInfo.hasNextPage}
+            <Card
+              className="fetch-more-card"
               style={{
                 width: 200,
-                flexGrow: 1,
+                height: 70,
+                // flexGrow: 4,
                 marginLeft: 5,
                 marginRight: 5,
-                background: "yellow",
               }}
-              onClick={handleClick}
             >
-              Load More
-            </Card> */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "baseline",
+                }}
+              >
+                {/* <Tooltip title="Fetch more data" placement="bottom"> */}
+                <Button
+                  style={{ width: 44, height: 44 }}
+                  shape="circle"
+                  disabled={!data.repository.issues.pageInfo.hasNextPage}
+                  onClick={handleClick}
+                >
+                  <DesktopDownloadIcon />
+                </Button>
+                <div style={{ flexGrow: 1 }}>Fetch More Data</div>
+              </div>
+              {/* </Tooltip> */}
+            </Card>
           </div>
 
           <DataTable
