@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { COLLECTION_INSIGHTS } from "../../queries/collections_queries";
-import { Row, Col, Statistic, Card, Divider, Tooltip } from "antd";
-import { ArrowUpOutlined } from "@ant-design/icons";
+import { Row, Col, Statistic, Card, Divider, Tooltip, Skeleton } from "antd";
+import { ArrowUpOutlined, LoadingOutlined } from "@ant-design/icons";
 import {
   IssueOpenedIcon,
   IssueClosedIcon,
@@ -144,8 +144,12 @@ const CollectionInsights = ({ owner, repository }) => {
     <Card className="collection-insights">
       <h2>Collection Insights</h2>
       {error && <div>{error}</div>}
-      {loading && <div>Loading...</div>}
-      {data && displayDetails()}
+      {loading && (
+        <div className="loading-div">
+          <Skeleton />
+        </div>
+      )}
+      {data && !loading && displayDetails()}
     </Card>
   );
 };

@@ -2,8 +2,8 @@ import { useQuery } from "@apollo/client";
 import { RELEASES_AND_TAGS } from "../../queries/collections_queries";
 import moment from "moment";
 // import { Card } from "reactstrap";
-import { Card, Empty } from "antd";
-import { TagsOutlined } from "@ant-design/icons";
+import { Card, Empty, Skeleton } from "antd";
+import { LoadingOutlined, TagsOutlined } from "@ant-design/icons";
 
 const ReleasesAndTags = ({ owner, repository }) => {
   // Query for obtaining release-tags info
@@ -17,8 +17,12 @@ const ReleasesAndTags = ({ owner, repository }) => {
     <Card className="releases-and-tags">
       <h2>Release Tags</h2>
       {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
-      {data && (
+      {loading && (
+        <div className="loading-div">
+          <Skeleton />
+        </div>
+      )}
+      {data && !loading && (
         <div className="information">
           <div className="tags-info">
             <h3>
