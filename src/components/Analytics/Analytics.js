@@ -21,39 +21,6 @@ const Analytics = () => {
     JSON.stringify(selectedRepository)
   );
 
-  // *******************************************
-
-  // const MONTHS = () => {
-  //   const noOfYears = 1;
-  //   const noOfMonths = noOfYears * 12;
-
-  //   const monthRanges = [];
-
-  //   for (let month = 0; month <= noOfMonths; month++) {
-  //     let monthStart = moment()
-  //       .subtract(month, "months")
-  //       .startOf("month")
-  //       .format("YYYY-MM-DD")
-  //       .toString();
-
-  //     let monthEnd = moment()
-  //       .subtract(month, "months")
-  //       .endOf("month")
-  //       .format("YYYY-MM-DD")
-  //       .toString();
-
-  //     let dateString = `${monthStart}..${monthEnd}`;
-
-  //     monthRanges.push(dateString);
-  //   }
-
-  //   return monthRanges;
-  // };
-
-  // console.log("MONTH TEST", MONTHS());
-
-  // *******************************************
-
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {

@@ -144,11 +144,7 @@ const CollectionInsights = ({ owner, repository }) => {
     <Card className="collection-insights">
       <h2>Collection Insights</h2>
       {error && <div>{error}</div>}
-      {loading && (
-        <div className="loading-div">
-          <Skeleton />
-        </div>
-      )}
+      {loading && <Skeleton />}
       {data && !loading && displayDetails()}
     </Card>
   );

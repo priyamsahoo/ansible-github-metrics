@@ -10,7 +10,7 @@ import { assembleData } from "../../utils/assemble-data";
 import BarGraph from "./BarGraph";
 import DoughnutGraph from "./PieChart";
 import { calculateAverageDays } from "../../utils/calculateAverageDays";
-import { Row, Col, PageHeader, Empty } from "antd";
+import { Row, Col, PageHeader, Empty, Skeleton } from "antd";
 import AnalyticGraphs from "./AnalyticGraphs";
 import { ISSUES_AND_PRS_MONTHLY } from "../../queries/analytics_monthwise_stats";
 import { separateAndSplitData } from "../../utils/separateAndSplitData";
@@ -83,12 +83,9 @@ const RepositoryAnalytics = ({ owner, repository }) => {
         subTitle={repository}
       />
 
-      {totalCountDataLoading &&
-        averageDataLoading &&
-        monthlyStatLoading &&
-        !totalCountDataData &&
-        !averageDataData &&
-        !monthlyStatData && <Spin tip="Loading..."></Spin>}
+      {(!totalCountDataData || !averageDataData || !monthlyStatData) && (
+        <Skeleton />
+      )}
 
       {totalCountDataData &&
         !totalCountDataLoading &&

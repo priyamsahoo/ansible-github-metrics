@@ -17,11 +17,7 @@ const ReleasesAndTags = ({ owner, repository }) => {
     <Card className="releases-and-tags">
       <h2>Release Tags</h2>
       {error && <p>{error}</p>}
-      {loading && (
-        <div className="loading-div">
-          <Skeleton />
-        </div>
-      )}
+      {loading && <Skeleton />}
       {data && !loading && (
         <div className="information">
           <div className="tags-info">
