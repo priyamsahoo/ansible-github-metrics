@@ -25,7 +25,7 @@ Namely, there are 3 routes:
 ![](https://github.com/priyamsahoo/ansible-github-metrics/blob/doc-updates/screenshots/developers.gif)
 
 - Shows the details of the developers in terms of their contributions to the observed repositories
-- Overall contributions can be filters according to different timelines
+- Overall contributions can be filtered according to different timelines
 
 ### Analytics
 
