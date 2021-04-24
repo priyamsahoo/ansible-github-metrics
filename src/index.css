@@ -545,8 +545,8 @@ a.ant-typography {
   /* width: 100%;
   height: 100%; */
 }
-/* Doughnut Chart */
-.chart-doughnut {
+/* Pie Chart */
+.chart-pie {
   background-color: var(--side-nav-background);
   padding: 6px;
   margin: 6px;

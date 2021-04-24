@@ -1,7 +1,7 @@
 import { Row, Col, Empty, Tooltip } from "antd";
 import LineGraph from "./LineGraph";
 import BarGraph from "./BarGraph";
-import DoughnutGraph from "./DoughnutGraph";
+import PieChart from "./PieChart";
 import { InfoCircleFilled, FundOutlined } from "@ant-design/icons";
 const AnalyticGraphs = ({
   totalOpenIssueCount,
@@ -35,7 +35,7 @@ const AnalyticGraphs = ({
             <Row>
               <Col span={12}>
                 {totalOpenIssueCount || totalCloseIssueCount ? (
-                  <DoughnutGraph
+                  <PieChart
                     heading="Issue Chart"
                     label1="Open Issues"
                     data1={totalOpenIssueCount}
@@ -51,7 +51,7 @@ const AnalyticGraphs = ({
               </Col>
               <Col span={12}>
                 {totalOpenPRCount || totalMergePRCount ? (
-                  <DoughnutGraph
+                  <PieChart
                     heading="Pull Request Chart"
                     label1="Open PRs"
                     data1={totalOpenPRCount}
@@ -145,7 +145,7 @@ const AnalyticGraphs = ({
             <Row>
               <Col span={12}>
                 {totalOpenIssueCount || totalCloseIssueCount ? (
-                  <DoughnutGraph
+                  <PieChart
                     heading="Issue Chart"
                     label1="Open Issues"
                     data1={totalOpenIssueCount}
@@ -161,7 +161,7 @@ const AnalyticGraphs = ({
               </Col>
               <Col span={12}>
                 {totalOpenPRCount || totalMergePRCount ? (
-                  <DoughnutGraph
+                  <PieChart
                     heading="Pull Request Chart"
                     label1="Open PRs"
                     data1={totalOpenPRCount}

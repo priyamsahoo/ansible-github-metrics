@@ -53,9 +53,6 @@ const LineGraph = ({ dataGroupedByMonth: data, label, heading }) => {
       ],
       xAxes: [
         {
-          scaleLabel: {
-            labelString: "months",
-          },
           ticks: {
             autoSkip: false,
             maxRotation: 90,

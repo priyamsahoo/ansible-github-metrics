@@ -1,17 +1,17 @@
 import { InfoCircleFilled, PieChartOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import React from "react";
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, Pie } from "react-chartjs-2";
 
-const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
+const PieChart = ({ heading, label1, data1, label2, data2 }) => {
   // console.log("DOUGHNUT DATA", data1, data2);
   const dataToPlot = {
-    labels: [label1, label2],
+    labels: [label2, label1],
     datasets: [
       {
-        data: [data1, data2],
-        backgroundColor: ["#DC5459", "#FFCE56"],
-        hoverBackgroundColor: ["#DC5459", "#FFCE56"],
+        data: [data2, data1],
+        backgroundColor: ["#fbc02d", "#9E9E9E"],
+        hoverBackgroundColor: ["#f9a825", "#757575"],
       },
     ],
   };
@@ -36,6 +36,7 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
     },
     legend: {
       display: true,
+      position: "left",
       labels: {
         boxWidth: 15,
       },
@@ -45,14 +46,14 @@ const DoughnutGraph = ({ heading, label1, data1, label2, data2 }) => {
   const message = "Doughnut graph message";
 
   return (
-    <div className="chart-doughnut">
+    <div className="chart-pie">
       <Tooltip title={message} placement={"rightTop"}>
         <PieChartOutlined />
       </Tooltip>
       <h3>{heading}</h3>
-      <Doughnut data={dataToPlot} options={option} />
+      <Pie data={dataToPlot} options={option} />
     </div>
   );
 };
 
-export default DoughnutGraph;
+export default PieChart;
